@@ -3,18 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>14 Corporate Pricing Table</title>
+    <title>Pricing Table - Corporate Modern</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
-    <div class="bg-white p-8 rounded-lg shadow-md max-w-md w-full text-center">
-        <h1 class="text-2xl font-bold mb-4">14 Corporate Pricing Table</h1>
-        <p class="text-gray-600 mb-6">Style: Corporate Modern</p>
-        <div id="app" class="border-2 border-dashed border-gray-300 rounded p-12">
-            Project content goes here
+<body class="bg-slate-50 text-slate-900 font-sans p-6 md:p-24">
+    <div class="max-w-6xl mx-auto text-center mb-16">
+        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">Scalable pricing for fast-growing teams</h1>
+        <p class="text-slate-500 text-xl">Choose the plan that's right for your business, whether you're a solo founder or a Fortune 500.</p>
+    </div>
+
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Starter -->
+        <div class="bg-white border border-slate-200 rounded-3xl p-8 flex flex-col hover:shadow-lg transition">
+            <div class="mb-8">
+                <h3 class="text-indigo-600 font-bold uppercase tracking-widest text-xs mb-4">Starter</h3>
+                <div class="flex items-baseline space-x-1">
+                    <span class="text-4xl font-bold">$0</span>
+                    <span class="text-slate-400">/mo</span>
+                </div>
+                <p class="text-slate-500 text-sm mt-4">Perfect for side projects and personal experimentation.</p>
+            </div>
+            <ul class="space-y-4 mb-10 flex-1">
+                <li class="flex items-center space-x-3 text-sm">
+                    <svg class="w-5 h-5 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                    <span>Up to 3 projects</span>
+                </li>
+                <li class="flex items-center space-x-3 text-sm">
+                    <svg class="w-5 h-5 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                    <span>Basic analytics</span>
+                </li>
+            </ul>
+            <button class="w-full py-4 border-2 border-slate-100 rounded-xl font-bold text-sm hover:bg-slate-50 transition">Get Started</button>
+        </div>
+
+        <!-- Pro -->
+        <div class="bg-indigo-600 rounded-3xl p-8 flex flex-col text-white shadow-2xl shadow-indigo-200 transform scale-105 relative z-10">
+            <div class="absolute top-0 right-12 -translate-y-1/2 bg-amber-400 text-black text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">Most Popular</div>
+            <div class="mb-8">
+                <h3 class="text-indigo-200 font-bold uppercase tracking-widest text-xs mb-4">Professional</h3>
+                <div class="flex items-baseline space-x-1">
+                    <span class="text-4xl font-bold">$49</span>
+                    <span class="text-indigo-300">/mo</span>
+                </div>
+                <p class="text-indigo-100 text-sm mt-4">Advanced tools for professional developers and small teams.</p>
+            </div>
+            <ul class="space-y-4 mb-10 flex-1">
+                <li class="flex items-center space-x-3 text-sm">
+                    <svg class="w-5 h-5 text-indigo-300" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                    <span>Unlimited projects</span>
+                </li>
+                <li class="flex items-center space-x-3 text-sm">
+                    <svg class="w-5 h-5 text-indigo-300" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                    <span>Priority Support</span>
+                </li>
+            </ul>
+            <button class="w-full py-4 bg-white text-indigo-600 rounded-xl font-bold text-sm hover:bg-slate-50 transition">Upgrade to Pro</button>
+        </div>
+
+        <!-- Enterprise -->
+        <div class="bg-white border border-slate-200 rounded-3xl p-8 flex flex-col hover:shadow-lg transition">
+            <div class="mb-8">
+                <h3 class="text-indigo-600 font-bold uppercase tracking-widest text-xs mb-4">Enterprise</h3>
+                <div class="flex items-baseline space-x-1">
+                    <span class="text-4xl font-bold">Custom</span>
+                </div>
+                <p class="text-slate-500 text-sm mt-4">Bespoke solutions for large organizations and specific needs.</p>
+            </div>
+            <ul class="space-y-4 mb-10 flex-1">
+                <li class="flex items-center space-x-3 text-sm">
+                    <svg class="w-5 h-5 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                    <span>Dedicated account manager</span>
+                </li>
+                <li class="flex items-center space-x-3 text-sm">
+                    <svg class="w-5 h-5 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                    <span>SSO & Custom Auth</span>
+                </li>
+            </ul>
+            <button class="w-full py-4 border-2 border-slate-100 rounded-xl font-bold text-sm hover:bg-slate-50 transition">Contact Sales</button>
         </div>
     </div>
-    <script src="script.js"></script>
 </body>
 </html>
