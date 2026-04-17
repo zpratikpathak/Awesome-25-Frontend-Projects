@@ -3,18 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>19 Command Palette Search</title>
+    <title>Search - Command Palette</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #1a1a1e; }
+        .palette {
+            background: #252529;
+            box-shadow: 0 0 0 1px rgba(255,255,255,0.05), 0 30px 60px rgba(0,0,0,0.5);
+        }
+        .kbd {
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
+            padding: 2px 6px;
+            font-size: 10px;
+            font-weight: 600;
+        }
+    </style>
 </head>
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
-    <div class="bg-white p-8 rounded-lg shadow-md max-w-md w-full text-center">
-        <h1 class="text-2xl font-bold mb-4">19 Command Palette Search</h1>
-        <p class="text-gray-600 mb-6">Style: Command Palette</p>
-        <div id="app" class="border-2 border-dashed border-gray-300 rounded p-12">
-            Project content goes here
+<body class="min-h-screen flex items-center justify-center p-6">
+    <div class="palette w-full max-w-2xl rounded-2xl overflow-hidden border border-white/10">
+        <div class="p-6 border-b border-white/5 flex items-center space-x-4">
+            <svg class="w-6 h-6 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            <input type="text" placeholder="Search files, projects, or commands..." class="flex-1 bg-transparent text-xl text-white focus:outline-none placeholder:text-slate-600">
+            <span class="kbd text-slate-400">ESC</span>
+        </div>
+        
+        <div class="p-4 space-y-2 max-h-96 overflow-y-auto">
+            <div class="text-[10px] uppercase tracking-widest text-slate-600 font-bold px-4 pt-2 pb-1">Projects</div>
+            
+            <div class="flex items-center justify-between p-4 rounded-xl bg-indigo-600 text-white cursor-pointer group">
+                <div class="flex items-center space-x-4">
+                    <div class="w-8 h-8 rounded-lg bg-white/20 flex items-center justify-center">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path></svg>
+                    </div>
+                    <div>
+                        <div class="font-medium">Awesome-25-Frontend-Projects</div>
+                        <div class="text-xs text-indigo-200">zpratikpathak/Awesome-25-Frontend-Projects</div>
+                    </div>
+                </div>
+                <span class="kbd bg-white/20 text-white">↵</span>
+            </div>
+
+            <div class="flex items-center justify-between p-4 rounded-xl hover:bg-white/5 text-slate-300 cursor-pointer group transition">
+                <div class="flex items-center space-x-4">
+                    <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    </div>
+                    <div>
+                        <div class="font-medium">Portfolio_v2_draft.md</div>
+                        <div class="text-xs text-slate-500">~/documents/projects</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-[10px] uppercase tracking-widest text-slate-600 font-bold px-4 pt-4 pb-1">Settings</div>
+            <div class="flex items-center justify-between p-4 rounded-xl hover:bg-white/5 text-slate-300 cursor-pointer group transition">
+                <div class="flex items-center space-x-4">
+                    <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
+                    </div>
+                    <div>
+                        <div class="font-medium">Interface Preferences</div>
+                        <div class="text-xs text-slate-500">Change theme, layout, and font</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-4 bg-black/20 border-t border-white/5 flex justify-between items-center text-[10px] text-slate-600 font-bold uppercase tracking-widest">
+            <div class="flex space-x-4">
+                <span class="flex items-center space-x-1"><span class="kbd">↑↓</span><span>Navigate</span></span>
+                <span class="flex items-center space-x-1"><span class="kbd">↵</span><span>Select</span></span>
+            </div>
+            <span>v1.2.0</span>
         </div>
     </div>
-    <script src="script.js"></script>
 </body>
 </html>
