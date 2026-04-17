@@ -3,75 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Home - Neumorphism</title>
+    <title>Sanctuary | Advanced Smart Home Control</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background-color: #e0e5ec; }
-        .neu-flat {
-            background: #e0e5ec;
-            box-shadow: 9px 9px 16px rgba(163, 177, 198, 0.6), -9px -9px 16px rgba(255, 255, 255, 0.5);
-        }
-        .neu-inset {
-            background: #e0e5ec;
-            box-shadow: inset 6px 6px 12px rgba(163, 177, 198, 0.6), inset -6px -6px 12px rgba(255, 255, 255, 0.5);
-        }
-        .neu-button {
-            background: #e0e5ec;
-            box-shadow: 6px 6px 12px rgba(163, 177, 198, 0.6), -6px -6px 12px rgba(255, 255, 255, 0.5);
-            transition: all 0.2s ease;
-        }
-        .neu-button.active {
-            box-shadow: inset 4px 4px 8px rgba(163, 177, 198, 0.6), inset -4px -4px 8px rgba(255, 255, 255, 0.5);
-            color: #3b82f6;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+        body { font-family: 'Outfit', sans-serif; background-color: #e0e5ec; color: #444; }
+        .neu-flat { background: #e0e5ec; box-shadow: 12px 12px 24px rgba(163, 177, 198, 0.7), -12px -12px 24px rgba(255, 255, 255, 0.7); }
+        .neu-inset { background: #e0e5ec; box-shadow: inset 8px 8px 16px rgba(163, 177, 198, 0.7), inset -8px -8px 16px rgba(255, 255, 255, 0.7); }
+        .neu-button { background: #e0e5ec; box-shadow: 8px 8px 16px rgba(163, 177, 198, 0.7), -8px -8px 16px rgba(255, 255, 255, 0.7); transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: pointer; }
+        .neu-button:active, .neu-button.active { box-shadow: inset 6px 6px 12px rgba(163, 177, 198, 0.7), inset -6px -6px 12px rgba(255, 255, 255, 0.7); transform: scale(0.98); color: #3b82f6; }
+        .room-active { background: linear-gradient(145deg, #e6e9ef, #cbd3e0); }
+        .glass-blur { background: rgba(224, 229, 236, 0.6); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.4); }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
     </style>
 </head>
-<body class="p-6 md:p-12 min-h-screen flex items-center justify-center">
-    <div class="max-w-4xl w-full grid grid-cols-1 md:grid-cols-2 gap-12">
-        <div class="neu-flat p-10 rounded-[40px]">
-            <header class="mb-12">
-                <h1 class="text-3xl font-bold text-slate-700">My Sanctuary</h1>
-                <p class="text-slate-400 font-medium">17°C · Partly Cloudy</p>
-            </header>
+<body class="min-h-screen p-6 md:p-12 lg:p-20 overflow-x-hidden">
+    <div class="max-w-[1400px] mx-auto">
+        <!-- Header -->
+        <header class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-20">
+            <div>
+                <h1 class="text-4xl font-extrabold text-slate-700 tracking-tight mb-2 uppercase italic">My Sanctuary<span class="text-blue-500">.</span></h1>
+                <div class="flex items-center space-x-4">
+                    <span class="text-xs font-bold text-slate-400 uppercase tracking-[0.4em]">Integrated Intelligence</span>
+                    <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></div>
+                </div>
+            </div>
+            <div class="flex items-center space-x-8">
+                <div class="text-right">
+                    <div class="text-[10px] text-slate-400 font-black uppercase tracking-widest mb-1">External Climate</div>
+                    <div class="text-xl font-bold text-slate-600 italic">17°C · Clear Sky</div>
+                </div>
+                <button class="neu-button w-14 h-14 rounded-2xl flex items-center justify-center text-slate-500">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- Dynamic Interface Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
             
-            <div class="grid grid-cols-2 gap-6">
-                <button class="neu-button active p-6 rounded-3xl flex flex-col items-center">
-                    <svg class="w-8 h-8 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 5a7 7 0 100 14 7 7 0 000-14z"></path></svg>
-                    <span class="text-xs font-bold uppercase tracking-widest">Main Lights</span>
-                </button>
-                <button class="neu-button p-6 rounded-3xl flex flex-col items-center">
-                    <svg class="w-8 h-8 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                    <span class="text-xs font-bold uppercase tracking-widest">Smart TV</span>
-                </button>
-                <button class="neu-button p-6 rounded-3xl flex flex-col items-center">
-                    <svg class="w-8 h-8 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                    <span class="text-xs font-bold uppercase tracking-widest">A/C Unit</span>
-                </button>
-                <button class="neu-button p-6 rounded-3xl flex flex-col items-center">
-                    <svg class="w-8 h-8 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-                    <span class="text-xs font-bold uppercase tracking-widest">Security</span>
-                </button>
-            </div>
-        </div>
+            <!-- Room Selector & Core Controls -->
+            <div class="lg:col-span-8 space-y-12">
+                <div class="flex flex-wrap gap-6 mb-4">
+                    <button class="neu-button px-10 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest active">Living Room</button>
+                    <button class="neu-button px-10 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-400">Master Bed</button>
+                    <button class="neu-button px-10 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-400">Atelier</button>
+                </div>
 
-        <div class="flex flex-col justify-center space-y-8">
-            <div class="neu-flat p-8 rounded-[40px]">
-                <div class="flex justify-between items-center mb-6">
-                    <h3 class="font-bold text-slate-600">Living Room Temp</h3>
-                    <span class="text-blue-500 font-bold">22°C</span>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Control 1 -->
+                    <div class="neu-flat p-10 rounded-[48px] group transition-all duration-500">
+                        <div class="flex justify-between items-start mb-10">
+                            <div class="w-14 h-14 neu-inset rounded-2xl flex items-center justify-center text-blue-500 group-hover:text-blue-600 transition-colors">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 5a7 7 0 100 14 7 7 0 000-14z"></path></svg>
+                            </div>
+                            <div class="w-12 h-6 neu-inset rounded-full p-1 relative flex items-center cursor-pointer">
+                                <div class="w-4 h-4 bg-blue-500 rounded-full shadow-md"></div>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-600 mb-2">Primary Ambient</h3>
+                        <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Brightness: 84%</p>
+                        <div class="mt-8 h-1 neu-inset rounded-full overflow-hidden">
+                            <div class="bg-blue-500 h-full w-[84%]"></div>
+                        </div>
+                    </div>
+
+                    <!-- Control 2 -->
+                    <div class="neu-flat p-10 rounded-[48px] group transition-all duration-500">
+                        <div class="flex justify-between items-start mb-10">
+                            <div class="w-14 h-14 neu-inset rounded-2xl flex items-center justify-center text-emerald-500">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                            </div>
+                            <div class="w-12 h-6 neu-inset rounded-full p-1 relative flex items-center justify-center cursor-pointer">
+                                <div class="w-4 h-4 bg-slate-400 rounded-full opacity-30"></div>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-600 mb-2">Climate Engine</h3>
+                        <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Status: Standby</p>
+                        <div class="mt-8 h-1 neu-inset rounded-full overflow-hidden">
+                            <div class="bg-emerald-500 h-full w-[20%] opacity-30"></div>
+                        </div>
+                    </div>
+
+                    <!-- Control 3 -->
+                    <div class="neu-flat p-10 rounded-[48px] group transition-all duration-500">
+                        <div class="flex justify-between items-start mb-10">
+                            <div class="w-14 h-14 neu-inset rounded-2xl flex items-center justify-center text-slate-400">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                            </div>
+                             <div class="w-12 h-6 neu-inset rounded-full p-1 relative flex items-center cursor-pointer">
+                                <div class="w-4 h-4 bg-slate-400 rounded-full shadow-md"></div>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-600 mb-2">Neural Display</h3>
+                        <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Active Input: HDMI 1</p>
+                    </div>
                 </div>
-                <div class="neu-inset h-4 rounded-full relative overflow-hidden">
-                    <div class="bg-blue-400 h-full w-[65%] rounded-full shadow-[0_0_15px_rgba(96,165,250,0.5)]"></div>
+                
+                <!-- Large Status Visualization -->
+                <div class="neu-flat rounded-[60px] p-12 relative overflow-hidden">
+                     <div class="absolute -right-20 -top-20 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl"></div>
+                     <h3 class="text-2xl font-black italic text-slate-700 mb-10 uppercase tracking-tight">Environmental Statistics</h3>
+                     <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                         <div class="text-center">
+                             <div class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-4">Internal Temp</div>
+                             <div class="text-4xl font-bold text-slate-600 italic">22.4°C</div>
+                         </div>
+                         <div class="text-center border-l border-slate-200">
+                             <div class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-4">Humidity</div>
+                             <div class="text-4xl font-bold text-slate-600 italic">42%</div>
+                         </div>
+                         <div class="text-center border-l border-slate-200">
+                             <div class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-4">Air Quality</div>
+                             <div class="text-4xl font-bold text-emerald-500 italic">Optimal</div>
+                         </div>
+                         <div class="text-center border-l border-slate-200">
+                             <div class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-4">Usage (24h)</div>
+                             <div class="text-4xl font-bold text-slate-600 italic">1.2 kWh</div>
+                         </div>
+                     </div>
                 </div>
             </div>
 
-            <div class="neu-flat p-8 rounded-[40px]">
-                <div class="flex justify-between items-center mb-6">
-                    <h3 class="font-bold text-slate-600">Energy Usage</h3>
-                    <span class="text-emerald-500 font-bold">4.2 kWh</span>
+            <!-- Side Information Column -->
+            <div class="lg:col-span-4 space-y-12">
+                <div class="neu-inset rounded-[48px] p-10">
+                    <h3 class="text-xl font-bold text-slate-700 mb-8 flex items-center">
+                        <svg class="w-5 h-5 mr-3 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        Automation Log
+                    </h3>
+                    <div class="space-y-8">
+                        <div class="flex items-start space-x-6">
+                            <div class="w-2 h-2 rounded-full bg-blue-500 mt-2 shadow-[0_0_10px_#3b82f6]"></div>
+                            <div>
+                                <div class="text-xs font-bold text-slate-600">Ambient mode engaged.</div>
+                                <p class="text-[10px] text-slate-400 font-bold uppercase mt-1">09:42 AM · Living Room</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-6">
+                            <div class="w-2 h-2 rounded-full bg-slate-300 mt-2"></div>
+                            <div>
+                                <div class="text-xs font-medium text-slate-500 italic">Temperature adjusted to 22°C.</div>
+                                <p class="text-[10px] text-slate-300 font-bold uppercase mt-1">Yesterday · Master Bed</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="neu-inset h-4 rounded-full relative overflow-hidden">
-                    <div class="bg-emerald-400 h-full w-[40%] rounded-full shadow-[0_0_15px_rgba(52,211,153,0.5)]"></div>
+
+                <div class="neu-flat rounded-[48px] p-10 bg-gradient-to-br from-slate-50 to-[#e0e5ec]">
+                    <div class="text-xs font-black uppercase tracking-[0.3em] text-blue-500 mb-4">Security Protocol</div>
+                    <h4 class="text-2xl font-black italic tracking-tighter text-slate-700 mb-6 uppercase">All Systems Secure</h4>
+                    <div class="flex -space-x-2 mb-8">
+                        <div class="w-10 h-10 rounded-full border-4 border-[#e0e5ec] bg-emerald-500 flex items-center justify-center text-white"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg></div>
+                        <div class="w-10 h-10 rounded-full border-4 border-[#e0e5ec] bg-emerald-500 flex items-center justify-center text-white"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg></div>
+                        <div class="w-10 h-10 rounded-full border-4 border-[#e0e5ec] bg-emerald-500 flex items-center justify-center text-white"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"></path></svg></div>
+                    </div>
+                    <button class="w-full neu-button py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-500">Access Cameras</button>
                 </div>
             </div>
         </div>
