@@ -3,60 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music Player - Neumorphism</title>
+    <title>Advanced Music Player - Neumorphism</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background-color: #e0e5ec; }
-        .neu-flat {
-            background: #e0e5ec;
-            box-shadow: 9px 9px 16px rgba(163, 177, 198, 0.6), -9px -9px 16px rgba(255, 255, 255, 0.5);
-        }
-        .neu-inset {
-            background: #e0e5ec;
-            box-shadow: inset 6px 6px 12px rgba(163, 177, 198, 0.6), inset -6px -6px 12px rgba(255, 255, 255, 0.5);
-        }
-        .neu-button {
-            background: #e0e5ec;
-            box-shadow: 6px 6px 12px rgba(163, 177, 198, 0.6), -6px -6px 12px rgba(255, 255, 255, 0.5);
-        }
-        .neu-button:active {
-            box-shadow: inset 4px 4px 8px rgba(163, 177, 198, 0.6), inset -4px -4px 8px rgba(255, 255, 255, 0.5);
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap');
+        body { background-color: #e0e5ec; font-family: 'Outfit', sans-serif; }
+        .neu-flat { background: #e0e5ec; box-shadow: 12px 12px 24px rgba(163, 177, 198, 0.7), -12px -12px 24px rgba(255, 255, 255, 0.6); }
+        .neu-inset { background: #e0e5ec; box-shadow: inset 8px 8px 16px rgba(163, 177, 198, 0.7), inset -8px -8px 16px rgba(255, 255, 255, 0.6); }
+        .neu-button { background: #e0e5ec; box-shadow: 8px 8px 16px rgba(163, 177, 198, 0.7), -8px -8px 16px rgba(255, 255, 255, 0.6); transition: all 0.3s ease; cursor: pointer; border: none; outline: none; }
+        .neu-button:active { box-shadow: inset 4px 4px 8px rgba(163, 177, 198, 0.7), inset -4px -4px 8px rgba(255, 255, 255, 0.6); transform: scale(0.98); }
+        .progress-bar { height: 8px; background: #e0e5ec; border-radius: 4px; position: relative; cursor: pointer; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, #3b82f6, #60a5fa); border-radius: 4px; box-shadow: 0 0 10px rgba(59, 130, 246, 0.5); transition: width 0.1s linear; }
+        .knob { width: 16px; height: 16px; background: #e0e5ec; border: 2px solid #3b82f6; border-radius: 50%; position: absolute; top: 50%; transform: translate(-50%, -50%); }
     </style>
 </head>
-<body class="flex items-center justify-center min-h-screen">
-    <div class="neu-flat p-8 rounded-[40px] w-80 text-center">
-        <div class="neu-inset w-48 h-48 mx-auto rounded-full flex items-center justify-center mb-8 overflow-hidden">
-             <img src="https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=400" alt="Album Cover" class="opacity-80">
-        </div>
-        <h2 class="text-slate-600 font-bold text-xl mb-1">Midnight City</h2>
-        <p class="text-slate-400 text-sm mb-8">M83</p>
-        
-        <div class="neu-inset h-2 rounded-full mb-8 relative">
-            <div class="bg-blue-400 h-full w-1/3 rounded-full shadow-[0_0_10px_rgba(96,165,250,0.5)]"></div>
-        </div>
-        
-        <div class="flex justify-between items-center px-4">
-            <button class="neu-button w-12 h-12 rounded-full flex items-center justify-center text-slate-500">
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M8.445 14.832A1 1 0 0010 14v-2.798l5.445 3.63A1 1 0 0017 14V6a1 1 0 00-1.555-.832L10 8.798V6a1 1 0 00-1.555-.832l-6 4a1 1 0 000 1.664l6 4z"></path></svg>
+<body class="flex items-center justify-center min-h-screen p-6">
+    <div class="neu-flat p-10 rounded-[50px] w-full max-w-sm">
+        <div class="flex justify-between items-center mb-10">
+            <button class="neu-button w-10 h-10 rounded-xl flex items-center justify-center text-slate-500">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"></path></svg>
             </button>
-            <button id="play" class="neu-button w-16 h-16 rounded-full flex items-center justify-center text-blue-500">
-                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg>
+            <span class="text-slate-400 text-xs font-bold uppercase tracking-widest">Now Playing</span>
+            <button class="neu-button w-10 h-10 rounded-xl flex items-center justify-center text-slate-500">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
             </button>
-            <button class="neu-button w-12 h-12 rounded-full flex items-center justify-center text-slate-500">
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M4.555 5.168A1 1 0 003 6v8a1 1 0 001.555.832L10 11.202V14a1 1 0 001.555.832l6-4a1 1 0 000-1.664l-6-4A1 1 0 0010 6v2.798L4.555 5.168z"></path></svg>
+        </div>
+
+        <div class="neu-flat rounded-[40px] p-2 mb-10 relative group">
+            <div class="aspect-square rounded-[36px] overflow-hidden">
+                <img id="cover" src="https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=600" class="w-full h-full object-cover grayscale-[0.2] transition duration-700 group-hover:scale-110">
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition duration-500 rounded-[36px]"></div>
+        </div>
+
+        <div class="text-center mb-10">
+            <h2 id="title" class="text-2xl font-bold text-slate-700 mb-2">Midnight City</h2>
+            <p id="artist" class="text-slate-400 font-medium">M83 · Hurry Up, We're Dreaming</p>
+        </div>
+
+        <div class="mb-10">
+            <div class="flex justify-between text-[10px] font-bold text-slate-400 uppercase tracking-tighter mb-4">
+                <span id="current">1:12</span>
+                <span id="duration">4:03</span>
+            </div>
+            <div class="neu-inset progress-bar" id="seek-bar">
+                <div class="progress-fill" id="progress" style="width: 30%"></div>
+                <div class="knob" id="knob" style="left: 30%"></div>
+            </div>
+        </div>
+
+        <div class="flex justify-between items-center">
+            <button class="neu-button w-14 h-14 rounded-full flex items-center justify-center text-slate-500">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M8.445 14.832A1 1 0 0010 14v-2.798l5.445 3.63A1 1 0 0017 14V6a1 1 0 00-1.555-.832L10 8.798V6a1 1 0 00-1.555-.832l-6 4a1 1 0 000 1.664l6 4z"></path></svg>
+            </button>
+            <button id="play" class="neu-button w-20 h-20 rounded-full flex items-center justify-center text-blue-500">
+                <svg class="w-10 h-10" id="play-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg>
+            </button>
+            <button class="neu-button w-14 h-14 rounded-full flex items-center justify-center text-slate-500">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M4.555 5.168A1 1 0 003 6v8a1 1 0 001.555.832L10 11.202V14a1 1 0 001.555.832l6-4a1 1 0 000-1.664l-6-4A1 1 0 0010 6v2.798L4.555 5.168z"></path></svg>
             </button>
         </div>
     </div>
+
     <script>
         const playBtn = document.getElementById('play');
+        const playIcon = document.getElementById('play-icon');
+        const progress = document.getElementById('progress');
+        const knob = document.getElementById('knob');
+        const currentTimeEl = document.getElementById('current');
+        
         let playing = false;
+        let currentTime = 72; // in seconds
+        const duration = 243;
+
         playBtn.onclick = () => {
             playing = !playing;
-            playBtn.innerHTML = playing ? 
-                '<svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>' : 
-                '<svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg>';
+            playIcon.innerHTML = playing ? 
+                '<path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path>' : 
+                '<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path>';
+        };
+
+        function updateUI() {
+            if (playing && currentTime < duration) {
+                currentTime++;
+                const percent = (currentTime / duration) * 100;
+                progress.style.width = percent + '%';
+                knob.style.left = percent + '%';
+                
+                const mins = Math.floor(currentTime / 60);
+                const secs = String(currentTime % 60).padStart(2, '0');
+                currentTimeEl.textContent = `${mins}:${secs}`;
+            }
         }
+
+        setInterval(updateUI, 1000);
     </script>
 </body>
 </html>
