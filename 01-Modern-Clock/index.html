@@ -3,41 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern Clock - Minimalist</title>
+    <title>Modern Clock - Advanced Minimalist</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap');
-        body { font-family: 'Inter', sans-serif; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;700&display=swap');
+        body { font-family: 'Inter', sans-serif; background: #000; overflow: hidden; }
+        .bg-glow {
+            background: radial-gradient(circle at var(--x) var(--y), rgba(255,255,255,0.05) 0%, transparent 50%);
+        }
+        .time-char { transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); display: inline-block; }
+        .unit-label { font-size: 0.6rem; letter-spacing: 0.2em; color: #444; margin-top: 1rem; }
     </style>
 </head>
-<body class="bg-white text-slate-900 flex items-center justify-center min-h-screen">
-    <div class="text-center">
-        <div id="date" class="text-slate-500 uppercase tracking-widest text-sm mb-2"></div>
-        <div id="clock" class="text-8xl font-light tabular-nums tracking-tight">00:00:00</div>
-        <div class="mt-8 flex justify-center space-x-4">
-            <button onclick="toggleFormat()" class="px-4 py-2 border border-slate-200 rounded-full text-xs hover:bg-slate-50 transition">TOGGLE 24H</button>
+<body class="text-white flex flex-col items-center justify-center min-h-screen">
+    <div class="bg-glow absolute inset-0 pointer-events-none" id="glow"></div>
+    
+    <div class="relative z-10 flex flex-col items-center">
+        <div id="date" class="text-zinc-500 uppercase tracking-[0.5em] text-[10px] mb-8 font-bold opacity-50"></div>
+        
+        <div class="flex space-x-12">
+            <div class="flex flex-col items-center">
+                <div id="hour" class="text-[12vw] font-thin tracking-tighter tabular-nums leading-none">00</div>
+                <div class="unit-label uppercase font-bold">Hours</div>
+            </div>
+            <div class="text-[12vw] font-thin text-zinc-800 leading-none self-start">:</div>
+            <div class="flex flex-col items-center">
+                <div id="min" class="text-[12vw] font-thin tracking-tighter tabular-nums leading-none">00</div>
+                <div class="unit-label uppercase font-bold">Minutes</div>
+            </div>
+            <div class="text-[12vw] font-thin text-zinc-800 leading-none self-start">:</div>
+            <div class="flex flex-col items-center">
+                <div id="sec" class="text-[12vw] font-thin tracking-tighter tabular-nums leading-none text-zinc-400">00</div>
+                <div class="unit-label uppercase font-bold">Seconds</div>
+            </div>
+        </div>
+
+        <div class="mt-24 grid grid-cols-2 md:grid-cols-4 gap-12 text-center opacity-30 hover:opacity-100 transition duration-1000">
+            <div>
+                <div class="text-[10px] uppercase font-bold text-zinc-500 mb-2">Location</div>
+                <div class="text-xs">San Francisco, CA</div>
+            </div>
+            <div>
+                <div class="text-[10px] uppercase font-bold text-zinc-500 mb-2">Temperature</div>
+                <div class="text-xs">18°C · Clear</div>
+            </div>
+            <div>
+                <div class="text-[10px] uppercase font-bold text-zinc-500 mb-2">Battery</div>
+                <div class="text-xs">84% Charging</div>
+            </div>
+            <div>
+                <div class="text-[10px] uppercase font-bold text-zinc-500 mb-2">Active Flux</div>
+                <div class="text-xs">2.4 MHz</div>
+            </div>
         </div>
     </div>
+
+    <div class="fixed bottom-12 left-1/2 -translate-x-1/2 flex space-x-4">
+        <button onclick="toggleTheme()" class="w-2 h-2 rounded-full bg-white opacity-20 hover:opacity-100 transition"></button>
+        <button onclick="toggleFormat()" class="w-2 h-2 rounded-full bg-white opacity-20 hover:opacity-100 transition"></button>
+    </div>
+
     <script>
         let is24Hour = true;
+        const glow = document.getElementById('glow');
+        
+        document.addEventListener('mousemove', (e) => {
+            glow.style.setProperty('--x', e.clientX + 'px');
+            glow.style.setProperty('--y', e.clientY + 'px');
+        });
+
         function updateClock() {
             const now = new Date();
             let h = now.getHours();
             const m = String(now.getMinutes()).padStart(2, '0');
             const s = String(now.getSeconds()).padStart(2, '0');
             
-            if (!is24Hour) {
-                h = h % 12 || 12;
-            }
+            if (!is24Hour) h = h % 12 || 12;
             h = String(h).padStart(2, '0');
             
-            document.getElementById('clock').textContent = `${h}:${m}:${s}`;
-            document.getElementById('date').textContent = now.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+            animateValue('hour', h);
+            animateValue('min', m);
+            animateValue('sec', s);
+            
+            document.getElementById('date').textContent = now.toLocaleDateString('en-US', { 
+                weekday: 'long', 
+                month: 'long', 
+                day: 'numeric',
+                year: 'numeric'
+            });
         }
-        function toggleFormat() {
-            is24Hour = !is24Hour;
-            updateClock();
+
+        function animateValue(id, value) {
+            const el = document.getElementById(id);
+            if (el.textContent !== value) {
+                el.style.transform = 'translateY(-10px)';
+                el.style.opacity = '0.5';
+                setTimeout(() => {
+                    el.textContent = value;
+                    el.style.transform = 'translateY(0)';
+                    el.style.opacity = '1';
+                }, 100);
+            }
         }
+
+        function toggleFormat() { is24Hour = !is24Hour; updateClock(); }
+        
         setInterval(updateClock, 1000);
         updateClock();
     </script>
