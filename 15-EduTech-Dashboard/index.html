@@ -3,18 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>15 EduTech Dashboard</title>
+    <title>EduTech Dashboard - EdTech Friendly</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap');
+        body { font-family: 'Fredoka', sans-serif; background-color: #f5f3ff; }
+        .course-card { transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .course-card:hover { transform: translateY(-5px) scale(1.02); }
+    </style>
 </head>
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
-    <div class="bg-white p-8 rounded-lg shadow-md max-w-md w-full text-center">
-        <h1 class="text-2xl font-bold mb-4">15 EduTech Dashboard</h1>
-        <p class="text-gray-600 mb-6">Style: EdTech Friendly</p>
-        <div id="app" class="border-2 border-dashed border-gray-300 rounded p-12">
-            Project content goes here
+<body class="text-slate-800">
+    <div class="flex min-h-screen">
+        <!-- Mobile Sidebar Button -->
+        <div class="fixed bottom-6 right-6 z-50 md:hidden">
+            <button class="bg-violet-600 text-white p-4 rounded-full shadow-lg">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
         </div>
+
+        <!-- Sidebar -->
+        <aside class="w-72 bg-white p-8 hidden md:block border-r border-violet-100">
+            <div class="flex items-center space-x-3 mb-12">
+                <div class="w-10 h-10 bg-violet-600 rounded-xl flex items-center justify-center text-white font-bold text-xl">L</div>
+                <span class="text-2xl font-bold text-violet-900 tracking-tight">Loomie</span>
+            </div>
+            
+            <nav class="space-y-4">
+                <a href="#" class="flex items-center space-x-4 p-4 bg-violet-50 text-violet-700 rounded-2xl font-bold">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                    <span>Learning Center</span>
+                </a>
+                <a href="#" class="flex items-center space-x-4 p-4 text-slate-400 hover:bg-violet-50 hover:text-violet-600 rounded-2xl transition font-bold">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                    <span>My Courses</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6 md:p-12 overflow-y-auto">
+            <header class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12">
+                <div>
+                    <h2 class="text-3xl font-bold text-slate-900 mb-2">Welcome back, Pratik! 👋</h2>
+                    <p class="text-slate-500">You've completed 75% of your weekly goal.</p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="bg-white p-3 rounded-2xl shadow-sm flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center text-orange-600 font-bold">P</div>
+                        <div class="text-sm font-bold">1,250 <span class="text-slate-400 font-normal">XP</span></div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Course 1 -->
+                <div class="bg-white rounded-[32px] p-6 shadow-sm border border-violet-50 course-card">
+                    <div class="bg-blue-100 w-full aspect-video rounded-2xl mb-6 flex items-center justify-center">
+                        <svg class="w-16 h-16 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                    </div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-blue-500 mb-2 block">Development</span>
+                    <h3 class="text-xl font-bold mb-4">Introduction to React</h3>
+                    <div class="w-full h-3 bg-slate-100 rounded-full overflow-hidden mb-4">
+                        <div class="bg-blue-500 h-full w-[85%] rounded-full"></div>
+                    </div>
+                    <div class="flex justify-between items-center text-sm font-bold">
+                        <span class="text-slate-400">85% Complete</span>
+                        <button class="text-blue-600">Continue →</button>
+                    </div>
+                </div>
+
+                <!-- Course 2 -->
+                <div class="bg-white rounded-[32px] p-6 shadow-sm border border-violet-50 course-card">
+                    <div class="bg-pink-100 w-full aspect-video rounded-2xl mb-6 flex items-center justify-center">
+                        <svg class="w-16 h-16 text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-pink-500 mb-2 block">UI / UX</span>
+                    <h3 class="text-xl font-bold mb-4">Color Theory Basics</h3>
+                    <div class="w-full h-3 bg-slate-100 rounded-full overflow-hidden mb-4">
+                        <div class="bg-pink-500 h-full w-[30%] rounded-full"></div>
+                    </div>
+                    <div class="flex justify-between items-center text-sm font-bold">
+                        <span class="text-slate-400">30% Complete</span>
+                        <button class="text-pink-600">Continue →</button>
+                    </div>
+                </div>
+            </section>
+        </main>
     </div>
-    <script src="script.js"></script>
 </body>
 </html>
