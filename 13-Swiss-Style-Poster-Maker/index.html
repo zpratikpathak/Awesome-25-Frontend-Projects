@@ -3,18 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>13 Swiss Style Poster Maker</title>
+    <title>Poster Maker - Swiss Style</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@400;700&display=swap');
+        body { font-family: 'Helvetica Neue', Arial, sans-serif; background-color: #f0f0f0; }
+        .swiss-red { background-color: #e61919; }
+        .swiss-border { border: 1px solid black; }
+        .swiss-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1px;
+            background-color: black;
+            border: 1px solid black;
+        }
+        .swiss-grid > div { background-color: white; padding: 20px; }
+    </style>
 </head>
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
-    <div class="bg-white p-8 rounded-lg shadow-md max-w-md w-full text-center">
-        <h1 class="text-2xl font-bold mb-4">13 Swiss Style Poster Maker</h1>
-        <p class="text-gray-600 mb-6">Style: Swiss Style</p>
-        <div id="app" class="border-2 border-dashed border-gray-300 rounded p-12">
-            Project content goes here
+<body class="p-4 md:p-12">
+    <div class="max-w-4xl mx-auto swiss-border bg-white overflow-hidden shadow-xl">
+        <header class="swiss-red text-white p-12">
+            <div class="grid grid-cols-2">
+                <div>
+                    <h1 class="text-6xl font-bold tracking-tighter leading-[0.8]">International <br>Typographic <br>Style.</h1>
+                </div>
+                <div class="text-right flex flex-col justify-between">
+                    <span class="text-sm font-bold uppercase tracking-widest">Basel, CH</span>
+                    <span class="text-sm font-bold uppercase tracking-widest">2026 Edition</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="swiss-grid">
+            <div class="col-span-12 md:col-span-4 aspect-square flex items-end">
+                <span class="text-4xl font-bold">1950.</span>
+            </div>
+            <div class="col-span-12 md:col-span-8 bg-black text-white p-12 flex flex-col justify-between">
+                <p class="text-2xl font-bold leading-tight uppercase tracking-tighter">The grid system is an aid, not a guarantee. It permits a number of possible uses and each designer can look for a solution that is appropriate to his personal style.</p>
+                <div class="flex justify-between items-center text-xs font-bold uppercase tracking-widest mt-12">
+                    <span>Josef Müller-Brockmann</span>
+                    <div class="w-12 h-12 swiss-red rounded-full"></div>
+                </div>
+            </div>
+            
+            <div class="col-span-12 md:col-span-4 bg-[#e61919] text-white flex flex-col justify-between">
+                <div class="text-8xl font-bold italic leading-none opacity-20">R</div>
+                <div class="text-xs font-bold uppercase tracking-[0.5em] mt-24">Reductive.</div>
+            </div>
+            <div class="col-span-12 md:col-span-4 flex flex-col justify-between">
+                <div class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-8">Objective.</div>
+                <p class="text-sm font-bold leading-relaxed">The International Typographic Style, also known as the Swiss Style, is a graphic design style that emerged in Russia, Germany and Netherlands in the 1920s.</p>
+            </div>
+            <div class="col-span-12 md:col-span-4 bg-black flex items-center justify-center">
+                <svg width="60" height="60" viewBox="0 0 100 100">
+                    <rect x="10" y="10" width="80" height="80" fill="white" />
+                    <rect x="30" y="30" width="40" height="40" fill="#e61919" />
+                </svg>
+            </div>
         </div>
     </div>
-    <script src="script.js"></script>
 </body>
 </html>
