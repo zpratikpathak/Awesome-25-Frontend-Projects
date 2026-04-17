@@ -3,62 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Chat Interface - Clean Tech</title>
+    <title>Clarity AI | Neural Link 4.0</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        .chat-container { height: calc(100vh - 180px); }
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f8fafc; color: #1e293b; height: 100vh; display: flex; flex-direction: column; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        .glass-panel { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.5); }
+        .chat-area { height: calc(100vh - 200px); }
+        .ai-glow { box-shadow: 0 0 30px rgba(14, 165, 233, 0.15); }
+        .typing-dot { width: 4px; height: 4px; background: #0ea5e9; border-radius: 50%; animation: blink 1.4s infinite both; }
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes blink { 0%, 80%, 100% { opacity: 0; } 40% { opacity: 1; } }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
     </style>
 </head>
-<body class="bg-[#f0f4f8] text-slate-800 font-sans min-h-screen flex flex-col">
-    <header class="p-6 flex items-center justify-between">
-        <div class="flex items-center space-x-3">
-            <div class="w-10 h-10 bg-gradient-to-tr from-cyan-500 to-blue-600 rounded-xl shadow-lg shadow-cyan-200"></div>
+<body class="overflow-hidden">
+    <!-- Top Navigation -->
+    <header class="h-20 shrink-0 px-8 flex items-center justify-between z-30">
+        <div class="flex items-center space-x-4">
+            <div class="w-10 h-10 bg-gradient-to-tr from-sky-500 to-blue-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-sky-200 group cursor-pointer transition-transform hover:scale-105 active:scale-95">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+            </div>
             <div>
-                <h1 class="font-bold text-lg leading-tight">Clarity AI</h1>
-                <div class="flex items-center space-x-1.5">
-                    <div class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
-                    <span class="text-xs text-slate-500 font-medium">Core 4.0 Active</span>
+                <div class="flex items-center space-x-2">
+                    <h1 class="font-extrabold text-lg tracking-tight">Clarity AI</h1>
+                    <span class="bg-sky-100 text-sky-600 text-[8px] font-black px-2 py-0.5 rounded-full uppercase">Neural v4</span>
                 </div>
+                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest flex items-center">
+                    <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full mr-2 animate-pulse"></span>
+                    System Synchronized
+                </p>
             </div>
         </div>
-        <div class="flex items-center space-x-4">
-            <button class="p-2 text-slate-400 hover:text-blue-600 transition">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-            </button>
+        <div class="flex items-center space-x-2">
+            <div class="flex items-center space-x-4 bg-white/50 backdrop-blur-md px-4 py-2 rounded-2xl border border-white/50 shadow-sm mr-4 hidden md:flex">
+                <div class="flex -space-x-2">
+                    <div class="w-6 h-6 rounded-full border-2 border-white bg-slate-200"></div>
+                    <div class="w-6 h-6 rounded-full border-2 border-white bg-sky-500 flex items-center justify-center text-[8px] font-bold text-white">AI</div>
+                </div>
+                <div class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Active Collaboration</div>
+            </div>
+            <button class="p-2 text-slate-400 hover:text-slate-900 transition"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"></path></svg></button>
         </div>
     </header>
 
-    <main class="flex-1 max-w-4xl w-full mx-auto px-6">
-        <div id="chat" class="chat-container overflow-y-auto space-y-6 py-6 scroll-smooth">
-            <div class="flex items-start space-x-4">
-                <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 shrink-0">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+    <!-- Chat Workspace -->
+    <main class="flex-1 overflow-hidden relative">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-slate-100/50 pointer-events-none"></div>
+        <div class="max-w-4xl mx-auto h-full flex flex-col px-6">
+            <div class="chat-area overflow-y-auto pt-6 pb-20 space-y-10 pr-2">
+                
+                <!-- System Message -->
+                <div class="flex justify-center mb-12">
+                    <div class="bg-white/40 backdrop-blur-sm border border-slate-200/50 rounded-full px-4 py-1.5 text-[10px] font-bold text-slate-400 uppercase tracking-widest">Session Started: April 17, 2026</div>
                 </div>
-                <div class="glass-panel p-4 rounded-2xl rounded-tl-none shadow-sm max-w-[80%]">
-                    <p class="text-sm leading-relaxed text-slate-700">Hello Pratik. I've finished analyzing the data sets. How would you like to proceed with the visualization?</p>
-                </div>
-            </div>
 
-            <div class="flex items-start space-x-4 flex-row-reverse space-x-reverse">
-                <div class="w-8 h-8 bg-slate-200 rounded-lg shrink-0"></div>
-                <div class="bg-blue-600 p-4 rounded-2xl rounded-tr-none shadow-md shadow-blue-100 max-w-[80%] text-white">
-                    <p class="text-sm leading-relaxed">Let's go with a clean tech aesthetic, maybe some cyan gradients.</p>
+                <!-- AI Message 1 -->
+                <div class="flex items-start space-x-5 group">
+                    <div class="w-10 h-10 bg-white rounded-2xl shadow-sm border border-slate-100 flex items-center justify-center text-sky-500 shrink-0 group-hover:shadow-md transition-shadow">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <div class="space-y-2 max-w-[85%]">
+                        <div class="bg-white p-6 rounded-[32px] rounded-tl-none shadow-sm ai-glow border border-slate-100/50">
+                            <p class="text-sm leading-relaxed text-slate-700">Hello Pratik. I've successfully initialized the Neural Link v4.0. All systems are operational and synchronized with your local workspace.</p>
+                            <p class="text-sm leading-relaxed text-slate-700 mt-4">I've completed the initial analysis of the <span class="text-sky-600 font-bold">Awesome-25-Frontend-Projects</span> repository. How would you like to proceed with the advanced UI upgrades?</p>
+                        </div>
+                        <div class="text-[10px] font-bold text-slate-300 uppercase tracking-widest px-2">10:45 AM · Clarity AI</div>
+                    </div>
                 </div>
+
+                <!-- User Message -->
+                <div class="flex items-start flex-row-reverse space-x-5 space-x-reverse group">
+                    <div class="w-10 h-10 bg-slate-900 rounded-2xl flex items-center justify-center shrink-0">
+                        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100" class="w-full h-full object-cover rounded-2xl grayscale">
+                    </div>
+                    <div class="space-y-2 max-w-[85%]">
+                        <div class="bg-sky-600 p-6 rounded-[32px] rounded-tr-none shadow-xl shadow-sky-100 text-white">
+                            <p class="text-sm leading-relaxed">Let's continue with the advanced implementations for all projects. Make sure each one showcases complex UI/UX patterns and professional-grade aesthetics.</p>
+                        </div>
+                        <div class="text-[10px] font-bold text-slate-300 uppercase tracking-widest px-2 text-right">10:46 AM · Pratik Pathak</div>
+                    </div>
+                </div>
+
+                <!-- Typing Indicator Example -->
+                <div id="ai-typing" class="flex items-center space-x-2 px-14">
+                    <div class="flex space-x-1">
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                    </div>
+                    <span class="text-[10px] font-bold text-sky-500 uppercase tracking-widest">Processing</span>
+                </div>
+
             </div>
         </div>
     </main>
 
-    <footer class="p-6">
-        <div class="max-w-4xl mx-auto relative">
-            <input type="text" placeholder="Send a message..." class="w-full glass-panel py-4 pl-6 pr-16 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-400 transition shadow-lg">
-            <button class="absolute right-2 top-2 bottom-2 px-4 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition flex items-center">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
-            </button>
+    <!-- Input Footer -->
+    <footer class="h-28 shrink-0 flex items-center px-8 bg-gradient-to-t from-slate-50 to-transparent relative z-30">
+        <div class="max-w-4xl w-full mx-auto relative group">
+            <div class="absolute -inset-1 bg-gradient-to-r from-sky-400 to-blue-500 rounded-[30px] blur opacity-20 group-focus-within:opacity-40 transition duration-500"></div>
+            <div class="relative bg-white rounded-[28px] border border-slate-200 p-2 flex items-center shadow-lg transition-all duration-500 group-focus-within:border-sky-400">
+                <button class="p-4 text-slate-400 hover:text-sky-500 transition">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                </button>
+                <input type="text" placeholder="Type your instruction..." class="flex-1 bg-transparent py-4 px-2 text-sm font-medium focus:outline-none placeholder:text-slate-400">
+                <button class="bg-sky-600 hover:bg-sky-700 text-white w-12 h-12 rounded-2xl flex items-center justify-center transition shadow-lg shadow-sky-100 hover:scale-105 active:scale-95">
+                    <svg class="w-6 h-6 rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+                </button>
+            </div>
         </div>
     </footer>
 </body>
