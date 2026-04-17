@@ -3,63 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creative Agency - Brutalist</title>
+    <title>VOID STUDIO | Radical Brutalism</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;700&display=swap');
-        body { font-family: 'Space Grotesk', sans-serif; background-color: #ffde00; }
-        .brutal-border { border: 4px solid black; }
-        .brutal-shadow { box-shadow: 12px 12px 0px black; }
-        .brutal-shadow-sm { box-shadow: 6px 6px 0px black; }
-        .brutal-btn:active { transform: translate(4px, 4px); box-shadow: 8px 8px 0px black; }
+        @import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@400;900&family=Space+Grotesk:wght@300;700&display=swap');
+        body { font-family: 'Space Grotesk', sans-serif; background-color: #ffde00; color: #000; cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><circle cx="10" cy="10" r="10" fill="black"/></svg>'), auto; }
+        .font-unbounded { font-family: 'Unbounded', sans-serif; }
+        .brutal-border { border: 6px solid #000; }
+        .brutal-shadow { box-shadow: 16px 16px 0px #000; }
+        .brutal-shadow-hover:hover { box-shadow: 24px 24px 0px #000; transform: translate(-8px, -8px); }
+        .brutal-btn { transition: all 0.2s; position: relative; }
+        .brutal-btn:active { transform: translate(8px, 8px); box-shadow: 0px 0px 0px #000; }
+        .grid-bg { background-image: radial-gradient(#000 1px, transparent 0); background-size: 20px 20px; }
+        .marquee { white-space: nowrap; overflow: hidden; display: flex; border-top: 6px solid #000; border-bottom: 6px solid #000; background: #fff; padding: 1rem 0; }
+        .marquee-content { display: flex; animation: marquee 20s linear infinite; }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .outline-text { -webkit-text-stroke: 2px #000; color: transparent; }
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #ffde00; }
+        ::-webkit-scrollbar-thumb { background: #000; }
     </style>
 </head>
-<body class="text-black p-6 md:p-12">
-    <nav class="flex justify-between items-center mb-24">
-        <div class="bg-white brutal-border p-4 font-bold text-2xl uppercase tracking-tighter brutal-shadow-sm">VOID.STUDIO</div>
-        <div class="space-x-8 font-bold uppercase hidden md:flex">
-            <a href="#" class="hover:underline">Works</a>
-            <a href="#" class="hover:underline">Studio</a>
-            <a href="#" class="hover:underline">Hiring</a>
+<body class="grid-bg">
+    <!-- Radical Navigation -->
+    <nav class="sticky top-0 z-50 p-6 md:p-10 flex justify-between items-center bg-[#ffde00]/80 backdrop-blur-sm border-b-8 border-black">
+        <div class="bg-black text-[#ffde00] brutal-border p-6 font-unbounded font-black text-3xl uppercase tracking-tighter brutal-shadow rotate-1">VOID.</div>
+        <div class="hidden lg:flex space-x-12 font-black uppercase text-xl italic tracking-tighter">
+            <a href="#" class="hover:underline decoration-8 underline-offset-8">Chaos</a>
+            <a href="#" class="hover:underline decoration-8 underline-offset-8">Machines</a>
+            <a href="#" class="hover:underline decoration-8 underline-offset-8">Riots</a>
         </div>
+        <button class="bg-white brutal-border px-8 py-4 font-black uppercase text-xl brutal-shadow-hover transition-all -rotate-2">HQ Access</button>
     </nav>
 
-    <main class="max-w-7xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-32">
-            <div>
-                <h1 class="text-[12vw] md:text-[8vw] leading-[0.85] font-bold uppercase tracking-tighter mb-12">We Build <br>Digital <br>Chaos.</h1>
-                <p class="text-2xl font-bold max-w-md leading-tight mb-12">A brutalist approach to creative problem solving. We don't do subtle. We do impact.</p>
-                <button class="bg-black text-[#ffde00] brutal-border px-12 py-6 font-bold text-2xl uppercase brutal-shadow brutal-btn transition-all">Start a Riot</button>
+    <main class="max-w-[1600px] mx-auto px-6 md:px-20 py-32">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-20 items-center mb-64">
+            <div class="lg:col-span-8">
+                <h1 class="font-unbounded text-[12vw] leading-[0.75] font-black uppercase tracking-tighter mb-16">WE DON'T <br>BUILD <br><span class="outline-text italic">SITES.</span></h1>
+                <p class="text-3xl md:text-5xl font-black max-w-2xl leading-none mb-16 uppercase italic">We build high-performance cultural weapons for the digital age.</p>
+                <div class="flex flex-wrap gap-8">
+                    <button class="bg-black text-[#ffde00] brutal-border px-16 py-8 font-black text-3xl uppercase brutal-shadow brutal-btn">DEPLOY NOW</button>
+                    <button class="bg-blue-600 text-white brutal-border px-16 py-8 font-black text-3xl uppercase brutal-shadow brutal-btn">EXPLORE CHAOS</button>
+                </div>
             </div>
-            <div class="bg-blue-600 brutal-border brutal-shadow flex items-center justify-center overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=800" alt="Chaos" class="w-full h-full object-cover mix-blend-multiply grayscale">
+            <div class="lg:col-span-4 relative">
+                <div class="absolute -inset-8 bg-pink-500 brutal-border z-0 -rotate-3"></div>
+                <div class="relative z-10 bg-white brutal-border brutal-shadow-hover transition-all duration-700 aspect-[3/4] overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=800" class="w-full h-full object-cover grayscale contrast-150 mix-blend-multiply">
+                </div>
             </div>
         </div>
 
-        <section class="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div class="bg-white brutal-border p-8 brutal-shadow">
-                <div class="text-4xl font-bold mb-4">01.</div>
-                <h3 class="text-2xl font-bold uppercase mb-4 italic">Unfiltered Design</h3>
-                <p class="font-bold">Raw, honest, and unapologetic aesthetics for brands that want to stand out from the noise.</p>
+        <!-- Radical Marquee -->
+        <div class="marquee mb-64 -mx-6 md:-mx-20 rotate-1">
+            <div class="marquee-content font-unbounded font-black text-6xl uppercase flex space-x-20">
+                <span>NO MORE SUBTLETY ★ RADICAL DESIGN ★ CHAOS AS ORDER ★ VOID STUDIO ★ NO MORE SUBTLETY ★ RADICAL DESIGN ★ CHAOS AS ORDER ★ VOID STUDIO ★ </span>
+                <span>NO MORE SUBTLETY ★ RADICAL DESIGN ★ CHAOS AS ORDER ★ VOID STUDIO ★ NO MORE SUBTLETY ★ RADICAL DESIGN ★ CHAOS AS ORDER ★ VOID STUDIO ★ </span>
             </div>
-            <div class="bg-pink-400 brutal-border p-8 brutal-shadow">
-                <div class="text-4xl font-bold mb-4">02.</div>
-                <h3 class="text-2xl font-bold uppercase mb-4 italic">Radical Tech</h3>
-                <p class="font-bold">Building high-performance machines that break the rules of conventional development.</p>
+        </div>
+
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-16 mb-64">
+            <div class="bg-white brutal-border p-12 brutal-shadow-hover transition-all duration-500">
+                <div class="text-6xl font-black mb-8 italic">01.</div>
+                <h3 class="text-4xl font-black uppercase mb-8 underline decoration-8">RAW TECH</h3>
+                <p class="text-xl font-bold leading-tight">Unfiltered engineering. We prioritize performance and impact over convention. Our code is loud, fast, and unyielding.</p>
             </div>
-            <div class="bg-emerald-400 brutal-border p-8 brutal-shadow">
-                <div class="text-4xl font-bold mb-4">03.</div>
-                <h3 class="text-2xl font-bold uppercase mb-4 italic">Cultural Impact</h3>
-                <p class="font-bold">We create experiences that spark conversations and challenge the status quo.</p>
+            <div class="bg-pink-400 brutal-border p-12 brutal-shadow-hover transition-all duration-500 rotate-2">
+                <div class="text-6xl font-black mb-8 italic">02.</div>
+                <h3 class="text-4xl font-black uppercase mb-8 underline decoration-8">VISUAL RIOT</h3>
+                <p class="text-xl font-bold leading-tight">We build identities that demand attention. High contrast, bold typography, and a complete disregard for 'best practices'.</p>
+            </div>
+            <div class="bg-emerald-400 brutal-border p-12 brutal-shadow-hover transition-all duration-500 -rotate-2">
+                <div class="text-6xl font-black mb-8 italic">03.</div>
+                <h3 class="text-4xl font-black uppercase mb-8 underline decoration-8">CULTURE</h3>
+                <p class="text-xl font-bold leading-tight">We don't follow trends; we break them. Every project is a manifesto for a more interesting digital future.</p>
             </div>
         </section>
-    </main>
 
-    <footer class="mt-48 py-24 border-t-8 border-black">
-        <div class="flex flex-col md:flex-row justify-between items-center gap-12">
-            <div class="text-6xl font-bold uppercase tracking-tighter">Stay <br>Ugly.</div>
-            <div class="bg-white brutal-border p-6 brutal-shadow-sm font-bold text-xl uppercase">© 2026 Void Studio</div>
-        </div>
-    </footer>
+        <!-- The "Ugly" Footer -->
+        <footer class="py-32 border-t-[12px] border-black flex flex-col lg:flex-row justify-between items-start gap-20">
+            <div>
+                <div class="text-[12vw] font-unbounded font-black uppercase italic leading-none tracking-tighter mb-12">STAY <br><span class="outline-text">UGLY.</span></div>
+                <div class="flex space-x-12 text-2xl font-black uppercase italic tracking-tighter">
+                    <a href="#" class="hover:underline">Twitter</a>
+                    <a href="#" class="hover:underline">Discord</a>
+                    <a href="#" class="hover:underline">Manifesto</a>
+                </div>
+            </div>
+            <div class="bg-white brutal-border p-12 brutal-shadow w-full lg:max-w-md">
+                <h4 class="text-3xl font-black uppercase mb-8 italic tracking-tighter">Join the Void</h4>
+                <div class="space-y-6">
+                    <input type="email" placeholder="YOUR@EMAIL.COM" class="w-full bg-transparent border-b-4 border-black p-4 font-black text-xl uppercase focus:outline-none">
+                    <button class="w-full bg-black text-[#ffde00] py-6 font-black text-2xl uppercase">SUBSCRIBE OR DIE</button>
+                </div>
+            </div>
+        </footer>
+    </main>
 </body>
 </html>
