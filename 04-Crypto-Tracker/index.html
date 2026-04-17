@@ -3,18 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>04 Crypto Tracker</title>
+    <title>Crypto Tracker - Fintech Modern</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
-    <div class="bg-white p-8 rounded-lg shadow-md max-w-md w-full text-center">
-        <h1 class="text-2xl font-bold mb-4">04 Crypto Tracker</h1>
-        <p class="text-gray-600 mb-6">Style: Fintech Modern</p>
-        <div id="app" class="border-2 border-dashed border-gray-300 rounded p-12">
-            Project content goes here
+<body class="bg-[#0f172a] text-slate-50 font-sans p-6">
+    <div class="max-w-4xl mx-auto">
+        <header class="flex justify-between items-center mb-10">
+            <div>
+                <h1 class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-300">CryptoHub</h1>
+                <p class="text-slate-400 text-sm">Market Overview</p>
+            </div>
+            <div class="flex space-x-2">
+                <button class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg text-sm transition font-medium">Connect Wallet</button>
+            </div>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-10">
+            <div class="bg-[#1e293b] p-4 rounded-xl border border-slate-800">
+                <div class="text-xs text-slate-400 mb-1">Market Cap</div>
+                <div class="text-xl font-bold">$2.45T</div>
+                <div class="text-emerald-400 text-xs mt-1">+2.4%</div>
+            </div>
+            <div class="bg-[#1e293b] p-4 rounded-xl border border-slate-800">
+                <div class="text-xs text-slate-400 mb-1">24h Volume</div>
+                <div class="text-xl font-bold">$64.2B</div>
+            </div>
+            <div class="bg-[#1e293b] p-4 rounded-xl border border-slate-800">
+                <div class="text-xs text-slate-400 mb-1">BTC Dominance</div>
+                <div class="text-xl font-bold">52.4%</div>
+            </div>
+            <div class="bg-[#1e293b] p-4 rounded-xl border border-slate-800">
+                <div class="text-xs text-slate-400 mb-1">Fear & Greed</div>
+                <div class="text-xl font-bold">64</div>
+                <div class="text-emerald-400 text-xs mt-1">Greed</div>
+            </div>
+        </div>
+
+        <div class="bg-[#1e293b] rounded-2xl border border-slate-800 overflow-hidden">
+            <table class="w-full text-left">
+                <thead class="bg-slate-800/50 text-slate-400 text-xs uppercase">
+                    <tr>
+                        <th class="p-4">Asset</th>
+                        <th class="p-4">Price</th>
+                        <th class="p-4">24h Change</th>
+                        <th class="p-4">Market Cap</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-800">
+                    <tr class="hover:bg-slate-800/30 transition cursor-pointer">
+                        <td class="p-4 flex items-center space-x-3">
+                            <div class="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center font-bold">B</div>
+                            <div>
+                                <div class="font-bold">Bitcoin</div>
+                                <div class="text-xs text-slate-400">BTC</div>
+                            </div>
+                        </td>
+                        <td class="p-4 font-mono">$64,234.12</td>
+                        <td class="p-4 text-emerald-400">+1.24%</td>
+                        <td class="p-4">$1.26T</td>
+                    </tr>
+                    <tr class="hover:bg-slate-800/30 transition cursor-pointer">
+                        <td class="p-4 flex items-center space-x-3">
+                            <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center font-bold">E</div>
+                            <div>
+                                <div class="font-bold">Ethereum</div>
+                                <div class="text-xs text-slate-400">ETH</div>
+                            </div>
+                        </td>
+                        <td class="p-4 font-mono">$3,452.88</td>
+                        <td class="p-4 text-red-400">-0.45%</td>
+                        <td class="p-4">$414.2B</td>
+                    </tr>
+                    <tr class="hover:bg-slate-800/30 transition cursor-pointer">
+                        <td class="p-4 flex items-center space-x-3">
+                            <div class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center font-bold">S</div>
+                            <div>
+                                <div class="font-bold">Solana</div>
+                                <div class="text-xs text-slate-400">SOL</div>
+                            </div>
+                        </td>
+                        <td class="p-4 font-mono">$142.50</td>
+                        <td class="p-4 text-emerald-400">+4.12%</td>
+                        <td class="p-4">$64.2B</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
-    <script src="script.js"></script>
 </body>
 </html>
