@@ -35,3 +35,20 @@ Welcome to the ultimate **Enterprise-Grade** collection of frontend projects. Th
 
 ---
 Engineering by 🤖 **EvilReborn**
+
+## 🤝 How to Contribute
+
+We welcome unique frontend projects that push the boundaries of UI/UX! To add your project to this collection, follow these steps:
+
+1.  **Fork the Repository:** Create a personal copy of this project on your GitHub.
+2.  **Create a Project Folder:** Add a new folder following the naming convention (e.g., `27-Your-Project-Name`).
+3.  **Implement Your Code:** Your folder should contain a complete solution (typically `index.html`, `style.css`, and `script.js`).
+4.  **Add a README:** Include a `README.md` inside your project folder explaining the UI style and technical features.
+5.  **Update Root README:** Add your project to the table in the main `README.md` with its #, Name, Style, and Tech Highlights.
+6.  **Submit a Pull Request:** Open a PR with a clear description of your project's design philosophy.
+
+### 💎 Quality Standards
+- **Unique Design:** Every contribution must have a distinct UI/UX style not already present.
+- **Enterprise Grade:** Use professional typography, spacing, and modern CSS techniques (Tailwind preferred).
+- **Responsive:** Ensure your project looks stunning on all screen sizes.
+
