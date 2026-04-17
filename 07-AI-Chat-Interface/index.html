@@ -3,18 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>07 AI Chat Interface</title>
+    <title>AI Chat Interface - Clean Tech</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        .chat-container { height: calc(100vh - 180px); }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+    </style>
 </head>
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
-    <div class="bg-white p-8 rounded-lg shadow-md max-w-md w-full text-center">
-        <h1 class="text-2xl font-bold mb-4">07 AI Chat Interface</h1>
-        <p class="text-gray-600 mb-6">Style: Clean Tech</p>
-        <div id="app" class="border-2 border-dashed border-gray-300 rounded p-12">
-            Project content goes here
+<body class="bg-[#f0f4f8] text-slate-800 font-sans min-h-screen flex flex-col">
+    <header class="p-6 flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 bg-gradient-to-tr from-cyan-500 to-blue-600 rounded-xl shadow-lg shadow-cyan-200"></div>
+            <div>
+                <h1 class="font-bold text-lg leading-tight">Clarity AI</h1>
+                <div class="flex items-center space-x-1.5">
+                    <div class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+                    <span class="text-xs text-slate-500 font-medium">Core 4.0 Active</span>
+                </div>
+            </div>
         </div>
-    </div>
-    <script src="script.js"></script>
+        <div class="flex items-center space-x-4">
+            <button class="p-2 text-slate-400 hover:text-blue-600 transition">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="flex-1 max-w-4xl w-full mx-auto px-6">
+        <div id="chat" class="chat-container overflow-y-auto space-y-6 py-6 scroll-smooth">
+            <div class="flex items-start space-x-4">
+                <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 shrink-0">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+                </div>
+                <div class="glass-panel p-4 rounded-2xl rounded-tl-none shadow-sm max-w-[80%]">
+                    <p class="text-sm leading-relaxed text-slate-700">Hello Pratik. I've finished analyzing the data sets. How would you like to proceed with the visualization?</p>
+                </div>
+            </div>
+
+            <div class="flex items-start space-x-4 flex-row-reverse space-x-reverse">
+                <div class="w-8 h-8 bg-slate-200 rounded-lg shrink-0"></div>
+                <div class="bg-blue-600 p-4 rounded-2xl rounded-tr-none shadow-md shadow-blue-100 max-w-[80%] text-white">
+                    <p class="text-sm leading-relaxed">Let's go with a clean tech aesthetic, maybe some cyan gradients.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="p-6">
+        <div class="max-w-4xl mx-auto relative">
+            <input type="text" placeholder="Send a message..." class="w-full glass-panel py-4 pl-6 pr-16 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-400 transition shadow-lg">
+            <button class="absolute right-2 top-2 bottom-2 px-4 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition flex items-center">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+            </button>
+        </div>
+    </footer>
 </body>
 </html>
