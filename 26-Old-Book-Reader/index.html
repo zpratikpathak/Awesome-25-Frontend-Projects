@@ -3,18 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>26 Old Book Reader</title>
+    <title>Old Book - Dark Academia</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,900;1,900&display=swap');
+        .font-serif { font-family: 'Crimson Pro', serif; }
+        .font-display { font-family: 'Playfair Display', serif; }
+        body { background-color: #1a1512; }
+        .paper { 
+            background-color: #f4ece1; 
+            background-image: url('https://www.transparenttextures.com/patterns/old-map.png');
+            box-shadow: 20px 20px 60px rgba(0,0,0,0.5), inset 0 0 100px rgba(100,70,50,0.1);
+        }
+        .text-justified { text-align: justify; text-justify: inter-word; }
+        .dropcap::first-letter {
+            float: left;
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            line-height: 0.8;
+            padding-right: 0.5rem;
+            color: #4a3728;
+        }
+    </style>
 </head>
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
-    <div class="bg-white p-8 rounded-lg shadow-md max-w-md w-full text-center">
-        <h1 class="text-2xl font-bold mb-4">26 Old Book Reader</h1>
-        <p class="text-gray-600 mb-6">Style: Dark Academia</p>
-        <div id="app" class="border-2 border-dashed border-gray-300 rounded p-12">
-            Project content goes here
+<body class="min-h-screen flex items-center justify-center p-6 md:p-24">
+    <div class="max-w-4xl w-full paper p-12 md:p-24 rounded-sm border border-[#3d2b1f]/20 relative">
+        <div class="absolute top-12 left-1/2 -translate-x-1/2 text-[10px] uppercase tracking-[0.6em] text-[#4a3728]/40 font-bold">Chapter IV</div>
+        
+        <header class="text-center mb-24 mt-12">
+            <h1 class="font-display text-6xl italic text-[#4a3728] mb-4">The Alchemist's <br>Shadow</h1>
+            <div class="w-24 h-[1px] bg-[#4a3728]/20 mx-auto"></div>
+        </header>
+
+        <main class="font-serif text-[#2c1e15] text-xl leading-relaxed max-w-2xl mx-auto">
+            <p class="dropcap text-justified mb-12 italic">
+                It was during the late hours of a rain-soaked Tuesday that the library revealed its greatest secret. The dust motes danced in the candlelight, illuminated by a flame that refused to flicker despite the draft from the cracked stained-glass window.
+            </p>
+            <p class="text-justified mb-12">
+                Elias reached for the leather-bound volume, its spine cracked and weathered by centuries of neglect. He could feel the pulse of the parchment beneath his fingertips—a slow, rhythmic thrumming that echoed the beating of his own heart. 
+            </p>
+            <p class="text-justified italic opacity-80 border-l-4 border-[#4a3728]/10 pl-8 my-16">
+                "Knowledge is not found in the clarity of the light, but in the depths of the shadows that it casts."
+            </p>
+            <p class="text-justified">
+                The ink seemed to shift as he watched, the letters crawling across the page like insects searching for a way out. He was not just reading history; he was witnessing the unraveling of time itself.
+            </p>
+        </main>
+
+        <footer class="mt-32 text-center">
+            <div class="text-[10px] uppercase tracking-[0.4em] text-[#4a3728]/40 font-bold">Page 142</div>
         </div>
     </div>
-    <script src="script.js"></script>
 </body>
 </html>
