@@ -3,64 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Site - Editorial</title>
+    <title>Pratik Pathak | Selected Works 2026</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200;0,700;1,200;1,700&family=Inter:wght@400;700&display=swap');
-        .font-serif { font-family: 'Crimson Pro', serif; }
-        body { font-family: 'Inter', sans-serif; }
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300;1,600&family=Inter:wght@300;400;700;900&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #fafafa; color: #111; cursor: none; }
+        .font-serif { font-family: 'Cormorant Garamond', serif; }
+        .cursor-custom { width: 10px; height: 10px; background: #000; border-radius: 50%; position: fixed; pointer-events: none; z-index: 1000; transition: transform 0.1s ease; }
+        .cursor-follower { width: 40px; height: 40px; border: 1px solid rgba(0,0,0,0.1); border-radius: 50%; position: fixed; pointer-events: none; z-index: 999; transition: transform 0.2s ease, background 0.3s ease; }
+        .editorial-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 2rem; }
+        .strikethrough-hover:hover { text-decoration: line-through; text-decoration-thickness: 2px; }
+        .reveal-image { clip-path: inset(100% 0 0 0); transition: clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1); }
+        .reveal-image.active { clip-path: inset(0 0 0 0); }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #111; }
     </style>
 </head>
-<body class="bg-[#fafafa] text-[#1a1a1a]">
-    <nav class="p-12 flex justify-between items-baseline border-b border-black/5">
-        <h1 class="font-serif text-3xl font-bold italic tracking-tighter">Pratik P.</h1>
-        <div class="space-x-12 text-[10px] uppercase tracking-widest font-bold">
-            <a href="#" class="hover:line-through">Selected Works</a>
-            <a href="#" class="hover:line-through">Thinking</a>
-            <a href="#" class="hover:line-through">Studio</a>
+<body class="overflow-x-hidden">
+    <div class="cursor-custom" id="cursor"></div>
+    <div class="cursor-follower" id="follower"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full h-32 flex justify-between items-baseline px-12 z-50 mix-blend-difference text-white">
+        <div class="font-serif text-3xl font-bold italic tracking-tighter">P. Pathak</div>
+        <div class="hidden md:flex space-x-16 text-[10px] uppercase font-black tracking-[0.4em]">
+            <a href="#" class="strikethrough-hover">Archive</a>
+            <a href="#" class="strikethrough-hover">Journal</a>
+            <a href="#" class="strikethrough-hover">Studio</a>
         </div>
+        <div class="text-[10px] font-black uppercase tracking-widest">Available 2026</div>
     </nav>
 
-    <main class="max-w-6xl mx-auto px-12 py-32">
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-end mb-48">
-            <div class="md:col-span-8">
-                <h2 class="font-serif text-[10vw] leading-[0.9] font-bold italic tracking-tighter mb-12">Visual <br>Identity <br>System.</h2>
-                <p class="max-w-md text-lg leading-relaxed text-black/60">An editorial approach to interface design, focusing on typography, whitespace, and structural integrity. Edition 2026.</p>
+    <main class="relative">
+        <!-- Hero Section -->
+        <section class="min-h-screen px-12 pt-64 pb-32 editorial-grid">
+            <div class="col-span-12 lg:col-span-9">
+                <h1 class="font-serif text-[12vw] leading-[0.8] font-bold italic tracking-tighter mb-16">Distilling <br>Complexity <br>into <span class="text-stone-300">Silence.</span></h1>
+                <p class="max-w-md text-xl leading-relaxed text-black/60 font-light italic border-l-4 border-black/5 pl-8">A multidisciplinary practice at the intersection of typography, high-performance interfaces, and structural integrity. Based in India, working globally.</p>
             </div>
-            <div class="md:col-span-4 text-[10px] uppercase tracking-[0.2em] font-bold space-y-2 pb-4">
-                <div class="text-black/30">Client: Arclight Studio</div>
-                <div>Role: Lead Creative</div>
-                <div>Year: 2026</div>
+            <div class="col-span-12 lg:col-span-3 flex flex-col justify-end pb-4 space-y-12">
+                <div class="text-[10px] uppercase font-black tracking-[0.3em] leading-loose">
+                    <div class="text-black/30 mb-2">Capabilities</div>
+                    <div>Interface Design</div>
+                    <div>Creative Direction</div>
+                    <div>Neural Engineering</div>
+                    <div>Visual Identity</div>
+                </div>
+                <div class="w-16 h-16 rounded-full border border-black/10 flex items-center justify-center animate-bounce">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7-7-7"></path></svg>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <section class="grid grid-cols-1 md:grid-cols-2 gap-24">
-            <div class="space-y-12">
-                <div class="bg-stone-200 aspect-[4/5] overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1586717791821-3f44a563eb4c?w=800" alt="Work 1" class="w-full h-full object-cover">
+        <!-- Works Grid -->
+        <section class="px-12 py-64 bg-[#111] text-white overflow-hidden">
+            <div class="editorial-grid items-center mb-64">
+                <div class="col-span-12 lg:col-span-6 relative group cursor-pointer">
+                    <div class="bg-stone-800 aspect-[4/5] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1586717791821-3f44a563eb4c?w=1200" class="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition duration-1000 group-hover:scale-105 reveal-image active">
+                    </div>
+                    <div class="absolute top-12 -right-12 vertical-text text-[10px] uppercase font-black tracking-[0.6em] text-white/20 hidden xl:block" style="writing-mode: vertical-rl;">SYSTEM ID 04.99</div>
                 </div>
-                <div class="flex justify-between items-baseline border-b border-black/10 pb-6">
-                    <h3 class="font-serif text-2xl italic font-bold">Monolith Branding</h3>
-                    <span class="text-[10px] uppercase tracking-widest font-bold text-black/40">Visual Design</span>
+                <div class="col-span-12 lg:col-span-5 lg:col-start-8">
+                    <div class="text-[10px] font-black uppercase tracking-[0.4em] text-white/30 mb-8">Selected Case Study 01</div>
+                    <h3 class="font-serif text-6xl italic font-bold mb-10 tracking-tighter">Monolith <br>Branding.</h3>
+                    <p class="text-white/40 leading-relaxed font-light mb-12">Building a visual vocabulary for a new generation of architects. The project focused on the balance between brutalist forms and delicate typography.</p>
+                    <a href="#" class="group inline-flex items-center space-x-6">
+                        <span class="text-[10px] uppercase font-black tracking-widest border-b border-white/20 pb-2 group-hover:border-white transition">View Process</span>
+                        <div class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-white group-hover:text-black transition duration-500">
+                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg>
+                        </div>
+                    </a>
                 </div>
             </div>
-            <div class="space-y-12 md:mt-48">
-                <div class="bg-stone-200 aspect-[4/5] overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?w=800" alt="Work 2" class="w-full h-full object-cover">
+
+            <div class="editorial-grid items-center flex-row-reverse">
+                <div class="col-span-12 lg:col-span-6 lg:col-start-7 relative group cursor-pointer">
+                    <div class="bg-stone-800 aspect-[3/4] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?w=1200" class="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition duration-1000 group-hover:scale-105 reveal-image active">
+                    </div>
                 </div>
-                <div class="flex justify-between items-baseline border-b border-black/10 pb-6">
-                    <h3 class="font-serif text-2xl italic font-bold">Linear Interfaces</h3>
-                    <span class="text-[10px] uppercase tracking-widest font-bold text-black/40">UI / UX</span>
+                <div class="col-span-12 lg:col-span-5">
+                    <div class="text-[10px] font-black uppercase tracking-[0.4em] text-white/30 mb-8">Selected Case Study 02</div>
+                    <h3 class="font-serif text-6xl italic font-bold mb-10 tracking-tighter">Linear <br>Interfaces.</h3>
+                    <p class="text-white/40 leading-relaxed font-light mb-12">Designing a high-performance productivity suite for creative professionals. Focus on spatial depth, micro-interactions, and cognitive load reduction.</p>
+                    <a href="#" class="group inline-flex items-center space-x-6">
+                        <span class="text-[10px] uppercase font-black tracking-widest border-b border-white/20 pb-2 group-hover:border-white transition">Explore Case Study</span>
+                    </a>
                 </div>
+            </div>
+        </section>
+
+        <!-- Newsletter / Contact -->
+        <section class="min-h-screen px-12 flex flex-col items-center justify-center text-center py-64">
+            <h2 class="font-serif text-[8vw] italic font-bold tracking-tighter mb-16">Available for <br>Global Projects.</h2>
+            <div class="w-full max-w-2xl relative group">
+                <input type="email" placeholder="YOUR@EMAIL.COM" class="w-full bg-transparent border-b-2 border-black/10 py-12 text-center text-4xl font-serif italic focus:outline-none focus:border-black transition duration-700">
+                <button class="absolute right-0 bottom-12 text-[10px] font-black uppercase tracking-widest opacity-0 group-focus-within:opacity-100 transition duration-700">Request Access</button>
+            </div>
+            <div class="mt-48 flex space-x-24 text-[10px] font-black uppercase tracking-[0.5em]">
+                <a href="#" class="strikethrough-hover">Instagram</a>
+                <a href="#" class="strikethrough-hover">Twitter</a>
+                <a href="#" class="strikethrough-hover">Dribbble</a>
             </div>
         </section>
     </main>
 
-    <footer class="p-24 bg-[#1a1a1a] text-white">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12">
-            <div class="font-serif text-5xl italic font-bold tracking-tighter">Available for <br>Collaboration.</div>
-            <a href="mailto:hello@example.com" class="text-[10px] uppercase tracking-[0.3em] font-bold border border-white/20 px-12 py-6 hover:bg-white hover:text-black transition duration-500">Contact Studio</a>
-        </div>
-    </footer>
+    <script>
+        const cursor = document.getElementById('cursor');
+        const follower = document.getElementById('follower');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+            follower.style.transform = `translate(${e.clientX - 15}px, ${e.clientY - 15}px)`;
+        });
+
+        document.querySelectorAll('a, button, .cursor-pointer').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                follower.style.background = 'rgba(0,0,0,0.05)';
+                follower.style.transform = `translate(${cursor.offsetLeft - 25}px, ${cursor.offsetTop - 25}px) scale(1.5)`;
+            });
+            el.addEventListener('mouseleave', () => {
+                follower.style.background = 'transparent';
+                follower.style.transform = `translate(${cursor.offsetLeft - 15}px, ${cursor.offsetTop - 15}px) scale(1)`;
+            });
+        });
+    </script>
 </body>
 </html>
