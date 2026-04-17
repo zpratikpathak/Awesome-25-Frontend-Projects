@@ -3,80 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search - Command Palette</title>
+    <title>Omni Search | Advanced Command Palette</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
-        body { font-family: 'Inter', sans-serif; background-color: #1a1a1e; }
-        .palette {
-            background: #252529;
-            box-shadow: 0 0 0 1px rgba(255,255,255,0.05), 0 30px 60px rgba(0,0,0,0.5);
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0c0c0f; color: #a1a1aa; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        .palette-container {
+            background: rgba(23, 23, 27, 0.95);
+            backdrop-filter: blur(40px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 0 1px rgba(0,0,0,0.5), 0 30px 100px rgba(0,0,0,0.8);
+        }
+        .item-active {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.02);
         }
         .kbd {
-            background: rgba(255,255,255,0.1);
-            border-radius: 4px;
-            padding: 2px 6px;
+            background: #27272a;
+            border: 1px solid #3f3f46;
+            box-shadow: 0 2px 0 #18181b;
+            border-radius: 6px;
+            padding: 2px 8px;
             font-size: 10px;
-            font-weight: 600;
+            font-family: 'JetBrains Mono', monospace;
+            color: #d4d4d8;
         }
+        .scan-glow {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, transparent 45%, rgba(99, 102, 241, 0.05) 50%, transparent 55%);
+            animation: scan 4s linear infinite;
+            pointer-events: none;
+        }
+        @keyframes scan { from { transform: translateY(-100%); } to { transform: translateY(100%); } }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #27272a; border-radius: 10px; }
     </style>
 </head>
-<body class="min-h-screen flex items-center justify-center p-6">
-    <div class="palette w-full max-w-2xl rounded-2xl overflow-hidden border border-white/10">
-        <div class="p-6 border-b border-white/5 flex items-center space-x-4">
-            <svg class="w-6 h-6 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-            <input type="text" placeholder="Search files, projects, or commands..." class="flex-1 bg-transparent text-xl text-white focus:outline-none placeholder:text-slate-600">
-            <span class="kbd text-slate-400">ESC</span>
-        </div>
+<body class="min-h-screen flex items-center justify-center p-6 md:p-12 overflow-hidden">
+    <!-- Visual Backdrop -->
+    <div class="absolute inset-0 z-0">
+        <div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-indigo-600/10 rounded-full blur-[120px]"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[120px]"></div>
+    </div>
+
+    <!-- Palette UI -->
+    <div class="palette-container w-full max-w-3xl rounded-[24px] overflow-hidden relative z-10 flex flex-col">
+        <div class="scan-glow"></div>
         
-        <div class="p-4 space-y-2 max-h-96 overflow-y-auto">
-            <div class="text-[10px] uppercase tracking-widest text-slate-600 font-bold px-4 pt-2 pb-1">Projects</div>
-            
-            <div class="flex items-center justify-between p-4 rounded-xl bg-indigo-600 text-white cursor-pointer group">
-                <div class="flex items-center space-x-4">
-                    <div class="w-8 h-8 rounded-lg bg-white/20 flex items-center justify-center">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path></svg>
-                    </div>
-                    <div>
-                        <div class="font-medium">Awesome-25-Frontend-Projects</div>
-                        <div class="text-xs text-indigo-200">zpratikpathak/Awesome-25-Frontend-Projects</div>
-                    </div>
-                </div>
-                <span class="kbd bg-white/20 text-white">↵</span>
+        <!-- Search Input Section -->
+        <div class="p-8 border-b border-white/5 flex items-center space-x-6 relative z-20">
+            <div class="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center text-indigo-400 border border-white/5">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
             </div>
-
-            <div class="flex items-center justify-between p-4 rounded-xl hover:bg-white/5 text-slate-300 cursor-pointer group transition">
-                <div class="flex items-center space-x-4">
-                    <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                    </div>
-                    <div>
-                        <div class="font-medium">Portfolio_v2_draft.md</div>
-                        <div class="text-xs text-slate-500">~/documents/projects</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="text-[10px] uppercase tracking-widest text-slate-600 font-bold px-4 pt-4 pb-1">Settings</div>
-            <div class="flex items-center justify-between p-4 rounded-xl hover:bg-white/5 text-slate-300 cursor-pointer group transition">
-                <div class="flex items-center space-x-4">
-                    <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
-                    </div>
-                    <div>
-                        <div class="font-medium">Interface Preferences</div>
-                        <div class="text-xs text-slate-500">Change theme, layout, and font</div>
-                    </div>
-                </div>
+            <input type="text" placeholder="Search across neural nodes, files, or commands..." class="flex-1 bg-transparent text-2xl text-white font-medium focus:outline-none placeholder:text-zinc-700 tracking-tight">
+            <div class="flex items-center space-x-2">
+                <span class="kbd">ESC</span>
             </div>
         </div>
 
-        <div class="p-4 bg-black/20 border-t border-white/5 flex justify-between items-center text-[10px] text-slate-600 font-bold uppercase tracking-widest">
-            <div class="flex space-x-4">
-                <span class="flex items-center space-x-1"><span class="kbd">↑↓</span><span>Navigate</span></span>
-                <span class="flex items-center space-x-1"><span class="kbd">↵</span><span>Select</span></span>
+        <!-- Content Area -->
+        <div class="flex-1 max-h-[500px] overflow-y-auto p-4 space-y-2 relative z-20">
+            <!-- Group Label -->
+            <div class="px-6 pt-6 pb-2 text-[10px] font-black uppercase tracking-[0.4em] text-zinc-600 flex justify-between">
+                <span>Active Projects</span>
+                <span class="font-mono opacity-50">04 Results</span>
             </div>
-            <span>v1.2.0</span>
+
+            <!-- Item 1 (Active State) -->
+            <div class="item-active p-5 rounded-2xl flex items-center justify-between cursor-pointer group transition-all duration-300">
+                <div class="flex items-center space-x-6">
+                    <div class="w-12 h-12 rounded-[14px] bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 group-hover:bg-indigo-500 group-hover:text-white transition-all duration-500">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                    </div>
+                    <div>
+                        <div class="text-white font-bold text-lg flex items-center space-x-3">
+                            <span>Awesome-25-Frontend-Projects</span>
+                            <span class="bg-indigo-500/20 text-indigo-400 text-[8px] font-black px-2 py-0.5 rounded-full uppercase tracking-tighter">Current Repo</span>
+                        </div>
+                        <div class="text-xs font-medium text-zinc-500 mt-1 uppercase tracking-widest italic">~/developer/active/frontend_v2</div>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span class="text-[10px] font-bold text-zinc-600 uppercase tracking-widest">Open Repository</span>
+                    <span class="kbd bg-white/5 border-white/10 text-white">↵</span>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="p-5 rounded-2xl flex items-center justify-between cursor-pointer group hover:bg-white/5 transition-all duration-300 border border-transparent hover:border-white/5">
+                <div class="flex items-center space-x-6">
+                    <div class="w-12 h-12 rounded-[14px] bg-zinc-800/50 border border-white/5 flex items-center justify-center text-zinc-500 group-hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    </div>
+                    <div>
+                        <div class="text-zinc-300 font-bold text-lg group-hover:text-white transition-colors">Neural_Interface_Draft_v4.md</div>
+                        <div class="text-xs font-medium text-zinc-600 mt-1 uppercase tracking-widest italic">~/brain/active/design_systems</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Command Group -->
+            <div class="px-6 pt-10 pb-2 text-[10px] font-black uppercase tracking-[0.4em] text-zinc-600">Quick Actions</div>
+            <div class="p-4 rounded-xl flex items-center space-x-6 cursor-pointer group hover:bg-emerald-500/5 transition-colors border border-transparent hover:border-emerald-500/10">
+                 <div class="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-500"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg></div>
+                 <div class="text-sm font-bold text-zinc-400 group-hover:text-emerald-400 transition-colors uppercase tracking-widest">Deploy Active Node to Vercel</div>
+            </div>
+        </div>
+
+        <!-- Advanced Footer -->
+        <div class="p-6 bg-black/40 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 relative z-20">
+            <div class="flex space-x-8 text-[9px] font-black uppercase tracking-[0.3em] text-zinc-600">
+                <div class="flex items-center space-x-3"><span class="kbd scale-75">↑↓</span><span>Navigate</span></div>
+                <div class="flex items-center space-x-3"><span class="kbd scale-75">↵</span><span>Select</span></div>
+                <div class="flex items-center space-x-3"><span class="kbd scale-75">⌘ K</span><span>Commands</span></div>
+            </div>
+            <div class="flex items-center space-x-4">
+                 <div class="text-[9px] font-black uppercase tracking-[0.4em] text-indigo-500/60 italic">Neural_Link: Synced</div>
+                 <div class="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_10px_#10b981]"></div>
+            </div>
         </div>
     </div>
 </body>
