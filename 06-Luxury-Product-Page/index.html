@@ -3,69 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luxury Product Page - E-commerce Luxury</title>
+    <title>Aurora | Vanguard Luxury Essence</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap');
-        .font-display { font-family: 'Playfair Display', serif; }
-        body { font-family: 'Inter', sans-serif; background-color: #f8f8f8; }
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Montserrat:wght@200;300;400;600&display=swap');
+        .font-cinzel { font-family: 'Cinzel', serif; }
+        body { font-family: 'Montserrat', sans-serif; background-color: #0c0c0c; color: #fff; cursor: crosshair; }
+        .parallax-image { transition: transform 0.1s ease-out; }
+        .lux-border { border: 1px solid rgba(255, 255, 255, 0.1); }
+        .gold-glow { box-shadow: 0 0 30px rgba(184, 134, 11, 0.1); }
+        .gold-text { background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .fade-mask { mask-image: linear-gradient(to bottom, black 80%, transparent 100%); }
+        .btn-lux { position: relative; overflow: hidden; }
+        .btn-lux::after { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent); transform: rotate(45deg); transition: 0.5s; }
+        .btn-lux:hover::after { left: 100%; }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #0c0c0c; }
+        ::-webkit-scrollbar-thumb { background: #222; }
     </style>
 </head>
-<body class="text-stone-900">
-    <nav class="p-8 flex justify-between items-center bg-white border-b border-stone-100">
-        <div class="font-display text-2xl font-bold tracking-tighter italic">AURORA</div>
-        <div class="hidden md:flex space-x-12 text-xs uppercase tracking-widest font-medium">
-            <a href="#" class="hover:text-stone-500 transition">Collection</a>
-            <a href="#" class="hover:text-stone-500 transition">Atelier</a>
-            <a href="#" class="hover:text-stone-500 transition">Boutique</a>
+<body class="overflow-x-hidden">
+    <!-- Immersive Background Image (Ambient) -->
+    <div class="fixed inset-0 opacity-20 pointer-events-none grayscale contrast-125 z-0">
+        <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=1600" class="w-full h-full object-cover">
+    </div>
+
+    <!-- Navigation Area -->
+    <nav class="fixed top-0 w-full h-24 flex justify-between items-center px-12 z-50 bg-black/40 backdrop-blur-md lux-border border-t-0 border-x-0">
+        <div class="font-cinzel text-2xl font-black tracking-[0.3em] gold-text">AURORA</div>
+        <div class="hidden lg:flex space-x-16 text-[10px] uppercase font-bold tracking-[0.4em]">
+            <a href="#" class="hover:text-[#bf953f] transition-colors duration-500">Maison</a>
+            <a href="#" class="hover:text-[#bf953f] transition-colors duration-500">Collections</a>
+            <a href="#" class="hover:text-[#bf953f] transition-colors duration-500">Bespeak</a>
+            <a href="#" class="hover:text-[#bf953f] transition-colors duration-500">Chronicles</a>
         </div>
-        <div class="flex space-x-6 text-xs uppercase tracking-widest font-medium">
-            <a href="#">Search</a>
-            <a href="#">Cart (0)</a>
+        <div class="flex items-center space-x-10 text-[10px] font-bold uppercase tracking-widest">
+            <a href="#" class="hover:opacity-60 transition">Search</a>
+            <div class="w-[1px] h-4 bg-white/10"></div>
+            <a href="#" class="relative">
+                <span>Vault</span>
+                <span class="absolute -top-2 -right-3 text-[8px] text-[#bf953f]">04</span>
+            </a>
         </div>
     </nav>
 
-    <main class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 p-8 md:py-24">
-        <div class="space-y-8">
-            <div class="bg-stone-200 aspect-[3/4] rounded-sm overflow-hidden group">
-                <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=800" alt="Product Image" class="w-full h-full object-cover transition duration-1000 group-hover:scale-105">
-            </div>
-            <div class="grid grid-cols-2 gap-8">
-                <div class="bg-stone-200 aspect-square rounded-sm overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400" alt="Detail 1" class="w-full h-full object-cover">
-                </div>
-                <div class="bg-stone-200 aspect-square rounded-sm overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=400" alt="Detail 2" class="w-full h-full object-cover">
-                </div>
-            </div>
-        </div>
-
-        <div class="flex flex-col justify-center">
-            <div class="text-xs uppercase tracking-widest text-stone-400 mb-4">Summer Collection 2026</div>
-            <h1 class="font-display text-6xl mb-8 leading-tight">Vanguard Silk <br>Essence Noir</h1>
-            <p class="text-stone-500 leading-relaxed mb-12 max-w-md">
-                Crafted from the finest ethically sourced mulberry silk, the Essence Noir collection represents the pinnacle of contemporary minimal luxury. Designed for the modern visionary who values substance over spectacle.
-            </p>
+    <main class="relative z-10 pt-32 lg:pt-0 lg:h-screen lg:flex items-center">
+        <div class="max-w-[1600px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 px-12 items-center">
             
-            <div class="text-3xl font-light mb-12">$1,250.00</div>
+            <!-- Left Info Panel -->
+            <div class="lg:col-span-4 order-2 lg:order-1 flex flex-col justify-center">
+                <div class="mb-12">
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="w-12 h-[1px] bg-[#bf953f]"></div>
+                        <span class="text-[10px] uppercase font-black tracking-[0.5em] text-[#bf953f]">Legacy Series 2026</span>
+                    </div>
+                    <h1 class="font-cinzel text-6xl xl:text-8xl font-black leading-none mb-10 tracking-tighter uppercase italic">Vanguard <br><span class="gold-text">Essence</span> <br>Noir.</h1>
+                    <p class="text-white/40 text-sm leading-relaxed max-w-sm mb-12 font-light">
+                        Hand-woven from the rarest silk fibers found in the Kyoto highlands, the Essence Noir collection represents an uncompromising vision of modern royalty. For those who seek silence in a loud world.
+                    </p>
+                </div>
 
-            <div class="space-y-6">
-                <div>
-                    <div class="text-xs uppercase tracking-widest font-bold mb-3">Select Size</div>
-                    <div class="flex space-x-4">
-                        <button class="w-12 h-12 border border-stone-200 flex items-center justify-center text-sm hover:border-stone-900 transition">S</button>
-                        <button class="w-12 h-12 border border-stone-900 flex items-center justify-center text-sm">M</button>
-                        <button class="w-12 h-12 border border-stone-200 flex items-center justify-center text-sm hover:border-stone-900 transition">L</button>
-                        <button class="w-12 h-12 border border-stone-200 flex items-center justify-center text-sm hover:border-stone-900 transition">XL</button>
+                <div class="space-y-10">
+                    <div>
+                        <div class="text-[10px] uppercase font-black tracking-widest text-white/30 mb-6">Atelier Specifications</div>
+                        <div class="grid grid-cols-3 gap-8">
+                            <div>
+                                <div class="text-xs font-bold mb-1">Textile</div>
+                                <div class="text-[10px] text-white/40 uppercase">Mulberry Silk</div>
+                            </div>
+                            <div>
+                                <div class="text-xs font-bold mb-1">Craft</div>
+                                <div class="text-[10px] text-white/40 uppercase">Hand Stitched</div>
+                            </div>
+                            <div>
+                                <div class="text-xs font-bold mb-1">Origin</div>
+                                <div class="text-[10px] text-white/40 uppercase">Kyoto, JP</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center space-x-12 pt-8">
+                        <div class="text-3xl font-light tracking-tighter italic">$3,450<span class="text-sm text-white/20">.00</span></div>
+                        <button class="btn-lux bg-white text-black px-12 py-5 text-[10px] font-black uppercase tracking-[0.5em] shadow-2xl shadow-white/5 hover:bg-[#bf953f] hover:text-white transition-all duration-700">Add to Sanctuary</button>
                     </div>
                 </div>
+            </div>
 
-                <button class="w-full py-6 bg-stone-900 text-white uppercase tracking-widest text-xs font-bold hover:bg-stone-800 transition">Add to Sanctuary</button>
-                <div class="text-center">
-                    <a href="#" class="text-xs uppercase tracking-widest text-stone-400 border-b border-stone-200 pb-1 hover:text-stone-600 hover:border-stone-600 transition">Size Guide</a>
+            <!-- Right Visual Panel -->
+            <div class="lg:col-span-8 order-1 lg:order-2 relative">
+                <div class="relative group">
+                    <!-- Background Shadow Shape -->
+                    <div class="absolute -inset-10 bg-white/5 blur-[100px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+                    
+                    <div class="lux-border p-4 bg-white/5 backdrop-blur-sm rounded-sm gold-glow">
+                        <div class="aspect-[16/9] bg-zinc-900 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=1200" class="w-full h-full object-cover transition duration-1000 group-hover:scale-105 group-hover:rotate-1" id="hero-image">
+                            <!-- Overlay gradients -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20"></div>
+                            
+                            <!-- Visual elements -->
+                            <div class="absolute bottom-10 left-10">
+                                <div class="text-[8px] uppercase font-black tracking-[0.6em] text-white/30 mb-2">Visual ID 4.09</div>
+                                <div class="w-12 h-1 bg-white/10 mb-4">
+                                    <div class="bg-[#bf953f] h-full w-2/3"></div>
+                                </div>
+                                <div class="text-xs font-bold italic">Capture: 2026 Edition</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Floating Detail Image -->
+                    <div class="absolute -bottom-20 -right-20 hidden 2xl:block w-72 h-96 lux-border p-2 bg-black/80 backdrop-blur-xl rotate-6 group-hover:rotate-0 transition-transform duration-1000">
+                        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400" class="w-full h-full object-cover grayscale opacity-60">
+                    </div>
                 </div>
             </div>
         </div>
     </main>
+
+    <footer class="fixed bottom-0 w-full h-24 flex justify-between items-center px-12 z-50 text-[8px] font-black uppercase tracking-[0.8em] text-white/20">
+        <div>Coordinates: 35.0116° N, 135.7681° E</div>
+        <div>Private Sanctuary Mode Active</div>
+        <div>Scroll to Explore Series</div>
+    </footer>
+
+    <script>
+        const heroImage = document.getElementById('hero-image');
+        document.addEventListener('mousemove', (e) => {
+            const x = (e.clientX - window.innerWidth / 2) / 50;
+            const y = (e.clientY - window.innerHeight / 2) / 50;
+            heroImage.style.transform = `scale(1.05) translate(${x}px, ${y}px) rotate(1deg)`;
+        });
+    </script>
 </body>
 </html>
