@@ -3,56 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Old Book - Dark Academia</title>
+    <title>The Alchemist's Shadow | Advanced Dark Academia Reader</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,900;1,900&display=swap');
-        .font-serif { font-family: 'Crimson Pro', serif; }
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap');
+        body { background-color: #0c0a09; color: #444; font-family: 'Cormorant Garamond', serif; overflow-x: hidden; }
         .font-display { font-family: 'Playfair Display', serif; }
-        body { background-color: #1a1512; }
-        .paper { 
+        .paper-texture { 
             background-color: #f4ece1; 
             background-image: url('https://www.transparenttextures.com/patterns/old-map.png');
-            box-shadow: 20px 20px 60px rgba(0,0,0,0.5), inset 0 0 100px rgba(100,70,50,0.1);
+            box-shadow: 0 50px 100px rgba(0,0,0,0.8), inset 0 0 120px rgba(100,70,50,0.15);
+            position: relative;
+        }
+        .paper-texture::after {
+            content: ""; position: absolute; inset: 0;
+            background: linear-gradient(to right, rgba(0,0,0,0.05) 0%, transparent 5%, transparent 95%, rgba(0,0,0,0.05) 100%);
+            pointer-events: none;
         }
         .text-justified { text-align: justify; text-justify: inter-word; }
         .dropcap::first-letter {
             float: left;
             font-family: 'Playfair Display', serif;
-            font-size: 5rem;
-            line-height: 0.8;
-            padding-right: 0.5rem;
-            color: #4a3728;
+            font-size: 8rem;
+            line-height: 0.7;
+            padding-top: 0.5rem;
+            padding-right: 1rem;
+            padding-left: 0.2rem;
+            color: #2c1e15;
+            font-weight: 900;
+            font-style: italic;
         }
+        .ink-bleed { filter: contrast(1.1) brightness(0.9); }
+        .margin-notes { font-size: 0.75rem; font-style: italic; color: #8b7355; line-height: 1.4; opacity: 0.6; }
+        .bookmark { width: 40px; height: 120px; background: #7c2d12; position: absolute; top: -10px; right: 60px; box-shadow: 2px 5px 15px rgba(0,0,0,0.3); clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 85%, 0 100%); }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #0c0a09; }
+        ::-webkit-scrollbar-thumb { background: #444; }
     </style>
 </head>
-<body class="min-h-screen flex items-center justify-center p-6 md:p-24">
-    <div class="max-w-4xl w-full paper p-12 md:p-24 rounded-sm border border-[#3d2b1f]/20 relative">
-        <div class="absolute top-12 left-1/2 -translate-x-1/2 text-[10px] uppercase tracking-[0.6em] text-[#4a3728]/40 font-bold">Chapter IV</div>
+<body class="py-20 md:py-32 px-6">
+    <div class="max-w-5xl mx-auto paper-texture p-12 md:p-24 lg:p-32 rounded-sm border border-[#3d2b1f]/10 ink-bleed">
+        <div class="bookmark"></div>
         
-        <header class="text-center mb-24 mt-12">
-            <h1 class="font-display text-6xl italic text-[#4a3728] mb-4">The Alchemist's <br>Shadow</h1>
-            <div class="w-24 h-[1px] bg-[#4a3728]/20 mx-auto"></div>
+        <header class="text-center mb-32 relative">
+            <div class="text-[10px] uppercase font-bold tracking-[0.8em] text-[#4a3728]/30 mb-12">Oxford Archive // Manuscript 402-B</div>
+            <h1 class="font-display text-7xl md:text-9xl italic text-[#2c1e15] mb-8 leading-none tracking-tighter">The Alchemist's <br>Shadow</h1>
+            <div class="flex justify-center items-center space-x-8 opacity-20">
+                <div class="w-24 h-[1px] bg-[#4a3728]"></div>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4a3728" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+                <div class="w-24 h-[1px] bg-[#4a3728]"></div>
+            </div>
+            <p class="mt-12 font-display text-xl italic text-[#4a3728]/60">A treatise on the metaphysical properties of darkness.</p>
         </header>
 
-        <main class="font-serif text-[#2c1e15] text-xl leading-relaxed max-w-2xl mx-auto">
-            <p class="dropcap text-justified mb-12 italic">
-                It was during the late hours of a rain-soaked Tuesday that the library revealed its greatest secret. The dust motes danced in the candlelight, illuminated by a flame that refused to flicker despite the draft from the cracked stained-glass window.
-            </p>
-            <p class="text-justified mb-12">
-                Elias reached for the leather-bound volume, its spine cracked and weathered by centuries of neglect. He could feel the pulse of the parchment beneath his fingertips—a slow, rhythmic thrumming that echoed the beating of his own heart. 
-            </p>
-            <p class="text-justified italic opacity-80 border-l-4 border-[#4a3728]/10 pl-8 my-16">
-                "Knowledge is not found in the clarity of the light, but in the depths of the shadows that it casts."
-            </p>
-            <p class="text-justified">
-                The ink seemed to shift as he watched, the letters crawling across the page like insects searching for a way out. He was not just reading history; he was witnessing the unraveling of time itself.
-            </p>
+        <main class="grid grid-cols-1 lg:grid-cols-12 gap-20">
+            <!-- Sidebar Notes -->
+            <div class="hidden lg:block lg:col-span-2 pt-20">
+                <div class="margin-notes space-y-12">
+                    <p>* Note: The original parchment shows signs of elemental exposure. Transcription remains partial.</p>
+                    <div class="h-24 w-[1px] bg-[#4a3728]/10 mx-auto"></div>
+                    <p>Cross-reference with the forbidden texts of the 14th century.</p>
+                </div>
+            </div>
+
+            <!-- Primary Text -->
+            <div class="lg:col-span-8 text-[#2c1e15] text-2xl leading-[1.8] font-light">
+                <p class="dropcap text-justified mb-16 italic">
+                    It was during the late hours of a rain-soaked Tuesday that the library revealed its greatest secret. The dust motes danced in the candlelight, illuminated by a flame that refused to flicker despite the draft from the cracked stained-glass window.
+                </p>
+                <p class="text-justified mb-16">
+                    Elias reached for the leather-bound volume, its spine cracked and weathered by centuries of neglect. He could feel the pulse of the parchment beneath his fingertips—a slow, rhythmic thrumming that echoed the beating of his own heart. The air grew heavy with the scent of dried lavender and ancient ozone.
+                </p>
+                
+                <div class="my-24 py-16 border-y border-[#4a3728]/5 relative">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#f4ece1] px-6 text-[10px] uppercase tracking-[0.4em] text-[#4a3728]/40">Incantation</div>
+                    <p class="text-center font-display text-4xl md:text-5xl italic text-[#4a3728] leading-tight">
+                        "Knowledge is not found in the clarity of the light, but in the depths of the shadows that it casts."
+                    </p>
+                </div>
+
+                <p class="text-justified mb-16">
+                    The ink seemed to shift as he watched, the letters crawling across the page like insects searching for a way out. He was not just reading history; he was witnessing the unraveling of time itself. Every word felt like a physical weight, a memory that didn't belong to him, yet fit perfectly into the hollow spaces of his soul.
+                </p>
+                
+                <div class="flex justify-center pt-20 opacity-20">
+                    <div class="w-1.5 h-1.5 rounded-full bg-[#4a3728] mx-2"></div>
+                    <div class="w-1.5 h-1.5 rounded-full bg-[#4a3728] mx-2"></div>
+                    <div class="w-1.5 h-1.5 rounded-full bg-[#4a3728] mx-2"></div>
+                </div>
+            </div>
+
+            <!-- Right Sidebar -->
+            <div class="hidden lg:block lg:col-span-2 pt-64">
+                <div class="margin-notes text-right">
+                    <p class="mb-4 tracking-tighter">Folio: 142</p>
+                    <p>Status: Classified</p>
+                </div>
+            </div>
         </main>
 
-        <footer class="mt-32 text-center">
-            <div class="text-[10px] uppercase tracking-[0.4em] text-[#4a3728]/40 font-bold">Page 142</div>
-        </div>
+        <footer class="mt-48 flex justify-between items-center border-t border-[#4a3728]/5 pt-12">
+            <div class="text-[10px] uppercase font-black tracking-[0.6em] text-[#4a3728]/20">MCMXXVI</div>
+            <div class="flex space-x-10 text-[10px] uppercase font-bold tracking-widest text-[#4a3728]/40 italic">
+                <span>Next Chapter</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="mt-0.5"><path d="M9 5l7 7-7 7"></path></svg>
+            </div>
+        </footer>
     </div>
+
+    <!-- Ambient Shadow Element -->
+    <div class="fixed bottom-0 left-0 w-full h-64 bg-gradient-to-t from-black to-transparent pointer-events-none opacity-40 z-50"></div>
 </body>
 </html>
