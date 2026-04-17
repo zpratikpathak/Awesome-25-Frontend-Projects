@@ -3,18 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>11 Creative Agency Landing</title>
+    <title>Creative Agency - Brutalist</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;700&display=swap');
+        body { font-family: 'Space Grotesk', sans-serif; background-color: #ffde00; }
+        .brutal-border { border: 4px solid black; }
+        .brutal-shadow { box-shadow: 12px 12px 0px black; }
+        .brutal-shadow-sm { box-shadow: 6px 6px 0px black; }
+        .brutal-btn:active { transform: translate(4px, 4px); box-shadow: 8px 8px 0px black; }
+    </style>
 </head>
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
-    <div class="bg-white p-8 rounded-lg shadow-md max-w-md w-full text-center">
-        <h1 class="text-2xl font-bold mb-4">11 Creative Agency Landing</h1>
-        <p class="text-gray-600 mb-6">Style: Brutalist</p>
-        <div id="app" class="border-2 border-dashed border-gray-300 rounded p-12">
-            Project content goes here
+<body class="text-black p-6 md:p-12">
+    <nav class="flex justify-between items-center mb-24">
+        <div class="bg-white brutal-border p-4 font-bold text-2xl uppercase tracking-tighter brutal-shadow-sm">VOID.STUDIO</div>
+        <div class="space-x-8 font-bold uppercase hidden md:flex">
+            <a href="#" class="hover:underline">Works</a>
+            <a href="#" class="hover:underline">Studio</a>
+            <a href="#" class="hover:underline">Hiring</a>
         </div>
-    </div>
-    <script src="script.js"></script>
+    </nav>
+
+    <main class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-32">
+            <div>
+                <h1 class="text-[12vw] md:text-[8vw] leading-[0.85] font-bold uppercase tracking-tighter mb-12">We Build <br>Digital <br>Chaos.</h1>
+                <p class="text-2xl font-bold max-w-md leading-tight mb-12">A brutalist approach to creative problem solving. We don't do subtle. We do impact.</p>
+                <button class="bg-black text-[#ffde00] brutal-border px-12 py-6 font-bold text-2xl uppercase brutal-shadow brutal-btn transition-all">Start a Riot</button>
+            </div>
+            <div class="bg-blue-600 brutal-border brutal-shadow flex items-center justify-center overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=800" alt="Chaos" class="w-full h-full object-cover mix-blend-multiply grayscale">
+            </div>
+        </div>
+
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div class="bg-white brutal-border p-8 brutal-shadow">
+                <div class="text-4xl font-bold mb-4">01.</div>
+                <h3 class="text-2xl font-bold uppercase mb-4 italic">Unfiltered Design</h3>
+                <p class="font-bold">Raw, honest, and unapologetic aesthetics for brands that want to stand out from the noise.</p>
+            </div>
+            <div class="bg-pink-400 brutal-border p-8 brutal-shadow">
+                <div class="text-4xl font-bold mb-4">02.</div>
+                <h3 class="text-2xl font-bold uppercase mb-4 italic">Radical Tech</h3>
+                <p class="font-bold">Building high-performance machines that break the rules of conventional development.</p>
+            </div>
+            <div class="bg-emerald-400 brutal-border p-8 brutal-shadow">
+                <div class="text-4xl font-bold mb-4">03.</div>
+                <h3 class="text-2xl font-bold uppercase mb-4 italic">Cultural Impact</h3>
+                <p class="font-bold">We create experiences that spark conversations and challenge the status quo.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="mt-48 py-24 border-t-8 border-black">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-12">
+            <div class="text-6xl font-bold uppercase tracking-tighter">Stay <br>Ugly.</div>
+            <div class="bg-white brutal-border p-6 brutal-shadow-sm font-bold text-xl uppercase">© 2026 Void Studio</div>
+        </div>
+    </footer>
 </body>
 </html>
