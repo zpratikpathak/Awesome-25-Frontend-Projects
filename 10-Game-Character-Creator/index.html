@@ -3,72 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Character Creator - Claymorphism</title>
+    <title>Avatar Builder Pro | Claymorphism</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap');
-        body { background-color: #e0f2fe; font-family: 'Fredoka', sans-serif; }
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap');
+        body { background-color: #f0f9ff; font-family: 'Fredoka', sans-serif; color: #334155; }
         .clay-card {
             background: #ffffff;
-            border-radius: 48px;
-            box-shadow: 16px 16px 32px #bed6e6, 
-                        -16px -16px 32px #ffffff,
-                        inset 4px 4px 8px rgba(255, 255, 255, 0.5),
-                        inset -4px -4px 8px rgba(0, 0, 0, 0.05);
+            border-radius: 64px;
+            box-shadow: 20px 20px 60px #d1e5f4, 
+                        -20px -20px 60px #ffffff,
+                        inset 4px 4px 12px rgba(255, 255, 255, 0.5),
+                        inset -4px -4px 12px rgba(0, 0, 0, 0.05);
+        }
+        .clay-inset {
+            background: #f8fafc;
+            border-radius: 32px;
+            box-shadow: inset 8px 8px 16px #e2e8f0, 
+                        inset -8px -8px 16px #ffffff;
         }
         .clay-button {
-            background: #4f46e5;
+            background: #6366f1;
             border-radius: 24px;
-            box-shadow: 4px 4px 8px #bed6e6, 
-                        -4px -4px 8px #ffffff,
-                        inset 4px 4px 8px rgba(255, 255, 255, 0.2),
-                        inset -4px -4px 8px rgba(0, 0, 0, 0.2);
-            transition: all 0.2s ease;
+            box-shadow: 8px 8px 16px #d1e5f4, 
+                        -8px -8px 16px #ffffff,
+                        inset 6px 6px 12px rgba(255, 255, 255, 0.2),
+                        inset -6px -6px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            color: white;
+            font-weight: 700;
         }
-        .clay-button:active {
-            transform: scale(0.95);
-            box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        .clay-item {
-            background: #f8fafc;
-            border-radius: 24px;
-            box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.05),
-                        inset -4px -4px 8px rgba(255, 255, 255, 1);
-        }
+        .clay-button:hover { transform: translateY(-4px) scale(1.02); box-shadow: 12px 12px 24px #d1e5f4, -12px -12px 24px #ffffff; }
+        .clay-button:active { transform: scale(0.95); box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.2); }
+        .color-dot { width: 40px; height: 40px; border-radius: 15px; border: 4px solid #fff; box-shadow: 4px 4px 8px #d1e5f4; cursor: pointer; transition: all 0.3s ease; }
+        .color-dot:hover { transform: scale(1.2); }
+        .color-dot.active { border-color: #6366f1; transform: scale(1.1); }
+        .floating { animation: floating 3s ease-in-out infinite; }
+        @keyframes floating { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-15px) rotate(2deg); } }
     </style>
 </head>
 <body class="min-h-screen flex items-center justify-center p-6">
-    <div class="clay-card p-12 max-w-4xl w-full grid grid-cols-1 md:grid-cols-2 gap-12">
+    <div class="clay-card p-12 md:p-16 max-w-5xl w-full grid grid-cols-1 lg:grid-cols-2 gap-20">
+        <!-- Preview Panel -->
         <div class="flex flex-col items-center justify-center">
-            <div class="clay-item w-full aspect-square relative flex items-center justify-center mb-8">
-                <!-- Simple Clay Character SVG -->
-                <svg width="200" height="200" viewBox="0 0 200 200" class="drop-shadow-2xl">
-                    <circle cx="100" cy="100" r="80" fill="#fecaca" />
-                    <circle cx="70" cy="80" r="10" fill="#334155" />
-                    <circle cx="130" cy="80" r="10" fill="#334155" />
-                    <path d="M70 130 Q100 160 130 130" stroke="#334155" stroke-width="8" fill="none" stroke-linecap="round" />
+            <div class="clay-inset w-full aspect-square relative flex items-center justify-center mb-12 floating overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-br from-indigo-50/50 to-transparent"></div>
+                <!-- Advanced Clay Character SVG -->
+                <svg id="character" width="300" height="300" viewBox="0 0 200 200" class="drop-shadow-2xl relative z-10 transition-all duration-700">
+                    <circle id="head" cx="100" cy="100" r="80" fill="#fecaca" />
+                    <g id="eyes">
+                        <circle cx="70" cy="85" r="10" fill="#334155" />
+                        <circle cx="130" cy="85" r="10" fill="#334155" />
+                        <circle cx="73" cy="82" r="3" fill="#fff" />
+                        <circle cx="133" cy="82" r="3" fill="#fff" />
+                    </g>
+                    <path id="mouth" d="M75 130 Q100 155 125 130" stroke="#334155" stroke-width="8" fill="none" stroke-linecap="round" />
+                    <circle cx="60" cy="115" r="8" fill="#fca5a5" opacity="0.4" />
+                    <circle cx="140" cy="115" r="8" fill="#fca5a5" opacity="0.4" />
                 </svg>
             </div>
-            <h1 class="text-3xl font-bold text-slate-700">Avatar Builder</h1>
+            <div class="text-center">
+                <h1 class="text-4xl font-black text-slate-800 tracking-tight mb-2 uppercase italic">Pro Builder</h1>
+                <p class="text-slate-400 font-bold text-xs uppercase tracking-[0.3em]">Version 2.0.4 Premium</p>
+            </div>
         </div>
 
-        <div class="space-y-8">
+        <!-- Customization Panel -->
+        <div class="flex flex-col justify-center space-y-12">
             <div>
-                <label class="block text-slate-500 font-bold mb-4 uppercase tracking-widest text-sm">Character Name</label>
-                <input type="text" class="clay-item w-full p-4 focus:outline-none text-slate-700 font-medium" placeholder="E.g. Clay-Z">
+                <label class="block text-slate-400 font-black uppercase tracking-widest text-[10px] mb-4">Operator Handle</label>
+                <input type="text" class="clay-inset w-full p-6 focus:outline-none text-slate-700 font-bold text-lg placeholder:text-slate-200 transition-all focus:bg-white" placeholder="ENTER IDENTIFIER">
             </div>
 
-            <div>
-                <label class="block text-slate-500 font-bold mb-4 uppercase tracking-widest text-sm">Skin Color</label>
-                <div class="flex space-x-4">
-                    <div class="w-10 h-10 rounded-full bg-rose-200 border-4 border-white shadow-md cursor-pointer"></div>
-                    <div class="w-10 h-10 rounded-full bg-amber-200 border-4 border-white shadow-md cursor-pointer"></div>
-                    <div class="w-10 h-10 rounded-full bg-orange-200 border-4 border-white shadow-md cursor-pointer"></div>
+            <div class="space-y-6">
+                <label class="block text-slate-400 font-black uppercase tracking-widest text-[10px]">Tonal Configuration</label>
+                <div class="flex flex-wrap gap-4">
+                    <div class="color-dot bg-[#fecaca] active" onclick="changeColor('#fecaca')"></div>
+                    <div class="color-dot bg-[#fde68a]" onclick="changeColor('#fde68a')"></div>
+                    <div class="color-dot bg-[#fed7aa]" onclick="changeColor('#fed7aa')"></div>
+                    <div class="color-dot bg-[#bae6fd]" onclick="changeColor('#bae6fd')"></div>
+                    <div class="color-dot bg-[#ddd6fe]" onclick="changeColor('#ddd6fe')"></div>
                 </div>
             </div>
 
-            <button class="clay-button w-full py-5 text-white font-bold text-xl uppercase tracking-widest">Create Buddy</button>
+            <div class="space-y-6">
+                <label class="block text-slate-400 font-black uppercase tracking-widest text-[10px]">Mood Matrix</label>
+                <div class="grid grid-cols-3 gap-4">
+                    <button class="clay-inset p-4 text-xs font-bold uppercase tracking-widest hover:text-indigo-600 transition" onclick="changeMood('happy')">Happy</button>
+                    <button class="clay-inset p-4 text-xs font-bold uppercase tracking-widest hover:text-indigo-600 transition" onclick="changeMood('cool')">Cool</button>
+                    <button class="clay-inset p-4 text-xs font-bold uppercase tracking-widest hover:text-indigo-600 transition" onclick="changeMood('surprised')">Wow</button>
+                </div>
+            </div>
+
+            <button class="clay-button w-full py-6 text-xl uppercase tracking-[0.3em] mt-10 shadow-lg shadow-indigo-100">Initialize Avatar</button>
         </div>
     </div>
+
+    <script>
+        const head = document.getElementById('head');
+        const mouth = document.getElementById('mouth');
+
+        function changeColor(color) {
+            head.setAttribute('fill', color);
+            // Update active state of dots
+            document.querySelectorAll('.color-dot').forEach(dot => {
+                dot.classList.remove('active');
+                if (dot.style.backgroundColor === color || dot.classList.contains(`bg-[${color}]`)) {
+                    dot.classList.add('active');
+                }
+            });
+        }
+
+        function changeMood(mood) {
+            if (mood === 'happy') {
+                mouth.setAttribute('d', 'M75 130 Q100 155 125 130');
+            } else if (mood === 'cool') {
+                mouth.setAttribute('d', 'M80 140 L120 140');
+            } else if (mood === 'surprised') {
+                mouth.setAttribute('d', 'M100 135 A10 10 0 1 0 100 155 A10 10 0 1 0 100 135');
+            }
+        }
+    </script>
 </body>
 </html>
