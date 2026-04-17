@@ -3,18 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>23 Stock Market Analytics</title>
+    <title>Stock Analytics - Dashboard UI</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
-    <div class="bg-white p-8 rounded-lg shadow-md max-w-md w-full text-center">
-        <h1 class="text-2xl font-bold mb-4">23 Stock Market Analytics</h1>
-        <p class="text-gray-600 mb-6">Style: Dashboard UI</p>
-        <div id="app" class="border-2 border-dashed border-gray-300 rounded p-12">
-            Project content goes here
+<body class="bg-slate-50 text-slate-900 font-sans p-6 md:p-12">
+    <div class="max-w-7xl mx-auto">
+        <header class="flex justify-between items-center mb-10">
+            <h1 class="text-2xl font-bold flex items-center space-x-2">
+                <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path></svg>
+                <span>StockSense</span>
+            </h1>
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <input type="text" placeholder="Search ticker..." class="pl-10 pr-4 py-2 bg-white border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 w-64">
+                    <svg class="w-4 h-4 text-slate-400 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                </div>
+                <div class="w-10 h-10 rounded-full bg-slate-200 border-2 border-white shadow-sm"></div>
+            </div>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm col-span-2">
+                <div class="flex justify-between items-center mb-6">
+                    <div>
+                        <h2 class="text-slate-500 text-sm font-medium mb-1">NVDA · NVIDIA Corp.</h2>
+                        <div class="flex items-baseline space-x-2">
+                            <span class="text-3xl font-bold">$842.34</span>
+                            <span class="text-emerald-500 text-sm font-bold">+4.12%</span>
+                        </div>
+                    </div>
+                    <div class="flex space-x-2">
+                        <button class="px-3 py-1 bg-slate-100 text-slate-600 rounded-md text-xs font-bold">1D</button>
+                        <button class="px-3 py-1 bg-blue-600 text-white rounded-md text-xs font-bold">1W</button>
+                        <button class="px-3 py-1 bg-slate-100 text-slate-600 rounded-md text-xs font-bold">1M</button>
+                        <button class="px-3 py-1 bg-slate-100 text-slate-600 rounded-md text-xs font-bold">ALL</button>
+                    </div>
+                </div>
+                <!-- Simplified Chart Visualization -->
+                <div class="h-64 flex items-end space-x-2">
+                    <div class="flex-1 bg-slate-100 rounded-t-lg h-[40%]"></div>
+                    <div class="flex-1 bg-slate-100 rounded-t-lg h-[60%]"></div>
+                    <div class="flex-1 bg-slate-100 rounded-t-lg h-[50%]"></div>
+                    <div class="flex-1 bg-slate-100 rounded-t-lg h-[80%]"></div>
+                    <div class="flex-1 bg-blue-600 rounded-t-lg h-[100%]"></div>
+                    <div class="flex-1 bg-slate-100 rounded-t-lg h-[70%]"></div>
+                    <div class="flex-1 bg-slate-100 rounded-t-lg h-[90%]"></div>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                <h2 class="font-bold text-lg mb-6">Watchlist</h2>
+                <div class="space-y-6">
+                    <div class="flex justify-between items-center">
+                        <div class="font-bold">AAPL <span class="text-xs text-slate-400 font-medium">Apple Inc.</span></div>
+                        <div class="text-right">
+                            <div class="font-bold">$170.12</div>
+                            <div class="text-xs text-red-500 font-bold">-0.12%</div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <div class="font-bold">MSFT <span class="text-xs text-slate-400 font-medium">Microsoft</span></div>
+                        <div class="text-right">
+                            <div class="font-bold">$415.50</div>
+                            <div class="text-xs text-emerald-500 font-bold">+1.45%</div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <div class="font-bold">GOOGL <span class="text-xs text-slate-400 font-medium">Alphabet</span></div>
+                        <div class="text-right">
+                            <div class="font-bold">$142.10</div>
+                            <div class="text-xs text-emerald-500 font-bold">+0.88%</div>
+                        </div>
+                    </div>
+                </div>
+                <button class="w-full mt-10 py-3 border border-dashed border-slate-200 rounded-xl text-slate-400 text-sm font-bold hover:bg-slate-50 transition">+ Add Ticker</button>
+            </div>
         </div>
     </div>
-    <script src="script.js"></script>
 </body>
 </html>
