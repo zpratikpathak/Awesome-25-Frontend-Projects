@@ -3,18 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>03 Task Dashboard</title>
+    <title>Task Dashboard - Dashboard UI</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
-    <div class="bg-white p-8 rounded-lg shadow-md max-w-md w-full text-center">
-        <h1 class="text-2xl font-bold mb-4">03 Task Dashboard</h1>
-        <p class="text-gray-600 mb-6">Style: Dashboard UI</p>
-        <div id="app" class="border-2 border-dashed border-gray-300 rounded p-12">
-            Project content goes here
+<body class="bg-slate-50 text-slate-900 font-sans">
+    <div class="flex min-h-screen">
+        <!-- Sidebar -->
+        <div class="w-64 bg-white border-r border-slate-200 p-6 hidden md:block">
+            <div class="flex items-center space-x-2 mb-10">
+                <div class="w-8 h-8 bg-indigo-600 rounded-lg"></div>
+                <span class="font-bold text-xl">TaskFlow</span>
+            </div>
+            <nav class="space-y-1">
+                <a href="#" class="flex items-center space-x-3 p-3 bg-slate-100 rounded-lg text-indigo-600">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                    <span class="font-medium">Dashboard</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 p-3 text-slate-500 hover:bg-slate-50 rounded-lg">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+                    <span>Tasks</span>
+                </a>
+            </nav>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="flex-1 p-8">
+            <header class="flex justify-between items-center mb-8">
+                <h1 class="text-2xl font-bold">Good morning, Pratik</h1>
+                <div class="flex items-center space-x-4">
+                    <button class="p-2 text-slate-400 hover:text-slate-600">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+                    </button>
+                    <div class="w-10 h-10 bg-slate-200 rounded-full border-2 border-white"></div>
+                </div>
+            </header>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                    <div class="text-slate-500 text-sm mb-2">Completed Tasks</div>
+                    <div class="text-3xl font-bold">24</div>
+                    <div class="text-emerald-500 text-xs mt-2">↑ 12% from last week</div>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                    <div class="text-slate-500 text-sm mb-2">Pending Projects</div>
+                    <div class="text-3xl font-bold">12</div>
+                    <div class="text-amber-500 text-xs mt-2">No change</div>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                    <div class="text-slate-500 text-sm mb-2">Avg. Completion Time</div>
+                    <div class="text-3xl font-bold">1.2d</div>
+                    <div class="text-emerald-500 text-xs mt-2">↓ 5% improvement</div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                <div class="p-6 border-b border-slate-100 flex justify-between items-center">
+                    <h2 class="font-bold text-lg">Recent Tasks</h2>
+                    <button class="text-indigo-600 text-sm font-medium">View all</button>
+                </div>
+                <div class="divide-y divide-slate-100">
+                    <div class="p-4 hover:bg-slate-50 flex items-center justify-between">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-2 h-2 rounded-full bg-emerald-500"></div>
+                            <div>
+                                <div class="font-medium">Design New Hero Section</div>
+                                <div class="text-xs text-slate-400">Marketing Website</div>
+                            </div>
+                        </div>
+                        <span class="px-3 py-1 bg-emerald-50 text-emerald-600 text-xs rounded-full font-medium">Done</span>
+                    </div>
+                    <div class="p-4 hover:bg-slate-50 flex items-center justify-between">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-2 h-2 rounded-full bg-blue-500"></div>
+                            <div>
+                                <div class="font-medium">Fix Navigation Bug</div>
+                                <div class="text-xs text-slate-400">Dashboard App</div>
+                            </div>
+                        </div>
+                        <span class="px-3 py-1 bg-blue-50 text-blue-600 text-xs rounded-full font-medium">In Progress</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <script src="script.js"></script>
 </body>
 </html>
