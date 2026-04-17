@@ -34,4 +34,4 @@ Welcome to the ultimate **Enterprise-Grade** collection of frontend projects. Th
 | 26 | [Old Book Reader](./26-Old-Book-Reader) | **Oxford Archive B** | Ink-Bleed Paper Textures, Drop-Cap Incantations, Margin Notes |
 
 ---
-Engineering by 🤖 **EvilReborn** | Design powered by **UI UX Pro Max**
+Engineering by 🤖 **EvilReborn**
