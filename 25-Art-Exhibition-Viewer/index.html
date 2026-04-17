@@ -3,61 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exhibition - Maximalist</title>
+    <title>Chaos as Order | Radical Maximalist Exhibition</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@400;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&display=swap');
         body { font-family: 'Unbounded', sans-serif; background-color: #ff00ff; color: #fff; overflow-x: hidden; }
-        .grid-bg {
-            background-image: 
-                linear-gradient(rgba(255, 255, 0, 0.5) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 0, 0.5) 1px, transparent 1px);
-            background-size: 50px 50px;
-        }
-        .text-outline { -webkit-text-stroke: 2px #ffff00; color: transparent; }
+        .grid-bg { background-image: linear-gradient(rgba(255, 255, 0, 0.4) 2px, transparent 2px), linear-gradient(90deg, rgba(255, 255, 0, 0.4) 2px, transparent 2px); background-size: 40px 40px; }
+        .text-outline { -webkit-text-stroke: 3px #ffff00; color: transparent; }
         .rotate-text { writing-mode: vertical-rl; transform: rotate(180deg); }
-        .marquee-infinite { animation: marquee 20s linear infinite; }
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
+        .marquee-infinite { animation: marquee 15s linear infinite; }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .brutal-shadow { box-shadow: 20px 20px 0px #000; }
+        .floating-element { animation: floating 4s ease-in-out infinite; }
+        @keyframes floating { 0%, 100% { transform: translate(0, 0) rotate(0deg); } 50% { transform: translate(20px, -20px) rotate(5deg); } }
+        .glitch { position: relative; }
+        .glitch::after { content: attr(data-text); position: absolute; left: 2px; text-shadow: -2px 0 #ff00ff; top: 0; color: white; background: #000; overflow: hidden; clip: rect(0, 900px, 0, 0); animation: noise-anim 2s infinite linear alternate-reverse; }
+        @keyframes noise-anim { 0% { clip: rect(12px, 9999px, 94px, 0); } 100% { clip: rect(45px, 9999px, 12px, 0); } }
+        ::-webkit-scrollbar { width: 15px; }
+        ::-webkit-scrollbar-track { background: #ff00ff; }
+        ::-webkit-scrollbar-thumb { background: #ffff00; border: 4px solid #000; }
     </style>
 </head>
 <body class="grid-bg min-h-screen">
-    <header class="p-12 border-b-8 border-yellow-300 bg-black">
-        <div class="flex justify-between items-center mb-12">
-            <div class="text-4xl font-black italic tracking-tighter text-white">NEO-MAX</div>
-            <div class="bg-yellow-300 text-black px-8 py-2 font-black uppercase text-xl rotate-3">2026 EDITION</div>
+    <!-- Radical Header -->
+    <header class="p-10 md:p-20 border-b-[12px] border-black bg-black relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-yellow-300 rounded-full blur-[150px] opacity-20 floating-element"></div>
+        <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-10 mb-20 relative z-10">
+            <div class="text-5xl md:text-7xl font-black italic tracking-tighter text-white rotate-[-2deg] bg-pink-600 px-8 py-4 border-4 border-white">NEO-MAX</div>
+            <div class="bg-yellow-300 text-black px-10 py-4 font-black uppercase text-2xl rotate-3 brutal-shadow">EDITION 2026.04</div>
         </div>
-        <h1 class="text-[15vw] leading-[0.8] font-black uppercase tracking-tighter mb-0">Chaos <br><span class="text-outline">as Order.</span></h1>
+        <h1 class="text-[18vw] leading-[0.75] font-black uppercase tracking-tighter mb-0 glitch" data-text="CHAOS AS ORDER.">Chaos <br><span class="text-outline">as Order.</span></h1>
     </header>
 
-    <div class="bg-yellow-300 py-6 overflow-hidden border-b-8 border-black">
+    <!-- Endless Marquee -->
+    <div class="bg-yellow-300 py-10 overflow-hidden border-b-[12px] border-black rotate-1">
         <div class="flex whitespace-nowrap marquee-infinite">
-            <div class="text-black text-4xl font-black uppercase px-4">ART IS LOUD ★ NO MORE MINIMALISM ★ BREAK THE GRID ★ EXPLOSION OF COLOR ★ ART IS LOUD ★ NO MORE MINIMALISM ★ BREAK THE GRID ★ EXPLOSION OF COLOR ★ </div>
-            <div class="text-black text-4xl font-black uppercase px-4">ART IS LOUD ★ NO MORE MINIMALISM ★ BREAK THE GRID ★ EXPLOSION OF COLOR ★ ART IS LOUD ★ NO MORE MINIMALISM ★ BREAK THE GRID ★ EXPLOSION OF COLOR ★ </div>
+            <div class="text-black text-6xl font-black uppercase px-10">★ ART IS A RIOT ★ NO MORE MINIMALISM ★ MORE IS MORE ★ RADICAL DESIGN ★ BREAK THE GRID ★ ★ ★ ★ ★ ★ </div>
+            <div class="text-black text-6xl font-black uppercase px-10">★ ART IS A RIOT ★ NO MORE MINIMALISM ★ MORE IS MORE ★ RADICAL DESIGN ★ BREAK THE GRID ★ ★ ★ ★ ★ ★ </div>
         </div>
     </div>
 
-    <main class="p-12 grid grid-cols-1 md:grid-cols-12 gap-12">
-        <div class="md:col-span-8 space-y-24">
+    <!-- Multi-Column Chaos -->
+    <main class="p-10 lg:p-24 grid grid-cols-1 lg:grid-cols-12 gap-20">
+        <div class="lg:col-span-8 space-y-48">
+            <!-- Piece 01 -->
             <div class="relative group">
-                <div class="absolute -inset-4 bg-cyan-400 -rotate-2 z-0"></div>
-                <div class="bg-black p-4 relative z-10">
-                    <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=1200" alt="Art 1" class="w-full h-auto grayscale group-hover:grayscale-0 transition duration-700">
+                <div class="absolute -inset-10 bg-cyan-400 rotate-[-3deg] z-0 transition-transform group-hover:rotate-0 duration-700"></div>
+                <div class="absolute -inset-10 bg-white rotate-[3deg] z-0 transition-transform group-hover:rotate-0 duration-700 delay-100"></div>
+                <div class="bg-black p-6 relative z-10 brutal-shadow">
+                    <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=1200" class="w-full h-auto grayscale contrast-[1.5] group-hover:grayscale-0 transition duration-1000">
                 </div>
-                <div class="absolute -bottom-8 -right-8 bg-pink-500 p-8 z-20 brutal-shadow rotate-12">
-                    <h3 class="text-3xl font-black uppercase leading-none">DIGITAL <br>PSYCHOSIS</h3>
+                <div class="absolute -bottom-16 -right-16 bg-pink-500 p-12 z-20 border-8 border-black rotate-12 group-hover:rotate-0 transition-all duration-700">
+                    <h3 class="text-5xl font-black uppercase leading-[0.8] tracking-tighter">DIGITAL <br>PSYCHOSIS</h3>
+                    <p class="text-xs font-black mt-6 uppercase tracking-widest bg-black text-white p-2">Item ID: #0x99FF</p>
+                </div>
+            </div>
+
+            <!-- Piece 02 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-20">
+                <div class="bg-white text-black p-12 border-[10px] border-black -rotate-2 brutal-shadow">
+                    <h4 class="text-4xl font-black uppercase mb-8 italic">Statement 01.</h4>
+                    <p class="text-2xl font-bold leading-tight">Minimalism is a failure of imagination. We embrace the noise because the noise is the reality of our digital existence.</p>
+                </div>
+                <div class="bg-emerald-400 p-10 border-[10px] border-black rotate-2 brutal-shadow flex items-center justify-center">
+                     <div class="text-9xl font-black text-white italic drop-shadow-[10px_10px_0_#000]">MAX</div>
                 </div>
             </div>
         </div>
 
-        <div class="md:col-span-4 flex flex-col justify-end">
-            <div class="bg-white text-black p-12 border-8 border-black -rotate-3">
-                <p class="text-xl font-bold leading-tight mb-8">This exhibition is a direct attack on the subtle. We believe that more is more. Every pixel, every color, every font is an act of rebellion.</p>
-                <button class="w-full bg-black text-white py-6 text-2xl font-black uppercase hover:bg-yellow-300 hover:text-black transition">ENTER VOID</button>
+        <!-- Sidebar Destruction -->
+        <div class="lg:col-span-4 flex flex-col gap-12">
+            <div class="bg-black p-12 border-8 border-white rotate-1">
+                <div class="text-[10px] font-black uppercase tracking-[0.5em] text-pink-500 mb-8">Navigation Node</div>
+                <ul class="space-y-6 text-3xl font-black uppercase italic tracking-tighter">
+                    <li class="hover:text-yellow-300 transition-colors cursor-pointer group flex items-center"><span class="w-0 group-hover:w-12 h-1 bg-yellow-300 mr-4 transition-all"></span>The Vault</li>
+                    <li class="hover:text-cyan-400 transition-colors cursor-pointer group flex items-center"><span class="w-0 group-hover:w-12 h-1 bg-cyan-400 mr-4 transition-all"></span>Artist Manifestos</li>
+                    <li class="hover:text-pink-500 transition-colors cursor-pointer group flex items-center"><span class="w-0 group-hover:w-12 h-1 bg-pink-500 mr-4 transition-all"></span>Destruction Log</li>
+                </ul>
+            </div>
+
+            <div class="bg-white text-black p-12 border-8 border-black rotate-[-4deg] brutal-shadow mt-12">
+                <p class="text-xl font-bold leading-tight mb-12">This exhibition is a direct attack on the subtle. Every pixel, every color, every font is an act of rebellion.</p>
+                <button class="w-full bg-black text-white py-8 text-3xl font-black uppercase hover:bg-yellow-300 hover:text-black transition-all hover:scale-105 active:scale-95 shadow-[10px_10px_0_#ff00ff]">ENTER VOID</button>
+            </div>
+
+            <div class="mt-20 p-8 border-4 border-dotted border-white/40 flex flex-wrap gap-4 opacity-50">
+                <span class="bg-black text-white px-4 py-2 font-black text-[10px] uppercase">Tag: Noise</span>
+                <span class="bg-black text-white px-4 py-2 font-black text-[10px] uppercase">Tag: Chaos</span>
+                <span class="bg-black text-white px-4 py-2 font-black text-[10px] uppercase">Tag: Maximalism</span>
+                <span class="bg-black text-white px-4 py-2 font-black text-[10px] uppercase">Tag: Riot</span>
             </div>
         </div>
     </main>
+
+    <footer class="p-20 bg-black border-t-[12px] border-yellow-300 flex flex-col md:flex-row justify-between items-center gap-12">
+        <div class="text-[10vw] font-black uppercase italic tracking-tighter leading-none opacity-20">2026.</div>
+        <div class="flex gap-12">
+            <div class="w-20 h-20 bg-white rotate-45 border-4 border-pink-500"></div>
+            <div class="w-20 h-20 bg-yellow-300 border-4 border-black"></div>
+            <div class="w-20 h-20 bg-cyan-400 rounded-full border-4 border-white"></div>
+        </div>
+    </footer>
 </body>
 </html>
