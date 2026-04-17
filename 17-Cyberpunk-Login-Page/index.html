@@ -3,71 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Cyberpunk</title>
+    <title>AUTH_CORE // Cyberpunk Protocol</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=JetBrains+Mono&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=JetBrains+Mono:wght@300;700&display=swap');
         body { 
-            background-color: #050505; 
+            background-color: #020202; 
             font-family: 'Orbitron', sans-serif;
+            overflow: hidden;
             background-image: 
+                radial-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 0),
                 linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
-                linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-            background-size: 100% 2px, 3px 100%;
+                linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            background-size: 20px 20px, 100% 2px, 3px 100%;
         }
-        .cyber-border {
-            border: 2px solid #00f3ff;
-            box-shadow: 0 0 15px #00f3ff, inset 0 0 15px #00f3ff;
-            clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
+        .cyber-panel {
+            background: rgba(0, 0, 0, 0.85);
+            border: 1px solid #00f3ff;
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.1), inset 0 0 20px rgba(0, 243, 255, 0.05);
+            clip-path: polygon(
+                0 20px, 20px 0, 
+                calc(100% - 40px) 0, 100% 40px, 
+                100% calc(100% - 20px), calc(100% - 20px) 100%, 
+                40px 100%, 0 calc(100% - 40px)
+            );
+            position: relative;
+        }
+        .cyber-panel::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(45deg, transparent 48%, #00f3ff 50%, transparent 52%);
+            background-size: 10px 10px;
+            opacity: 0.05;
+            pointer-events: none;
         }
         .cyber-btn {
             background: #ff003c;
             color: #fff;
-            clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
-            transition: all 0.3s;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: none;
+            position: relative;
+            overflow: hidden;
         }
-        .cyber-btn:hover {
-            background: #00f3ff;
-            box-shadow: 0 0 20px #00f3ff;
-            color: #000;
+        .cyber-btn:hover { background: #00f3ff; color: #000; box-shadow: 0 0 30px #00f3ff; transform: scale(1.05); }
+        .cyber-btn::after {
+            content: "DECRYPTING...";
+            position: absolute;
+            top: 100%; left: 0; width: 100%; height: 100%;
+            background: #fff; color: #000;
+            display: flex; items-center; justify-center;
+            transition: top 0.3s;
         }
-        .glitch-text {
-            text-shadow: 2px 0 #ff003c, -2px 0 #00f3ff;
-            animation: glitch 1s infinite linear alternate-reverse;
-        }
-        @keyframes glitch {
-            0% { text-shadow: 2px 0 #ff003c, -2px 0 #00f3ff; }
-            100% { text-shadow: -2px 0 #ff003c, 2px 0 #00f3ff; }
-        }
+        .cyber-btn:active::after { top: 0; }
+        .glitch-text { text-shadow: 2px 0 #ff003c, -2px 0 #00f3ff; animation: glitch 1.5s infinite linear alternate-reverse; }
+        @keyframes glitch { 0% { text-shadow: 2px 0 #ff003c, -2px 0 #00f3ff; transform: skew(0deg); } 20% { transform: skew(2deg); } 80% { transform: skew(-1deg); } 100% { text-shadow: -2px 0 #ff003c, 2px 0 #00f3ff; transform: skew(0deg); } }
+        .scanline { width: 100%; height: 100px; background: linear-gradient(to bottom, transparent, rgba(0, 243, 255, 0.1), transparent); position: absolute; top: -100px; animation: scan 4s linear infinite; pointer-events: none; z-index: 20; }
+        @keyframes scan { to { top: 100%; } }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        .data-stream { font-size: 8px; font-weight: bold; color: #00f3ff; opacity: 0.2; line-height: 1; }
     </style>
 </head>
-<body class="min-h-screen flex items-center justify-center p-6">
-    <div class="cyber-border bg-black/80 p-12 max-w-md w-full relative overflow-hidden">
-        <!-- Scanline Animation -->
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-500/10 to-transparent h-1/2 animate-bounce opacity-20 pointer-events-none"></div>
+<body class="min-h-screen flex items-center justify-center p-6 relative">
+    <!-- Matrix-like Background Data Stream (Visual only) -->
+    <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none opacity-20 flex flex-wrap gap-4 p-4">
+        <div class="data-stream font-mono">01011001 11001010 00110011 10101010 11110000 01011001 11001010 00110011 10101010 11110000</div>
+        <div class="data-stream font-mono">11001100 00110011 10101010 11110000 01011001 11001010 00110011 10101010 11110000 01011001</div>
+    </div>
+
+    <div class="cyber-panel p-12 md:p-20 max-w-xl w-full relative z-10">
+        <div class="scanline"></div>
         
-        <div class="relative z-10">
-            <h1 class="text-4xl font-bold mb-2 text-cyan-400 glitch-text uppercase italic tracking-tighter">System Access</h1>
-            <p class="text-[10px] font-mono text-cyan-500 mb-10 tracking-[0.3em] uppercase opacity-60">Neural Link Est. 2026 // Port 8080</p>
-            
-            <div class="space-y-8 mb-12">
+        <div class="absolute top-6 left-6 text-[8px] font-mono text-cyan-500/50 uppercase tracking-[0.4em]">Node_Identifier: XC-99 // Global_Net</div>
+        <div class="absolute top-6 right-6 text-[8px] font-mono text-red-500/50 uppercase tracking-[0.4em] animate-pulse">Critical_Level: Omega</div>
+
+        <header class="mb-16 relative">
+            <h1 class="text-4xl md:text-6xl font-black italic tracking-tighter glitch-text uppercase mb-2">SYSTEM <br>ACCESS</h1>
+            <div class="flex items-center space-x-4">
+                <div class="h-1 bg-cyan-500 w-12"></div>
+                <p class="font-mono text-[10px] text-cyan-400 font-bold uppercase tracking-[0.3em]">Protocol Alpha-7 Active</p>
+            </div>
+        </header>
+
+        <form class="space-y-10" onsubmit="event.preventDefault()">
+            <div class="relative group">
+                <label class="block font-mono text-[10px] font-black uppercase text-cyan-500/60 mb-3 tracking-widest group-focus-within:text-cyan-400 transition-colors">Operator_Handle</label>
                 <div class="relative">
-                    <label class="block text-[10px] uppercase text-cyan-400 mb-2 font-bold tracking-widest">Operator ID</label>
-                    <input type="text" class="w-full bg-cyan-950/20 border-b-2 border-cyan-500/50 p-3 text-cyan-300 font-mono focus:outline-none focus:border-cyan-400 transition" placeholder="USER_99">
-                </div>
-                <div class="relative">
-                    <label class="block text-[10px] uppercase text-cyan-400 mb-2 font-bold tracking-widest">Access Key</label>
-                    <input type="password" class="w-full bg-cyan-950/20 border-b-2 border-cyan-500/50 p-3 text-cyan-300 font-mono focus:outline-none focus:border-cyan-400 transition" placeholder="••••••••">
+                    <input type="text" class="w-full bg-cyan-950/10 border-b-2 border-cyan-900 p-4 font-mono text-cyan-300 focus:outline-none focus:border-cyan-400 transition-all placeholder:text-cyan-950" placeholder="USER_NAME_ID">
+                    <div class="absolute bottom-0 left-0 h-0.5 bg-cyan-400 w-0 group-focus-within:w-full transition-all duration-500"></div>
                 </div>
             </div>
 
-            <button class="cyber-btn w-full py-4 text-xl font-bold uppercase tracking-widest">Authorize</button>
-            
-            <div class="mt-8 flex justify-between items-center">
-                <div class="text-[8px] font-mono text-red-500 uppercase animate-pulse">Security Level: Omega</div>
-                <a href="#" class="text-[8px] font-mono text-cyan-600 hover:text-cyan-400 uppercase underline">Forgot Credentials?</a>
+            <div class="relative group">
+                <label class="block font-mono text-[10px] font-black uppercase text-cyan-500/60 mb-3 tracking-widest group-focus-within:text-cyan-400 transition-colors">Neural_Key</label>
+                <div class="relative">
+                    <input type="password" class="w-full bg-cyan-950/10 border-b-2 border-cyan-900 p-4 font-mono text-cyan-300 focus:outline-none focus:border-cyan-400 transition-all placeholder:text-cyan-950" placeholder="••••••••">
+                    <div class="absolute bottom-0 left-0 h-0.5 bg-cyan-400 w-0 group-focus-within:w-full transition-all duration-500"></div>
+                </div>
             </div>
-        </div>
+
+            <div class="pt-8">
+                <button class="cyber-btn w-full py-6 text-2xl shadow-xl shadow-red-900/20">AUTHORIZE</button>
+            </div>
+        </form>
+
+        <footer class="mt-16 flex justify-between items-center border-t border-cyan-900/30 pt-8">
+            <div class="space-y-1">
+                <div class="text-[8px] font-mono text-cyan-700 uppercase">Encryption: AES-256-GCM</div>
+                <div class="text-[8px] font-mono text-cyan-700 uppercase italic">Handshake_Status: Verified</div>
+            </div>
+            <a href="#" class="font-mono text-[10px] text-red-500/60 hover:text-red-400 uppercase font-bold tracking-widest underline decoration-2 underline-offset-4">Bypass_Request</a>
+        </footer>
     </div>
+
+    <!-- Decoration Corner Accents -->
+    <div class="fixed bottom-10 right-10 w-32 h-32 border-r-4 border-bottom-4 border-cyan-500/20 pointer-events-none"></div>
+    <div class="fixed top-10 left-10 w-32 h-32 border-l-4 border-top-4 border-cyan-500/20 pointer-events-none"></div>
 </body>
 </html>
