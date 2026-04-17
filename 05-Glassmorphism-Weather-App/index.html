@@ -3,18 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>05 Glassmorphism Weather App</title>
+    <title>Weather App - Glassmorphism</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
-    <div class="bg-white p-8 rounded-lg shadow-md max-w-md w-full text-center">
-        <h1 class="text-2xl font-bold mb-4">05 Glassmorphism Weather App</h1>
-        <p class="text-gray-600 mb-6">Style: Glassmorphism</p>
-        <div id="app" class="border-2 border-dashed border-gray-300 rounded p-12">
-            Project content goes here
+<body class="bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 min-h-screen flex items-center justify-center p-6">
+    <div class="bg-white/20 backdrop-blur-xl border border-white/30 rounded-[40px] p-8 max-w-sm w-full shadow-2xl text-white">
+        <div class="text-center mb-10">
+            <h1 class="text-2xl font-bold mb-1">San Francisco</h1>
+            <p class="text-white/70 text-sm">Monday, 17 April</p>
+        </div>
+        
+        <div class="flex flex-col items-center mb-10">
+            <div class="w-32 h-32 relative mb-4">
+                <div class="absolute inset-0 bg-yellow-300 rounded-full blur-2xl opacity-50 animate-pulse"></div>
+                <svg class="w-full h-full drop-shadow-lg" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4.243 3.05a1 1 0 011.414 0l.707.707a1 1 0 11-1.414 1.414l-.707-.707a1 1 0 010-1.414zM17 10a1 1 0 011 1h1a1 1 0 11-2 0h-1a1 1 0 01-1-1zM14.243 16.95a1 1 0 011.414-1.414l.707.707a1 1 0 11-1.414 1.414l-.707-.707a1 1 0 010-1.414zM10 18a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zm-4.243-3.05a1 1 0 011.414 0l.707.707a1 1 0 11-1.414 1.414l-.707-.707a1 1 0 010-1.414zM3 10a1 1 0 011-1H4a1 1 0 110 2H3a1 1 0 01-1-1zm3.05-4.243a1 1 0 011.414 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707zM10 6a4 4 0 100 8 4 4 0 000-8z" clip-rule="evenodd"></path></svg>
+            </div>
+            <div class="text-7xl font-light mb-2">24°</div>
+            <p class="text-xl font-medium">Mostly Sunny</p>
+        </div>
+
+        <div class="grid grid-cols-3 gap-4">
+            <div class="bg-white/10 p-3 rounded-2xl text-center">
+                <p class="text-white/50 text-[10px] uppercase mb-1">Wind</p>
+                <p class="font-bold text-sm">12km/h</p>
+            </div>
+            <div class="bg-white/10 p-3 rounded-2xl text-center">
+                <p class="text-white/50 text-[10px] uppercase mb-1">Hum</p>
+                <p class="font-bold text-sm">45%</p>
+            </div>
+            <div class="bg-white/10 p-3 rounded-2xl text-center">
+                <p class="text-white/50 text-[10px] uppercase mb-1">Rain</p>
+                <p class="font-bold text-sm">0%</p>
+            </div>
         </div>
     </div>
-    <script src="script.js"></script>
 </body>
 </html>
