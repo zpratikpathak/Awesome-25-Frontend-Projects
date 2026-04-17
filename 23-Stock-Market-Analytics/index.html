@@ -3,82 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stock Analytics - Dashboard UI</title>
+    <title>StockSense | Advanced Market Analytics</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #020617; color: #fff; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        .sidebar-active { background: #1e293b; color: #3b82f6; border-left: 2px solid #3b82f6; }
+        .chart-gradient-up { background: linear-gradient(180deg, rgba(16, 185, 129, 0.1) 0%, transparent 100%); }
+        .chart-gradient-down { background: linear-gradient(180deg, rgba(239, 68, 68, 0.1) 0%, transparent 100%); }
+        .card-border { border: 1px solid rgba(255, 255, 255, 0.05); background: rgba(15, 23, 42, 0.5); backdrop-filter: blur(20px); }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
+    </style>
 </head>
-<body class="bg-slate-50 text-slate-900 font-sans p-6 md:p-12">
-    <div class="max-w-7xl mx-auto">
-        <header class="flex justify-between items-center mb-10">
-            <h1 class="text-2xl font-bold flex items-center space-x-2">
-                <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path></svg>
-                <span>StockSense</span>
-            </h1>
-            <div class="flex items-center space-x-4">
-                <div class="relative">
-                    <input type="text" placeholder="Search ticker..." class="pl-10 pr-4 py-2 bg-white border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 w-64">
-                    <svg class="w-4 h-4 text-slate-400 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+<body class="flex h-screen overflow-hidden">
+    <!-- Sidebar Navigation -->
+    <aside class="w-24 lg:w-72 bg-slate-950 border-r border-slate-900 flex flex-col h-full z-30">
+        <div class="p-8 mb-10 flex items-center justify-center lg:justify-start">
+            <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-white font-black text-xl shadow-lg shadow-blue-900/20">S</div>
+            <span class="ml-4 font-black text-2xl tracking-tighter hidden lg:block italic">StockSense<span class="text-blue-500">.</span></span>
+        </div>
+
+        <nav class="flex-1 px-4 space-y-2">
+            <a href="#" class="sidebar-active group flex items-center justify-center lg:justify-start lg:space-x-4 p-4 rounded-xl transition-all">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                <span class="font-bold hidden lg:block tracking-wide">Terminal</span>
+            </a>
+            <a href="#" class="group flex items-center justify-center lg:justify-start lg:space-x-4 p-4 text-slate-500 hover:bg-slate-900 hover:text-white rounded-xl transition-all">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <span class="font-bold hidden lg:block tracking-wide">Portfolio</span>
+            </a>
+            <a href="#" class="group flex items-center justify-center lg:justify-start lg:space-x-4 p-4 text-slate-500 hover:bg-slate-900 hover:text-white rounded-xl transition-all">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+                <span class="font-bold hidden lg:block tracking-wide">Alerts</span>
+            </a>
+        </nav>
+
+        <div class="p-8 border-t border-slate-900">
+            <div class="w-10 h-10 rounded-full bg-slate-800 border border-slate-700 overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100" class="w-full h-full object-cover">
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Workspace -->
+    <main class="flex-1 flex flex-col h-full overflow-hidden">
+        <!-- Header -->
+        <header class="h-24 px-8 lg:px-12 flex items-center justify-between border-b border-slate-900 bg-slate-950/50 backdrop-blur-md shrink-0">
+            <div class="flex items-center space-x-8">
+                <h2 class="text-xl font-bold tracking-tight">Market Intelligence</h2>
+                <div class="flex items-center space-x-4 text-[10px] font-black uppercase tracking-widest text-slate-500">
+                    <span class="flex items-center"><div class="w-1.5 h-1.5 bg-emerald-500 rounded-full mr-2"></div>S&P 500: +1.2%</span>
+                    <span class="flex items-center"><div class="w-1.5 h-1.5 bg-red-500 rounded-full mr-2"></div>NASDAQ: -0.4%</span>
                 </div>
-                <div class="w-10 h-10 rounded-full bg-slate-200 border-2 border-white shadow-sm"></div>
+            </div>
+            <div class="flex items-center space-x-6">
+                <div class="relative hidden md:block">
+                    <input type="text" placeholder="Search Tickers..." class="bg-slate-900 border border-slate-800 rounded-xl py-2.5 pl-10 pr-4 text-xs w-64 focus:border-blue-500 focus:outline-none transition-all">
+                    <svg class="w-4 h-4 text-slate-500 absolute left-3.5 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                </div>
+                <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest shadow-xl shadow-blue-900/20 transition active:scale-95">Go Live</button>
             </div>
         </header>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm col-span-2">
-                <div class="flex justify-between items-center mb-6">
-                    <div>
-                        <h2 class="text-slate-500 text-sm font-medium mb-1">NVDA · NVIDIA Corp.</h2>
-                        <div class="flex items-baseline space-x-2">
-                            <span class="text-3xl font-bold">$842.34</span>
-                            <span class="text-emerald-500 text-sm font-bold">+4.12%</span>
+        <!-- Dynamic Content Area -->
+        <div class="flex-1 overflow-y-auto custom-scrollbar p-8 lg:p-12">
+            <!-- Market Highlight -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+                <div class="lg:col-span-2 card-border p-10 rounded-[32px] relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-10">
+                        <div class="text-[8px] font-black uppercase tracking-[0.4em] text-slate-500 mb-2">Live Engine</div>
+                        <div class="h-1 bg-blue-600 w-12"></div>
+                    </div>
+                    <div class="flex items-center space-x-4 mb-8">
+                        <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center shadow-2xl">
+                             <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" class="w-8 h-8">
+                        </div>
+                        <div>
+                            <h3 class="text-3xl font-black tracking-tighter italic uppercase">Apple Inc.</h3>
+                            <p class="text-xs font-bold text-slate-500 uppercase tracking-widest">AAPL · NASDAQ</p>
                         </div>
                     </div>
-                    <div class="flex space-x-2">
-                        <button class="px-3 py-1 bg-slate-100 text-slate-600 rounded-md text-xs font-bold">1D</button>
-                        <button class="px-3 py-1 bg-blue-600 text-white rounded-md text-xs font-bold">1W</button>
-                        <button class="px-3 py-1 bg-slate-100 text-slate-600 rounded-md text-xs font-bold">1M</button>
-                        <button class="px-3 py-1 bg-slate-100 text-slate-600 rounded-md text-xs font-bold">ALL</button>
+                    <div class="flex items-end space-x-6 mb-12">
+                        <div class="text-6xl font-black font-mono tracking-tighter">$184.24</div>
+                        <div class="text-emerald-500 font-black text-xl italic mb-1">+2.45% <span class="text-xs opacity-60 ml-1">Today</span></div>
+                    </div>
+                    <!-- Detailed Chart Visualization -->
+                    <div class="h-48 flex items-end space-x-1.5 opacity-60 group-hover:opacity-100 transition-opacity duration-1000">
+                        <div class="flex-1 bg-emerald-500/20 rounded-t-lg h-[40%] hover:bg-emerald-500 transition-colors"></div>
+                        <div class="flex-1 bg-emerald-500/20 rounded-t-lg h-[60%] hover:bg-emerald-500 transition-colors"></div>
+                        <div class="flex-1 bg-red-500/20 rounded-t-lg h-[50%] hover:bg-red-500 transition-colors"></div>
+                        <div class="flex-1 bg-emerald-500/20 rounded-t-lg h-[80%] hover:bg-emerald-500 transition-colors"></div>
+                        <div class="flex-1 bg-emerald-500/40 rounded-t-lg h-[100%] hover:bg-emerald-500 transition-colors shadow-[0_0_20px_rgba(16,185,129,0.3)]"></div>
+                        <div class="flex-1 bg-emerald-500/20 rounded-t-lg h-[70%] hover:bg-emerald-500 transition-colors"></div>
+                        <div class="flex-1 bg-red-500/20 rounded-t-lg h-[40%] hover:bg-red-500 transition-colors"></div>
+                        <div class="flex-1 bg-emerald-500/20 rounded-t-lg h-[90%] hover:bg-emerald-500 transition-colors"></div>
                     </div>
                 </div>
-                <!-- Simplified Chart Visualization -->
-                <div class="h-64 flex items-end space-x-2">
-                    <div class="flex-1 bg-slate-100 rounded-t-lg h-[40%]"></div>
-                    <div class="flex-1 bg-slate-100 rounded-t-lg h-[60%]"></div>
-                    <div class="flex-1 bg-slate-100 rounded-t-lg h-[50%]"></div>
-                    <div class="flex-1 bg-slate-100 rounded-t-lg h-[80%]"></div>
-                    <div class="flex-1 bg-blue-600 rounded-t-lg h-[100%]"></div>
-                    <div class="flex-1 bg-slate-100 rounded-t-lg h-[70%]"></div>
-                    <div class="flex-1 bg-slate-100 rounded-t-lg h-[90%]"></div>
-                </div>
-            </div>
 
-            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
-                <h2 class="font-bold text-lg mb-6">Watchlist</h2>
-                <div class="space-y-6">
-                    <div class="flex justify-between items-center">
-                        <div class="font-bold">AAPL <span class="text-xs text-slate-400 font-medium">Apple Inc.</span></div>
-                        <div class="text-right">
-                            <div class="font-bold">$170.12</div>
-                            <div class="text-xs text-red-500 font-bold">-0.12%</div>
+                <div class="space-y-8">
+                    <div class="card-border p-8 rounded-[32px]">
+                        <h4 class="text-sm font-black uppercase tracking-[0.3em] text-slate-500 mb-8">Quick Watchlist</h4>
+                        <div class="space-y-6">
+                            <div class="flex justify-between items-center group cursor-pointer">
+                                <div class="flex items-center space-x-4">
+                                    <div class="w-10 h-10 bg-slate-900 rounded-xl flex items-center justify-center font-bold text-xs">NV</div>
+                                    <div>
+                                        <div class="font-bold text-sm">NVDA</div>
+                                        <div class="text-[10px] text-slate-500 font-bold uppercase">NVIDIA Corp.</div>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="font-mono font-bold text-sm">$842.20</div>
+                                    <div class="text-[10px] text-emerald-500 font-black uppercase tracking-tighter">+4.12%</div>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center group cursor-pointer">
+                                <div class="flex items-center space-x-4">
+                                    <div class="w-10 h-10 bg-slate-900 rounded-xl flex items-center justify-center font-bold text-xs">TS</div>
+                                    <div>
+                                        <div class="font-bold text-sm">TSLA</div>
+                                        <div class="text-[10px] text-slate-500 font-bold uppercase">Tesla Inc.</div>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="font-mono font-bold text-sm">$172.45</div>
+                                    <div class="text-[10px] text-red-500 font-black uppercase tracking-tighter">-1.12%</div>
+                                </div>
+                            </div>
                         </div>
+                        <button class="w-full mt-10 py-3 border border-dashed border-slate-800 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-600 hover:text-white hover:border-slate-600 transition">+ Add Asset</button>
                     </div>
-                    <div class="flex justify-between items-center">
-                        <div class="font-bold">MSFT <span class="text-xs text-slate-400 font-medium">Microsoft</span></div>
-                        <div class="text-right">
-                            <div class="font-bold">$415.50</div>
-                            <div class="text-xs text-emerald-500 font-bold">+1.45%</div>
-                        </div>
-                    </div>
-                    <div class="flex justify-between items-center">
-                        <div class="font-bold">GOOGL <span class="text-xs text-slate-400 font-medium">Alphabet</span></div>
-                        <div class="text-right">
-                            <div class="font-bold">$142.10</div>
-                            <div class="text-xs text-emerald-500 font-bold">+0.88%</div>
-                        </div>
+
+                    <div class="bg-blue-600 p-8 rounded-[32px] shadow-2xl shadow-blue-900/40 text-white relative overflow-hidden group">
+                        <div class="absolute -bottom-10 -right-10 w-32 h-32 bg-white/10 rounded-full group-hover:scale-150 transition-transform duration-1000"></div>
+                        <div class="text-[8px] font-black uppercase tracking-[0.4em] text-blue-200 mb-4">Portfolio Alpha</div>
+                        <div class="text-4xl font-black font-mono tracking-tighter mb-2">$42,482.00</div>
+                        <p class="text-[10px] font-bold text-blue-100 uppercase tracking-widest italic">+12.5% Performance</p>
                     </div>
                 </div>
-                <button class="w-full mt-10 py-3 border border-dashed border-slate-200 rounded-xl text-slate-400 text-sm font-bold hover:bg-slate-50 transition">+ Add Ticker</button>
             </div>
         </div>
-    </div>
+    </main>
 </body>
 </html>
