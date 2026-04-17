@@ -3,18 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>18 Japanese Zen Portfolio</title>
+    <title>Zen Portfolio - Japanese Minimal</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;400;700&family=Inter:wght@300;400&display=swap');
+        .font-jp { font-family: 'Noto Serif JP', serif; }
+        body { font-family: 'Inter', sans-serif; background-color: #faf9f6; }
+        .vertical-text { writing-mode: vertical-rl; }
+        .ink-fade { background: linear-gradient(to bottom, rgba(250,249,246,0) 0%, rgba(250,249,246,1) 100%); }
+    </style>
 </head>
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
-    <div class="bg-white p-8 rounded-lg shadow-md max-w-md w-full text-center">
-        <h1 class="text-2xl font-bold mb-4">18 Japanese Zen Portfolio</h1>
-        <p class="text-gray-600 mb-6">Style: Japanese Minimal</p>
-        <div id="app" class="border-2 border-dashed border-gray-300 rounded p-12">
-            Project content goes here
+<body class="text-stone-800">
+    <nav class="p-12 flex justify-between items-center fixed w-full z-10">
+        <div class="font-jp text-2xl font-bold tracking-widest">静寂</div>
+        <div class="w-8 h-8 rounded-full border border-stone-300 flex items-center justify-center">
+            <div class="w-2 h-2 bg-stone-800 rounded-full"></div>
         </div>
-    </div>
-    <script src="script.js"></script>
+    </nav>
+
+    <main class="min-h-screen flex items-center justify-center p-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-24 items-center max-w-6xl w-full">
+            <div class="relative">
+                <div class="bg-stone-200 aspect-[4/5] overflow-hidden grayscale">
+                    <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800" alt="Zen Garden" class="w-full h-full object-cover">
+                </div>
+                <div class="absolute -right-8 top-12 vertical-text font-jp text-stone-400 text-sm tracking-[0.5em] uppercase">Architecture of Silence</div>
+            </div>
+            
+            <div class="space-y-12">
+                <h1 class="font-jp text-6xl md:text-8xl font-light leading-tight">Less, <br>but better.</h1>
+                <p class="text-stone-500 max-w-sm leading-relaxed font-light text-lg">A practice focused on the essential. Finding beauty in the unadorned, the weathered, and the silent spaces between thoughts.</p>
+                <div class="pt-12">
+                    <a href="#" class="inline-flex items-center space-x-6 group">
+                        <span class="text-xs uppercase tracking-[0.4em] font-bold">View Works</span>
+                        <div class="w-24 h-[1px] bg-stone-300 group-hover:w-32 transition-all duration-700"></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="p-12 border-t border-stone-200">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <div class="text-[10px] uppercase tracking-[0.5em] text-stone-400 font-bold">© 2026 Seijaku Studio</div>
+            <div class="flex space-x-12 text-[10px] uppercase tracking-widest font-bold">
+                <a href="#">Tokyo</a>
+                <a href="#">Kyoto</a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
