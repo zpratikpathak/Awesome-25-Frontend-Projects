@@ -3,53 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zen Portfolio - Japanese Minimal</title>
+    <title>静寂 | Architecture of Silence</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;400;700&family=Inter:wght@300;400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;300;500;700&family=Inter:wght@100;300;400;600&display=swap');
         .font-jp { font-family: 'Noto Serif JP', serif; }
-        body { font-family: 'Inter', sans-serif; background-color: #faf9f6; }
+        body { font-family: 'Inter', sans-serif; background-color: #faf9f6; color: #1a1a1a; cursor: crosshair; }
         .vertical-text { writing-mode: vertical-rl; }
-        .ink-fade { background: linear-gradient(to bottom, rgba(250,249,246,0) 0%, rgba(250,249,246,1) 100%); }
+        .lux-border { border: 1px solid rgba(0,0,0,0.05); }
+        .line-reveal { position: relative; overflow: hidden; }
+        .line-reveal::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 1px; background: #1a1a1a; transform: scaleX(0); transform-origin: right; transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1); }
+        .line-reveal:hover::after { transform: scaleX(1); transform-origin: left; }
+        .img-mask { clip-path: inset(0 0 0 0); transition: clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1); }
+        .parallax-container { perspective: 1000px; }
+        ::-webkit-scrollbar { width: 3px; }
+        ::-webkit-scrollbar-track { background: #faf9f6; }
+        ::-webkit-scrollbar-thumb { background: #e5e5e5; }
     </style>
 </head>
-<body class="text-stone-800">
-    <nav class="p-12 flex justify-between items-center fixed w-full z-10">
-        <div class="font-jp text-2xl font-bold tracking-widest">静寂</div>
-        <div class="w-8 h-8 rounded-full border border-stone-300 flex items-center justify-center">
-            <div class="w-2 h-2 bg-stone-800 rounded-full"></div>
+<body class="overflow-x-hidden">
+    <!-- Immersive Minimalist Navigation -->
+    <nav class="fixed top-0 w-full h-32 flex justify-between items-center px-8 md:px-16 z-50 mix-blend-difference text-white">
+        <div class="font-jp text-3xl font-light tracking-[0.4em] uppercase">静寂</div>
+        <div class="hidden lg:flex space-x-24 text-[10px] uppercase font-light tracking-[0.6em]">
+            <a href="#" class="line-reveal">Maison</a>
+            <a href="#" class="line-reveal">Atelier</a>
+            <a href="#" class="line-reveal">Kyoto</a>
+        </div>
+        <div class="flex flex-col items-end space-y-1">
+            <div class="w-12 h-[1px] bg-white opacity-20"></div>
+            <div class="w-8 h-[1px] bg-white"></div>
         </div>
     </nav>
 
-    <main class="min-h-screen flex items-center justify-center p-12">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-24 items-center max-w-6xl w-full">
-            <div class="relative">
-                <div class="bg-stone-200 aspect-[4/5] overflow-hidden grayscale">
-                    <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800" alt="Zen Garden" class="w-full h-full object-cover">
-                </div>
-                <div class="absolute -right-8 top-12 vertical-text font-jp text-stone-400 text-sm tracking-[0.5em] uppercase">Architecture of Silence</div>
-            </div>
+    <main>
+        <!-- Hero: The Architecture of Silence -->
+        <section class="min-h-screen flex items-center justify-center p-8 md:p-16 relative">
+            <div class="absolute top-48 left-16 vertical-text text-[10px] uppercase font-bold tracking-[0.8em] text-stone-300 hidden xl:block">Seijaku Architecture Studio // Established 2026</div>
             
-            <div class="space-y-12">
-                <h1 class="font-jp text-6xl md:text-8xl font-light leading-tight">Less, <br>but better.</h1>
-                <p class="text-stone-500 max-w-sm leading-relaxed font-light text-lg">A practice focused on the essential. Finding beauty in the unadorned, the weathered, and the silent spaces between thoughts.</p>
-                <div class="pt-12">
-                    <a href="#" class="inline-flex items-center space-x-6 group">
-                        <span class="text-xs uppercase tracking-[0.4em] font-bold">View Works</span>
-                        <div class="w-24 h-[1px] bg-stone-300 group-hover:w-32 transition-all duration-700"></div>
-                    </a>
+            <div class="max-w-[1600px] w-full grid grid-cols-1 lg:grid-cols-12 gap-20 items-center">
+                <div class="lg:col-span-7 relative">
+                    <div class="lux-border p-3 md:p-6 bg-white shadow-2xl shadow-stone-200/50 group overflow-hidden">
+                        <div class="aspect-[16/10] overflow-hidden bg-stone-100">
+                            <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1600" class="w-full h-full object-cover grayscale opacity-80 group-hover:scale-105 transition duration-[2s] ease-out img-mask">
+                        </div>
+                        <div class="absolute bottom-12 -right-12 vertical-text font-jp text-sm tracking-[0.4em] text-white mix-blend-difference hidden md:block">Less, but better.</div>
+                    </div>
+                </div>
+                
+                <div class="lg:col-span-5 space-y-16">
+                    <div class="flex items-center space-x-6">
+                        <div class="w-16 h-[1px] bg-stone-200"></div>
+                        <span class="text-[10px] uppercase font-black tracking-[0.4em] text-stone-400">Zen Philosophy 01</span>
+                    </div>
+                    <h1 class="font-jp text-7xl md:text-9xl font-extralight leading-[0.85] tracking-tighter text-stone-900">Distilling <br><span class="italic text-stone-300">Space.</span></h1>
+                    <p class="text-xl md:text-2xl font-light text-stone-400 leading-relaxed max-w-md">Finding beauty in the unadorned, the weathered, and the silent spaces between thoughts. We design for the essential self.</p>
+                    <div class="pt-12">
+                        <a href="#" class="inline-flex items-center space-x-12 group">
+                            <span class="text-[10px] uppercase font-black tracking-[0.5em] border-b border-stone-100 pb-4 group-hover:border-stone-900 transition-colors duration-700">Explore Maison</span>
+                            <div class="w-24 h-[1px] bg-stone-200 group-hover:w-48 transition-all duration-1000 ease-in-out"></div>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <!-- Section 02: Materiality -->
+        <section class="min-h-screen py-32 px-8 md:px-16 bg-[#1a1a1a] text-[#faf9f6]">
+            <div class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
+                <div class="order-2 lg:order-1">
+                    <div class="text-[10px] uppercase font-black tracking-[0.4em] text-stone-600 mb-12">02 // Material & Texture</div>
+                    <h2 class="font-jp text-5xl md:text-7xl font-light mb-16 italic tracking-tighter">Concrete <br>& Shadow.</h2>
+                    <p class="text-lg font-light text-stone-500 leading-loose max-w-sm mb-16 italic border-l border-stone-800 pl-12">We work with the honesty of materials. Raw concrete, charred wood, and the shifting geometry of natural light.</p>
+                    <div class="grid grid-cols-2 gap-12 text-[10px] uppercase font-black tracking-widest text-stone-500">
+                        <div>
+                            <div class="mb-4">Origin</div>
+                            <div class="text-white">Kyoto Atelier</div>
+                        </div>
+                        <div>
+                            <div class="mb-4">Scale</div>
+                            <div class="text-white">Global Reach</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-1 lg:order-2">
+                    <div class="bg-white/5 p-4 rounded-sm">
+                         <div class="aspect-square bg-stone-900 overflow-hidden">
+                             <img src="https://images.unsplash.com/photo-1518005020251-095c1a2c5ad5?w=1000" class="w-full h-full object-cover opacity-40 hover:opacity-100 transition duration-1000">
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Frame -->
+        <section class="h-screen flex flex-col items-center justify-center text-center p-8">
+            <div class="text-[10px] uppercase font-black tracking-[0.8em] text-stone-300 mb-12 animate-pulse">Now Available for Projects 2026</div>
+            <h2 class="font-jp text-8xl md:text-[12vw] font-extralight tracking-tighter text-stone-100 italic">Collaborate.</h2>
+            <a href="mailto:atelier@seijaku.studio" class="mt-20 text-[10px] uppercase font-black tracking-[0.5em] border border-stone-200 px-16 py-6 hover:bg-stone-900 hover:text-white transition duration-700">Request Portfolio Access</a>
+        </section>
     </main>
 
-    <footer class="p-12 border-t border-stone-200">
-        <div class="max-w-6xl mx-auto flex justify-between items-center">
-            <div class="text-[10px] uppercase tracking-[0.5em] text-stone-400 font-bold">© 2026 Seijaku Studio</div>
-            <div class="flex space-x-12 text-[10px] uppercase tracking-widest font-bold">
-                <a href="#">Tokyo</a>
-                <a href="#">Kyoto</a>
-            </div>
+    <footer class="p-12 border-t border-stone-100 flex flex-col lg:flex-row justify-between items-center gap-12">
+        <div class="text-[8px] font-black uppercase tracking-[0.8em] text-stone-300">© 2026 Seijaku Studio | Kyoto, Japan</div>
+        <div class="flex space-x-12 text-[8px] font-black uppercase tracking-[0.4em]">
+            <a href="#" class="hover:text-stone-400 transition">Instagram</a>
+            <a href="#" class="hover:text-stone-400 transition">Are.na</a>
+            <a href="#" class="hover:text-stone-400 transition">Journal</a>
         </div>
     </footer>
 </body>
