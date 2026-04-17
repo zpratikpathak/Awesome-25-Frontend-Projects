@@ -3,39 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather App - Glassmorphism</title>
+    <title>Weather App - Pro Glassmorphism</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;600&display=swap');
+        body { font-family: 'Outfit', sans-serif; background: #0f172a; overflow: hidden; }
+        .glass-bg {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .sun-glow {
+            box-shadow: 0 0 100px rgba(251, 191, 36, 0.2);
+            filter: drop-shadow(0 0 30px rgba(251, 191, 36, 0.4));
+        }
+        .rain-drop {
+            position: absolute;
+            background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 100%);
+            width: 1px;
+            height: 40px;
+            top: -100px;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            to { transform: translateY(110vh); }
+        }
+        .floating { animation: floating 4s ease-in-out infinite; }
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
 </head>
-<body class="bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 min-h-screen flex items-center justify-center p-6">
-    <div class="bg-white/20 backdrop-blur-xl border border-white/30 rounded-[40px] p-8 max-w-sm w-full shadow-2xl text-white">
-        <div class="text-center mb-10">
-            <h1 class="text-2xl font-bold mb-1">San Francisco</h1>
-            <p class="text-white/70 text-sm">Monday, 17 April</p>
-        </div>
+<body class="min-h-screen flex items-center justify-center p-6 relative">
+    <!-- Dynamic Animated Background Layer -->
+    <div class="absolute inset-0 z-0 bg-gradient-to-br from-indigo-950 via-slate-900 to-blue-900">
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-[120px] animate-pulse"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-[120px] animate-pulse" style="animation-delay: 2s"></div>
+    </div>
+
+    <!-- Main Content Panel -->
+    <div class="glass-bg p-12 rounded-[60px] max-w-lg w-full shadow-2xl relative z-10 overflow-hidden group">
+        <!-- Decoration Flare -->
+        <div class="absolute -top-24 -right-24 w-48 h-48 bg-white/10 rounded-full blur-3xl group-hover:bg-white/20 transition duration-1000"></div>
         
-        <div class="flex flex-col items-center mb-10">
-            <div class="w-32 h-32 relative mb-4">
-                <div class="absolute inset-0 bg-yellow-300 rounded-full blur-2xl opacity-50 animate-pulse"></div>
-                <svg class="w-full h-full drop-shadow-lg" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4.243 3.05a1 1 0 011.414 0l.707.707a1 1 0 11-1.414 1.414l-.707-.707a1 1 0 010-1.414zM17 10a1 1 0 011 1h1a1 1 0 11-2 0h-1a1 1 0 01-1-1zM14.243 16.95a1 1 0 011.414-1.414l.707.707a1 1 0 11-1.414 1.414l-.707-.707a1 1 0 010-1.414zM10 18a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zm-4.243-3.05a1 1 0 011.414 0l.707.707a1 1 0 11-1.414 1.414l-.707-.707a1 1 0 010-1.414zM3 10a1 1 0 011-1H4a1 1 0 110 2H3a1 1 0 01-1-1zm3.05-4.243a1 1 0 011.414 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707zM10 6a4 4 0 100 8 4 4 0 000-8z" clip-rule="evenodd"></path></svg>
+        <header class="flex justify-between items-start mb-16">
+            <div>
+                <h1 class="text-white text-4xl font-bold tracking-tight mb-2">San Francisco</h1>
+                <p class="text-blue-200/50 text-sm font-semibold uppercase tracking-[0.3em]">Monday, April 17</p>
             </div>
-            <div class="text-7xl font-light mb-2">24°</div>
-            <p class="text-xl font-medium">Mostly Sunny</p>
+            <button class="glass-bg w-12 h-12 rounded-2xl flex items-center justify-center text-white hover:bg-white/10 transition">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"></path></svg>
+            </button>
+        </header>
+
+        <div class="flex flex-col items-center mb-20">
+            <div class="relative mb-10 floating">
+                <div class="absolute inset-0 bg-yellow-400 rounded-full blur-3xl opacity-20 sun-glow"></div>
+                <svg class="w-48 h-48 text-yellow-400 drop-shadow-2xl relative z-10" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4.243 3.05a1 1 0 011.414 0l.707.707a1 1 0 11-1.414 1.414l-.707-.707a1 1 0 010-1.414zM17 10a1 1 0 011 1h1a1 1 0 11-2 0h-1a1 1 0 01-1-1zM14.243 16.95a1 1 0 011.414-1.414l.707.707a1 1 0 11-1.414 1.414l-.707-.707a1 1 0 010-1.414zM10 18a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zm-4.243-3.05a1 1 0 011.414 0l.707.707a1 1 0 11-1.414 1.414l-.707-.707a1 1 0 010-1.414zM3 10a1 1 0 011-1H4a1 1 0 110 2H3a1 1 0 01-1-1zm3.05-4.243a1 1 0 011.414 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707zM10 6a4 4 0 100 8 4 4 0 000-8z" clip-rule="evenodd"></path>
+                </svg>
+            </div>
+            <div class="text-white text-9xl font-thin tracking-tighter mb-4 ml-8">24<span class="text-blue-400 text-6xl font-light">°</span></div>
+            <div class="px-6 py-2 bg-white/5 rounded-full border border-white/10 text-blue-200 text-sm font-bold uppercase tracking-widest">Mostly Sunny</div>
         </div>
 
-        <div class="grid grid-cols-3 gap-4">
-            <div class="bg-white/10 p-3 rounded-2xl text-center">
-                <p class="text-white/50 text-[10px] uppercase mb-1">Wind</p>
-                <p class="font-bold text-sm">12km/h</p>
+        <div class="grid grid-cols-3 gap-8">
+            <div class="text-center p-6 bg-white/5 rounded-[32px] border border-white/5 group hover:bg-white/10 transition-all duration-500">
+                <p class="text-blue-200/30 text-[10px] uppercase font-bold tracking-widest mb-3">Humidity</p>
+                <p class="text-white text-2xl font-bold">45%</p>
             </div>
-            <div class="bg-white/10 p-3 rounded-2xl text-center">
-                <p class="text-white/50 text-[10px] uppercase mb-1">Hum</p>
-                <p class="font-bold text-sm">45%</p>
+            <div class="text-center p-6 bg-white/5 rounded-[32px] border border-white/5 group hover:bg-white/10 transition-all duration-500">
+                <p class="text-blue-200/30 text-[10px] uppercase font-bold tracking-widest mb-3">Wind Speed</p>
+                <p class="text-white text-2xl font-bold">12<span class="text-xs text-blue-200/50 ml-1">km/h</span></p>
             </div>
-            <div class="bg-white/10 p-3 rounded-2xl text-center">
-                <p class="text-white/50 text-[10px] uppercase mb-1">Rain</p>
-                <p class="font-bold text-sm">0%</p>
+            <div class="text-center p-6 bg-white/5 rounded-[32px] border border-white/5 group hover:bg-white/10 transition-all duration-500">
+                <p class="text-blue-200/30 text-[10px] uppercase font-bold tracking-widest mb-3">UV Index</p>
+                <p class="text-white text-2xl font-bold">Low</p>
+            </div>
+        </div>
+
+        <div class="mt-12 pt-8 border-t border-white/10">
+            <h3 class="text-white text-sm font-bold uppercase tracking-widest mb-6">7-Day Forecast</h3>
+            <div class="space-y-4">
+                <div class="flex items-center justify-between p-4 bg-white/5 rounded-2xl hover:bg-white/10 transition cursor-default">
+                    <span class="text-white text-sm font-bold w-12 uppercase">Tue</span>
+                    <svg class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4.243 3.05a1 1 0 011.414 0l.707.707a1 1 0 11-1.414 1.414l-.707-.707a1 1 0 010-1.414zM17 10a1 1 0 011 1h1a1 1 0 11-2 0h-1a1 1 0 01-1-1zM14.243 16.95a1 1 0 011.414-1.414l.707.707a1 1 0 11-1.414 1.414l-.707-.707a1 1 0 010-1.414zM10 18a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zm-4.243-3.05a1 1 0 011.414 0l.707.707a1 1 0 11-1.414 1.414l-.707-.707a1 1 0 010-1.414zM3 10a1 1 0 011-1H4a1 1 0 110 2H3a1 1 0 01-1-1zm3.05-4.243a1 1 0 011.414 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707zM10 6a4 4 0 100 8 4 4 0 000-8z" clip-rule="evenodd"></path></svg>
+                    <div class="text-right w-12">
+                        <span class="text-white text-sm font-bold">26°</span>
+                        <span class="text-blue-200/30 text-xs ml-1">14°</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
+    <script>
+        // Simple Rain Animation Effect for variety
+        function createRain() {
+            const body = document.body;
+            for(let i = 0; i < 50; i++) {
+                const drop = document.createElement('div');
+                drop.className = 'rain-drop opacity-0';
+                drop.style.left = Math.random() * 100 + 'vw';
+                drop.style.animationDuration = Math.random() * 1 + 0.5 + 's';
+                drop.style.animationDelay = Math.random() * 2 + 's';
+                body.appendChild(drop);
+            }
+        }
+        // createRain(); // Uncomment for rain mode
+    </script>
 </body>
 </html>
