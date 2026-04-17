@@ -3,18 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>17 Cyberpunk Login Page</title>
+    <title>Login - Cyberpunk</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=JetBrains+Mono&display=swap');
+        body { 
+            background-color: #050505; 
+            font-family: 'Orbitron', sans-serif;
+            background-image: 
+                linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+                linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            background-size: 100% 2px, 3px 100%;
+        }
+        .cyber-border {
+            border: 2px solid #00f3ff;
+            box-shadow: 0 0 15px #00f3ff, inset 0 0 15px #00f3ff;
+            clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
+        }
+        .cyber-btn {
+            background: #ff003c;
+            color: #fff;
+            clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
+            transition: all 0.3s;
+        }
+        .cyber-btn:hover {
+            background: #00f3ff;
+            box-shadow: 0 0 20px #00f3ff;
+            color: #000;
+        }
+        .glitch-text {
+            text-shadow: 2px 0 #ff003c, -2px 0 #00f3ff;
+            animation: glitch 1s infinite linear alternate-reverse;
+        }
+        @keyframes glitch {
+            0% { text-shadow: 2px 0 #ff003c, -2px 0 #00f3ff; }
+            100% { text-shadow: -2px 0 #ff003c, 2px 0 #00f3ff; }
+        }
+    </style>
 </head>
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
-    <div class="bg-white p-8 rounded-lg shadow-md max-w-md w-full text-center">
-        <h1 class="text-2xl font-bold mb-4">17 Cyberpunk Login Page</h1>
-        <p class="text-gray-600 mb-6">Style: Cyberpunk</p>
-        <div id="app" class="border-2 border-dashed border-gray-300 rounded p-12">
-            Project content goes here
+<body class="min-h-screen flex items-center justify-center p-6">
+    <div class="cyber-border bg-black/80 p-12 max-w-md w-full relative overflow-hidden">
+        <!-- Scanline Animation -->
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-500/10 to-transparent h-1/2 animate-bounce opacity-20 pointer-events-none"></div>
+        
+        <div class="relative z-10">
+            <h1 class="text-4xl font-bold mb-2 text-cyan-400 glitch-text uppercase italic tracking-tighter">System Access</h1>
+            <p class="text-[10px] font-mono text-cyan-500 mb-10 tracking-[0.3em] uppercase opacity-60">Neural Link Est. 2026 // Port 8080</p>
+            
+            <div class="space-y-8 mb-12">
+                <div class="relative">
+                    <label class="block text-[10px] uppercase text-cyan-400 mb-2 font-bold tracking-widest">Operator ID</label>
+                    <input type="text" class="w-full bg-cyan-950/20 border-b-2 border-cyan-500/50 p-3 text-cyan-300 font-mono focus:outline-none focus:border-cyan-400 transition" placeholder="USER_99">
+                </div>
+                <div class="relative">
+                    <label class="block text-[10px] uppercase text-cyan-400 mb-2 font-bold tracking-widest">Access Key</label>
+                    <input type="password" class="w-full bg-cyan-950/20 border-b-2 border-cyan-500/50 p-3 text-cyan-300 font-mono focus:outline-none focus:border-cyan-400 transition" placeholder="••••••••">
+                </div>
+            </div>
+
+            <button class="cyber-btn w-full py-4 text-xl font-bold uppercase tracking-widest">Authorize</button>
+            
+            <div class="mt-8 flex justify-between items-center">
+                <div class="text-[8px] font-mono text-red-500 uppercase animate-pulse">Security Level: Omega</div>
+                <a href="#" class="text-[8px] font-mono text-cyan-600 hover:text-cyan-400 uppercase underline">Forgot Credentials?</a>
+            </div>
         </div>
     </div>
-    <script src="script.js"></script>
 </body>
 </html>
