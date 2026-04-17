@@ -3,71 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recipe Explorer - Health & Wellness</title>
+    <title>Nourish | Advanced Recipe Explorer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap');
-        body { font-family: 'Quicksand', sans-serif; background-color: #fdfdfb; }
-        .card-shadow { box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap');
+        body { font-family: 'DM+Sans', sans-serif; background-color: #fdfdfb; color: #2d3436; }
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .glass-header { background: rgba(253, 253, 251, 0.8); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .recipe-card { transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1); }
+        .recipe-card:hover { transform: translateY(-12px); box-shadow: 0 30px 60px rgba(0,0,0,0.06); }
+        .tag-gradient { background: linear-gradient(135deg, #14b8a6, #0d9488); }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
     </style>
 </head>
-<body class="text-slate-800">
-    <header class="p-8 text-center max-w-2xl mx-auto">
-        <h1 class="text-4xl font-bold text-teal-800 mb-4">Nourish</h1>
-        <p class="text-slate-500">Discover wholesome, plant-based recipes designed to energize your body and mind.</p>
+<body class="overflow-x-hidden">
+    <!-- Navigation -->
+    <nav class="glass-header h-24 flex justify-between items-center px-8 md:px-16 fixed top-0 w-full z-50">
+        <div class="flex items-center space-x-12">
+            <h1 class="font-serif text-3xl font-bold italic text-teal-900 tracking-tighter">Nourish<span class="text-teal-500">.</span></h1>
+            <div class="hidden lg:flex space-x-10 text-xs font-bold uppercase tracking-[0.2em] text-teal-900/40">
+                <a href="#" class="hover:text-teal-600 transition">Recipes</a>
+                <a href="#" class="hover:text-teal-600 transition">Journal</a>
+                <a href="#" class="hover:text-teal-600 transition">Nutrition</a>
+            </div>
+        </div>
+        <div class="flex items-center space-x-8">
+            <button class="text-xs font-bold uppercase tracking-widest text-teal-900/60 hover:text-teal-900">Sign In</button>
+            <button class="bg-teal-900 text-white px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest shadow-xl shadow-teal-900/20 hover:scale-105 transition-transform">Get Started</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="pt-48 pb-24 px-8 md:px-16 max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+        <div>
+            <div class="flex items-center space-x-3 mb-8">
+                <div class="w-8 h-[1px] bg-teal-600"></div>
+                <span class="text-xs font-bold text-teal-600 uppercase tracking-[0.3em]">Spring Edition 2026</span>
+            </div>
+            <h2 class="font-serif text-6xl md:text-8xl font-bold leading-[0.9] text-teal-950 mb-10 tracking-tighter">Eat well, <br><span class="italic text-teal-600">live better.</span></h2>
+            <p class="text-lg text-slate-500 max-w-lg mb-12 leading-relaxed">Discover a curated collection of seasonal, plant-based recipes designed by world-class nutritionists to energize your lifestyle.</p>
+            <div class="flex items-center space-x-8">
+                <div class="flex -space-x-3">
+                    <div class="w-12 h-12 rounded-full border-4 border-white bg-slate-200 overflow-hidden shadow-sm"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100"></div>
+                    <div class="w-12 h-12 rounded-full border-4 border-white bg-slate-200 overflow-hidden shadow-sm"><img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=100"></div>
+                    <div class="w-12 h-12 rounded-full border-4 border-white bg-teal-600 flex items-center justify-center text-white text-xs font-bold shadow-sm">+12k</div>
+                </div>
+                <div class="text-sm font-medium text-slate-600">Join 12,000+ happy healthy eaters</div>
+            </div>
+        </div>
+        <div class="relative">
+            <div class="bg-teal-100 aspect-square rounded-[100px] overflow-hidden rotate-3 hover:rotate-0 transition-transform duration-1000">
+                <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=1200" class="w-full h-full object-cover grayscale-[0.2] contrast-125">
+            </div>
+            <div class="absolute -bottom-10 -left-10 bg-white p-8 rounded-[40px] shadow-2xl shadow-teal-900/5 max-w-xs border border-teal-50">
+                <div class="text-teal-600 font-bold italic mb-2">Editor's Choice</div>
+                <div class="font-serif text-xl font-bold mb-4">Garden Harvest Bowl</div>
+                <div class="flex items-center space-x-6 text-[10px] font-bold uppercase tracking-widest text-slate-400">
+                    <span>15 Mins</span>
+                    <div class="w-1 h-1 bg-slate-300 rounded-full"></div>
+                    <span>420 Cal</span>
+                </div>
+            </div>
+        </div>
     </header>
 
-    <main class="max-w-6xl mx-auto p-8">
-        <div class="flex flex-wrap gap-4 mb-12 justify-center">
-            <button class="px-6 py-2 bg-teal-600 text-white rounded-full font-medium shadow-lg shadow-teal-100 transition hover:bg-teal-700">All Recipes</button>
-            <button class="px-6 py-2 bg-white text-teal-700 rounded-full font-medium border border-teal-100 hover:bg-teal-50 transition">Breakfast</button>
-            <button class="px-6 py-2 bg-white text-teal-700 rounded-full font-medium border border-teal-100 hover:bg-teal-50 transition">Smoothies</button>
-            <button class="px-6 py-2 bg-white text-teal-700 rounded-full font-medium border border-teal-100 hover:bg-teal-50 transition">Salads</button>
+    <!-- Filters -->
+    <section class="px-8 md:px-16 mb-20 max-w-[1400px] mx-auto">
+        <div class="flex flex-wrap items-center gap-6">
+            <button class="tag-gradient text-white px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest shadow-xl shadow-teal-500/20">All Recipes</button>
+            <button class="bg-white text-teal-900 border border-slate-100 px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-teal-50 transition">Breakfast</button>
+            <button class="bg-white text-teal-900 border border-slate-100 px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-teal-50 transition">Power Lunch</button>
+            <button class="bg-white text-teal-900 border border-slate-100 px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-teal-50 transition">Light Dinner</button>
+            <button class="bg-white text-teal-900 border border-slate-100 px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-teal-50 transition">Smoothies</button>
+        </div>
+    </section>
+
+    <!-- Recipe Grid -->
+    <main class="px-8 md:px-16 pb-32 max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+        <!-- Recipe 1 -->
+        <div class="bg-white rounded-[48px] overflow-hidden recipe-card border border-slate-50 group">
+            <div class="h-80 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=800" class="w-full h-full object-cover group-hover:scale-110 transition duration-1000">
+                <div class="absolute top-6 left-6">
+                    <span class="bg-white/90 backdrop-blur-md px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest shadow-sm">Vegetarian</span>
+                </div>
+                <button class="absolute top-6 right-6 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-teal-900 shadow-sm opacity-0 group-hover:opacity-100 transition duration-500 hover:bg-teal-900 hover:text-white">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                </button>
+            </div>
+            <div class="p-10">
+                <div class="flex items-center space-x-3 text-[10px] font-black uppercase tracking-[0.2em] text-teal-600 mb-4">
+                    <span>20 Mins</span>
+                    <div class="w-1 h-1 bg-teal-200 rounded-full"></div>
+                    <span>Beginner</span>
+                </div>
+                <h3 class="font-serif text-2xl font-bold text-teal-950 mb-6 group-hover:text-teal-600 transition">Mediterranean Quinoa & Feta Salad</h3>
+                <div class="flex items-center justify-between border-t border-slate-50 pt-6">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 rounded-full bg-slate-100 overflow-hidden"><img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100"></div>
+                        <span class="text-xs font-bold text-slate-400">By Chef Marco</span>
+                    </div>
+                    <button class="text-xs font-bold uppercase tracking-widest text-teal-900 group-hover:translate-x-1 transition-transform">Details →</button>
+                </div>
+            </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-            <!-- Card 1 -->
-            <div class="bg-white rounded-[32px] overflow-hidden card-shadow group transition-all duration-500 hover:-translate-y-2">
-                <div class="h-64 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600" alt="Green Bowl" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+        <!-- Recipe 2 -->
+        <div class="bg-white rounded-[48px] overflow-hidden recipe-card border border-slate-50 group">
+            <div class="h-80 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1543339308-43e59d6b73a6?w=800" class="w-full h-full object-cover group-hover:scale-110 transition duration-1000">
+                <div class="absolute top-6 left-6">
+                    <span class="bg-white/90 backdrop-blur-md px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest shadow-sm">Keto Friendly</span>
                 </div>
-                <div class="p-8">
-                    <div class="flex items-center space-x-2 text-teal-600 text-xs font-bold uppercase tracking-widest mb-3">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path></svg>
-                        <span>15 Mins</span>
+                <button class="absolute top-6 right-6 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-teal-900 shadow-sm opacity-0 group-hover:opacity-100 transition duration-500">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                </button>
+            </div>
+            <div class="p-10">
+                <div class="flex items-center space-x-3 text-[10px] font-black uppercase tracking-[0.2em] text-teal-600 mb-4">
+                    <span>5 Mins</span>
+                    <div class="w-1 h-1 bg-teal-200 rounded-full"></div>
+                    <span>Quick</span>
+                </div>
+                <h3 class="font-serif text-2xl font-bold text-teal-950 mb-6 group-hover:text-teal-600 transition">Tropical Glow Turmeric Smoothie</h3>
+                <div class="flex items-center justify-between border-t border-slate-50 pt-6">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 rounded-full bg-slate-100 overflow-hidden"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100"></div>
+                        <span class="text-xs font-bold text-slate-400">By Elena G.</span>
                     </div>
-                    <h3 class="text-xl font-bold mb-4">Garden Harvest Zen Bowl</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed">Fresh microgreens, roasted chickpeas, and tahini-lemon dressing.</p>
+                    <button class="text-xs font-bold uppercase tracking-widest text-teal-900 group-hover:translate-x-1 transition-transform">Details →</button>
                 </div>
             </div>
+        </div>
 
-            <!-- Card 2 -->
-            <div class="bg-white rounded-[32px] overflow-hidden card-shadow group transition-all duration-500 hover:-translate-y-2">
-                <div class="h-64 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=600" alt="Salad" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+        <!-- Recipe 3 -->
+        <div class="bg-white rounded-[48px] overflow-hidden recipe-card border border-slate-50 group">
+            <div class="h-80 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=800" class="w-full h-full object-cover group-hover:scale-110 transition duration-1000">
+                <div class="absolute top-6 left-6">
+                    <span class="bg-white/90 backdrop-blur-md px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest shadow-sm">Vegan</span>
                 </div>
-                <div class="p-8">
-                    <div class="flex items-center space-x-2 text-teal-600 text-xs font-bold uppercase tracking-widest mb-3">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path></svg>
-                        <span>20 Mins</span>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4">Mediterranean Quinoa</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed">A colorful blend of kalamata olives, feta, and fresh parsley.</p>
-                </div>
+                <button class="absolute top-6 right-6 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-teal-900 shadow-sm opacity-0 group-hover:opacity-100 transition duration-500">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                </button>
             </div>
-
-            <!-- Card 3 -->
-            <div class="bg-white rounded-[32px] overflow-hidden card-shadow group transition-all duration-500 hover:-translate-y-2">
-                <div class="h-64 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1543339308-43e59d6b73a6?w=600" alt="Smoothie" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+            <div class="p-10">
+                <div class="flex items-center space-x-3 text-[10px] font-black uppercase tracking-[0.2em] text-teal-600 mb-4">
+                    <span>45 Mins</span>
+                    <div class="w-1 h-1 bg-teal-200 rounded-full"></div>
+                    <span>Intermediate</span>
                 </div>
-                <div class="p-8">
-                    <div class="flex items-center space-x-2 text-teal-600 text-xs font-bold uppercase tracking-widest mb-3">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path></svg>
-                        <span>5 Mins</span>
+                <h3 class="font-serif text-2xl font-bold text-teal-950 mb-6 group-hover:text-teal-600 transition">Roasted Sweet Potato & Kale Plate</h3>
+                <div class="flex items-center justify-between border-t border-slate-50 pt-6">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 rounded-full bg-slate-100 overflow-hidden"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100"></div>
+                        <span class="text-xs font-bold text-slate-400">By Chef David</span>
                     </div>
-                    <h3 class="text-xl font-bold mb-4">Tropical Glow Smoothie</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed">Pineapple, mango, and turmeric for a vitamin-C boost.</p>
+                    <button class="text-xs font-bold uppercase tracking-widest text-teal-900 group-hover:translate-x-1 transition-transform">Details →</button>
                 </div>
             </div>
         </div>
