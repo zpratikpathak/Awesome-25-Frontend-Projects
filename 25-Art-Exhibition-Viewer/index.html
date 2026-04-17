@@ -3,18 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>25 Art Exhibition Viewer</title>
+    <title>Exhibition - Maximalist</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@400;900&display=swap');
+        body { font-family: 'Unbounded', sans-serif; background-color: #ff00ff; color: #fff; overflow-x: hidden; }
+        .grid-bg {
+            background-image: 
+                linear-gradient(rgba(255, 255, 0, 0.5) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 0, 0.5) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+        .text-outline { -webkit-text-stroke: 2px #ffff00; color: transparent; }
+        .rotate-text { writing-mode: vertical-rl; transform: rotate(180deg); }
+        .marquee-infinite { animation: marquee 20s linear infinite; }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+    </style>
 </head>
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
-    <div class="bg-white p-8 rounded-lg shadow-md max-w-md w-full text-center">
-        <h1 class="text-2xl font-bold mb-4">25 Art Exhibition Viewer</h1>
-        <p class="text-gray-600 mb-6">Style: Maximalist</p>
-        <div id="app" class="border-2 border-dashed border-gray-300 rounded p-12">
-            Project content goes here
+<body class="grid-bg min-h-screen">
+    <header class="p-12 border-b-8 border-yellow-300 bg-black">
+        <div class="flex justify-between items-center mb-12">
+            <div class="text-4xl font-black italic tracking-tighter text-white">NEO-MAX</div>
+            <div class="bg-yellow-300 text-black px-8 py-2 font-black uppercase text-xl rotate-3">2026 EDITION</div>
+        </div>
+        <h1 class="text-[15vw] leading-[0.8] font-black uppercase tracking-tighter mb-0">Chaos <br><span class="text-outline">as Order.</span></h1>
+    </header>
+
+    <div class="bg-yellow-300 py-6 overflow-hidden border-b-8 border-black">
+        <div class="flex whitespace-nowrap marquee-infinite">
+            <div class="text-black text-4xl font-black uppercase px-4">ART IS LOUD ★ NO MORE MINIMALISM ★ BREAK THE GRID ★ EXPLOSION OF COLOR ★ ART IS LOUD ★ NO MORE MINIMALISM ★ BREAK THE GRID ★ EXPLOSION OF COLOR ★ </div>
+            <div class="text-black text-4xl font-black uppercase px-4">ART IS LOUD ★ NO MORE MINIMALISM ★ BREAK THE GRID ★ EXPLOSION OF COLOR ★ ART IS LOUD ★ NO MORE MINIMALISM ★ BREAK THE GRID ★ EXPLOSION OF COLOR ★ </div>
         </div>
     </div>
-    <script src="script.js"></script>
+
+    <main class="p-12 grid grid-cols-1 md:grid-cols-12 gap-12">
+        <div class="md:col-span-8 space-y-24">
+            <div class="relative group">
+                <div class="absolute -inset-4 bg-cyan-400 -rotate-2 z-0"></div>
+                <div class="bg-black p-4 relative z-10">
+                    <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=1200" alt="Art 1" class="w-full h-auto grayscale group-hover:grayscale-0 transition duration-700">
+                </div>
+                <div class="absolute -bottom-8 -right-8 bg-pink-500 p-8 z-20 brutal-shadow rotate-12">
+                    <h3 class="text-3xl font-black uppercase leading-none">DIGITAL <br>PSYCHOSIS</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="md:col-span-4 flex flex-col justify-end">
+            <div class="bg-white text-black p-12 border-8 border-black -rotate-3">
+                <p class="text-xl font-bold leading-tight mb-8">This exhibition is a direct attack on the subtle. We believe that more is more. Every pixel, every color, every font is an act of rebellion.</p>
+                <button class="w-full bg-black text-white py-6 text-2xl font-black uppercase hover:bg-yellow-300 hover:text-black transition">ENTER VOID</button>
+            </div>
+        </div>
+    </main>
 </body>
 </html>
